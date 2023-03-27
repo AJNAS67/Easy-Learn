@@ -12,10 +12,22 @@
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-    <img
+    <!-- <img
       class="avatar mat-elevation-z8"
       src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
-    />
+    /> -->
+
+    <div *ngIf="profilepic; else defualtPic">
+        class="avatar mat-elevation-z8"
+        <img [src]="profilepic"  alt="" />
+    </div>
+
+    <ng-template #defualtPic>
+      <img
+        class="avatar mat-elevation-z8"
+        src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
+      />
+    </ng-template>
 
     <h4 class="name">John Smith</h4>
     <p class="designation">Software Engineer</p>
