@@ -14,9 +14,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { CartComponent } from './cart/cart.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
-  declarations: [ProfileComponent, AddProfileDetailsComponent],
+  declarations: [ProfileComponent, AddProfileDetailsComponent, CartComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,
@@ -31,7 +33,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatSelectModule,
+    MatSelectModule,MatCardModule
   ],
 })
 export class ProfilePageModule {}

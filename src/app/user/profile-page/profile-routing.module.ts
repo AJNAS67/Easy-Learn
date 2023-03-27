@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProfileDetailsComponent } from './add-profile-details/add-profile-details.component';
+import { CartComponent } from './cart/cart.component';
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
 
     children: [
       { path: 'add-profile-details', component: AddProfileDetailsComponent },
+      {path:'cart',component:CartComponent}
     ],
   },
   // { path: 'add-profile-details', component: AddProfileDetailsComponent },
