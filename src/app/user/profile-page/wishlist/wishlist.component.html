@@ -1,0 +1,32 @@
+
+<div class="container h-2/3 py-5">
+    <div
+  class="flex sm:w-full md:w-1/2 m-2 hover:bg-violet-300 items-center justify-center gap-2 border-solid border-2 border-indigo-600 rounded-md pl-5 py-3"
+  *ngFor="let item of cartItem"
+>
+  <div class="w-1/3 flex items-center gap-2">
+    <img
+      class="rounded-md"
+      src="../../../assets/images/home1.jpg"
+      style="width: 80px; height: 50px; object-fit: cover"
+      alt=""
+    />
+    <span>
+      {{ item.coursename }}
+    </span>
+  </div>
+  <div class="w-1/3">
+    <span
+      ><button
+        class="bg-violet-500 hover:bg-violet-800 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+      >
+        Add to cart
+      </button>
+    </span>
+  </div>
+  <div class="w-1/3">
+    <span><mat-icon>clear</mat-icon></span>
+  </div>
+</div>
+
+</div>
