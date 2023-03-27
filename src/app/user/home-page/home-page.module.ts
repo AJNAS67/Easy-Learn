@@ -11,12 +11,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
-
 import { MatCardModule } from '@angular/material/card';
+import { CourseDetailsComponent } from './course-details/course-details.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 @NgModule({
-  declarations: [HomePageComponent, AboutUsComponent, CategoryComponent],
+  declarations: [HomePageComponent, AboutUsComponent, CategoryComponent, CourseDetailsComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -28,6 +29,7 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSnackBarModule
   ],
 })
 export class HomePageModule {}

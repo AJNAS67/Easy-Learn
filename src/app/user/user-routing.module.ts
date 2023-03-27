@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './home-page/about-us/about-us.component';
+import { CourseDetailsComponent } from './home-page/course-details/course-details.component';
 import { HomePageComponent } from './home-page/home-page/home-page.component';
 import { UserComponent } from './user.component';
 
@@ -12,6 +13,7 @@ const routes: Routes = [
     children: [
       { path: 'home', component: HomePageComponent },
       { path: 'about-us', component: AboutUsComponent },
+      {path:'course-details',component:CourseDetailsComponent},
       {
         path: 'profile',
         loadChildren: () => import('./profile-page/profile-page.module').then((m) => m.ProfilePageModule),

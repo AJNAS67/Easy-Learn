@@ -1,0 +1,51 @@
+.main-div {
+    height: 300px;
+
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .banner-child-1 {
+        min-width: 500px;
+        max-width: 1024px;
+        .mentor {
+            display: flex;
+            align-items: center;
+
+
+            img {
+
+
+                width: 50px;
+                height: 50px;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-left: 16px;
+            }
+
+        }
+
+    }
+}
+
+.example-card {
+    max-width: 400px;
+
+    .price {
+        display: flex;
+        justify-content: space-between;
+
+        mat-card {
+        }
+
+    }
+
+}
+.mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+  }
+  
+  
