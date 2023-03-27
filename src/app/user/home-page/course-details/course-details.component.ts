@@ -5,7 +5,7 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 
-// import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-course-details',

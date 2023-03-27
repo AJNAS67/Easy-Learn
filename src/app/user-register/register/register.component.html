@@ -1,0 +1,82 @@
+<div class="login-container">
+    <div class="login-image"></div>
+    <div class="login-form">
+      <form [formGroup]="myForm" class="example-form" (ngSubmit)="onSubmit()">
+        <div>
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>First name</mat-label>
+                  <input matInput formControlName="firstName" />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput formControlName="lastName" />
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              placeholder="Ex. pat@example.com"
+            />
+            <mat-error *ngIf="myForm.get('email').hasError('required')"
+              >Email is required</mat-error
+            >
+            <mat-error *ngIf="myForm.get('email').hasError('email')"
+              >Invalid email format</mat-error
+            >
+            <mat-error *ngIf="isEmailExist"
+              >Invalid email format</mat-error
+            >
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Telephone</mat-label>
+            <span matPrefix> &nbsp;&nbsp;+91 &nbsp;</span>
+            <input
+              type="tel"
+              matInput
+              formControlName="phoneNumber"
+              placeholder="555-555-1234"
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+  
+            <input type="password" matInput formControlName="password" />
+            <mat-icon matSuffix>remove_red_eye</mat-icon>
+          </mat-form-field>
+          <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            [disabled]="myForm.invalid"
+            class="w-full"
+          >
+            {{ "register" | uppercase }}
+          </button>
+        </div>
+        <div>
+          <p class="text-center mt-2">
+            Already have an account?
+            <strong
+              class="text-blue-400 hover:text-blue-800"
+              (click)="directToLoginPage()"
+              >Login</strong
+            >
+          </p>
+        </div>
+      </form>
+    </div>
+    <div></div>
+  </div>
+  
