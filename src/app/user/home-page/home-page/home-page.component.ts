@@ -7,4 +7,20 @@ import { Component } from '@angular/core';
 })
 export class HomePageComponent {
 
+
+  array = [
+    { name: 'Art & Design' },
+    { name: 'Development' },
+    { name: 'Lifestyle' },
+    { name: 'Personal Development' },
+    { name: 'Business' },
+    { name: 'Finance' },
+    { name: 'Marketing' },
+    { name: 'Photography' },
+    { name: 'Data Science' },
+    { name: 'Health & Fitness' },
+    { name: 'Music' },
+    { name: 'Teaching & Academics' },
+  ];
+
 }

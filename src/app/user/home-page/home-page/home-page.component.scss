@@ -1,0 +1,131 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    max-height: 100%;
+    flex-wrap: wrap;
+}
+
+.left {
+    // padding: 40px;
+    width: 50%;
+    // background-color: aqua;
+    min-width: 280px
+}
+
+.right-1 {
+    width: 50%;
+    min-width: 280px
+}
+
+.right {
+    width: 50%;
+    // background-color: beige;
+    min-width: 280px
+}
+
+h1 {
+    font-size: 40px;
+    line-height: 1.2;
+    margin-top: 20px;
+    font-family: "Montserrat";
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    color: #252525;
+}
+
+h3 {
+    font-size: 15px;
+    line-height: 1.4;
+    letter-spacing: 2px;
+    color: #0071dc;
+    font-family: "Montserrat";
+    font-weight: 700;
+}
+
+.span {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    // font-size: 14px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-top: 23px
+}
+
+// .container{
+//     display: flex;
+//     flex-wrap: wrap;
+//     gap: 40px;
+//     justify-content: center;
+//     align-items: center;
+// }
+// mat-card {
+//     display: flex;
+//     width: 200px;
+//     height: 50px;
+//     margin-top: 10px;
+//     justify-content: center;
+//     align-items: center;
+
+
+// }
+.example-full-width {
+    min-width: 80%;
+}
+
+// .row{
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+.right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-2 {
+    display: flex;
+    background-color: #03172b;
+    color: aliceblue;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    min-height: 50px;
+    max-height: 100%;
+    div{
+        min-width: 280px;
+        padding: 40px;
+        .sect-2-p {
+            // padding: 30px;
+            // min-width: 300px;
+            // text-align: center;
+        }
+
+    }
+
+   
+}
+
+
+.categories{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+    align-items: center;
+    mat-card {
+        display: flex;
+        width: 200px;
+        height: 50px;
+        margin-top: 10px;
+        justify-content: center;
+        align-items: center;
+    
+    
+    }
+}

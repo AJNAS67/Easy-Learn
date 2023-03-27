@@ -1,1 +1,51 @@
-<p>home-page works!</p>
+<div class="container main">
+    <div class="left">
+      <div>
+        <h3>START TO SUCCESS</h3>
+      </div>
+      <div>
+        <h1>Access To 5500+ Courses from 480 Instructors & Institutions</h1>
+      </div>
+      <div>
+        <span class="span"
+          >Take your learning organisation to the next level.</span
+        >
+      </div>
+      <div>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <input type="text" matInput placeholder="Search" />
+        </mat-form-field>
+      </div>
+    </div>
+  
+    <div class="right-1">
+      <img
+        src="/assets/images/home-01-hero-image.webp"
+        class="d-block w-100"
+        alt=""
+      />
+    </div>
+    
+  </div>
+  
+
+  <div class="section-2">
+    <div><span class="sect-2-p">Learn The Essential Skills</span></div>
+    <div><span class="sect-2-p">Earn Certificates And Degrees</span></div>
+    <div><span class="sect-2-p">Get Ready for The Next Career</span></div>
+    <div><span class="sect-2-p">Master at Different Areas</span></div>
+  </div>
+  <div class="container mt-5">
+    <h1>Top categories</h1>
+  </div>
+  
+  <div class="container categories my-5 ">
+    <mat-card *ngFor="let arr of array" class="hover:bg-gray-100">
+      <span>{{ arr.name }} </span></mat-card
+    >
+  </div>
+  <app-category></app-category>
+  <!-- <app-category></app-category> -->
+  
+  
+  

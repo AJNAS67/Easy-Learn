@@ -1,0 +1,55 @@
+<mat-tab-group class="container" mat-stretch-tabs="false" mat-align-tabs="end">
+    <mat-tab label="All">
+      <div class="container categories mt-5">
+        <div
+          *ngFor="let course of courses"
+          class="mb-3"
+          (click)="courseDetails()"
+        >
+          <div>
+            <img
+              class="cat-img"
+              src="/assets/images/home1.jpg"
+              alt=""
+              style="width: 250px; object-fit: cover; height: 150px"
+            />
+          </div>
+          <div>
+            <span>{{ course.course_name }}</span
+            ><br />
+            <span>{{ course.toter }}</span>
+            <br />
+            <span>$ {{ course.fee }}</span>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Trending"> Trending </mat-tab>
+
+    <mat-tab label="Featured">
+      <div class="container categories mt-5">
+        <div *ngFor="let course of courses" class="mb-3">
+          <div>
+            <img
+              class="cat-img"
+              src="/assets/images/home1.jpg"
+              alt=""
+              style="width: 250px; object-fit: cover; height: 150px"
+            />
+          </div>
+          <div>
+            <span>{{ course.course_name }}</span
+            ><br />
+            <span>{{ course.toter }}</span>
+            <br />
+            <span>$ {{ course.fee }}</span>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  
+    <mat-tab label="Machine learning"> </mat-tab>
+  </mat-tab-group>
+  
+
+ 

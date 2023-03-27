@@ -1,0 +1,26 @@
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    border-radius: 5px;
+    overflow: hidden;
+
+    .cat-img {
+        border-radius: 5px;
+        object-fit: cover;
+        // transition: transform .1s;
+        transition: 0.5s all ease-in-out;
+        // overflow: hidden;
+        // box-shadow: 0 0 10px 0px rgba(0, 0, 0.1);
+
+    }
+
+    .cat-img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px 0px rgb(58, 10, 10);
+
+
+
+    }
+}
