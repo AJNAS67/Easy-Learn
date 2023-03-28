@@ -7,9 +7,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ViewCourseComponent } from './view-course/view-course.component';
 
 @NgModule({
-  declarations: [AdminComponent, ViewUserComponent],
+  declarations: [AdminComponent, ViewUserComponent, ViewCourseComponent, ],
   imports: [
     CommonModule,
     AdminRoutingModule,
