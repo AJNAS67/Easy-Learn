@@ -9,3 +9,7 @@ export interface userRegister {
     email: string;
     password: string;
   }
+  export interface adminLogin {
+    email: string;
+    password: string;
+  }

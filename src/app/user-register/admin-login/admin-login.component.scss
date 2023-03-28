@@ -1,0 +1,59 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    
+
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+  .login-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-image {
+    flex: 1;
+    min-width: 300px;
+    height: 100%;
+    background-image: url('/assets/images/Flat-Illustration-People-are-studying2-Graphics-7187606-1.jpg');
+    background-size: cover;
+  }
+  
+  .login-form {
+   
+    flex: 1;
+    min-width: 300px;
+    height: 100%;
+    padding: 30px;
+    // background-color: #f0f0f0;
+    border-radius: 5px;
+      display: flex;
+    justify-content: center;
+    align-items: center
+  }
+  
+  @media screen and (max-width: 768px) {
+    .login-container {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .login-image,
+    .login-form {
+      flex: none;
+      width: 100%;
+    }
+  }
