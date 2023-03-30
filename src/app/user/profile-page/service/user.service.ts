@@ -3,15 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
-
-
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
@@ -26,7 +21,16 @@ export class UserService {
   uploadProfilePick(uploadImage: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/upload`, uploadImage);
   }
+
+
+   // to upload video thumbnail
+   uploadVideoThumbnail(uploadImage: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/upload_thumbnail`, uploadImage);
+  }
   getUserDetails() {
     return this.http.get(`${this.baseUrl}/api/userDetails`);
+  }
+  uploadCourse(course: any): Observable<any>  {
+    return this.http.post(`${this.baseUrl}/course/add-course`, course);
   }
 }

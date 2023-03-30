@@ -1,13 +1,7 @@
-import { Component, Inject } from '@angular/core';
-import {
-  Validators,
-  FormBuilder,
-  FormArray,
-  FormGroup,
-  FormControl,
-} from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { Validators, FormBuilder, FormArray, FormGroup } from '@angular/forms';
 // import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-add-course',
@@ -20,25 +14,28 @@ export class AddCourseComponent {
   selectedValue!: string;
   imageSrc!: string;
   item!: FormArray;
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private _userService: UserService) {}
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      courseName: ['', [Validators.required]],
-      category: ['', Validators.required],
+      CourseName: ['', [Validators.required]],
       MentorName: ['', Validators.required],
-      totalHr: ['', Validators.required],
-      thumbnailImage: ['', Validators.required],
-      courseDescription: ['', Validators.required],
-      videoModule: this.fb.array([]),
+      Category: ['', Validators.required],
+      TotalHr: ['', Validators.required],
+      CourseDescription: ['', Validators.required],
+      ThumbnailImage: ['', Validators.required],
+      VideoModule: this.fb.array([]),
     });
   }
   onSubmit() {
     console.log(this.myForm.value, 'my form');
+    // this._userService.uploadCourse(this.myForm.value).subscribe((res) => {
+    //   console.log(res, 'ressssssssssss');
+    // });
   }
 
   get lessons() {
-    return this.myForm.controls['videoModule'] as FormArray;
+    return this.myForm.controls['VideoModule'] as FormArray;
   }
 
   addLesson() {
@@ -53,40 +50,58 @@ export class AddCourseComponent {
   deleteLesson(lessonIndex: number) {
     this.lessons.removeAt(lessonIndex);
   }
+  // upload(event: any) {
+  //   console.log(event, 'files');
+
+  //   if (event.target.files && event.target.files.length) {
+  //     console.log(event, 'files');
+
+  //     const file = event.target?.files[0];
+  //     console.log(file, 'file');
+  //     const formdata = new FormData();
+  //     formdata.append('file', file);
+  //     console.log(formdata, 'formdata');
+
+  //     this.myForm.patchValue({
+  //       thumbnailImage: formdata,
+  //     });
+  //     // const reader = new FileReader();
+  //     // const [file] = event.target.files;
+  //     //
+  //     // reader.readAsDataURL(file);
+
+  //     // reader.onload = () => {
+  //     //   this.imageSrc = reader.result as string;
+
+  //     //   this.myForm.patchValue({
+  //     //     thumbnailImage: reader.result,
+  //     //   });
+  //     // };
+  //   }
+
+  //   // const file = event.target?.files[0];
+  //   // console.log(file, 'file');
+  //   // const form_data = new FormData();
+  //   // form_data.append('file', file);
+  //   // console.log(form_data,'ahndkanj');
+  // }
   upload(event: any) {
-    console.log(event, 'files');
+    const file = event.target?.files[0];
+    console.log(file, 'file');
+    const formdata = new FormData();
+    formdata.append('file', file);
+    this._userService.uploadProfilePick(formdata).subscribe(
+      (res) => {
+        console.log(res, 'image uploaded res');
 
-    if (event.target.files && event.target.files.length) {
-      console.log(event, 'files');
-
-      const file = event.target?.files[0];
-      console.log(file, 'file');
-      const formdata = new FormData();
-      formdata.append('file', file);
-      console.log(formdata, 'formdata');
-
-      this.myForm.patchValue({
-        thumbnailImage: formdata,
-      });
-      // const reader = new FileReader();
-      // const [file] = event.target.files;
-      // 
-      // reader.readAsDataURL(file);
-
-      // reader.onload = () => {
-      //   this.imageSrc = reader.result as string;
-
-      //   this.myForm.patchValue({
-      //     thumbnailImage: reader.result,
-      //   });
-      // };
-    }
-
-    // const file = event.target?.files[0];
-    // console.log(file, 'file');
-    // const form_data = new FormData();
-    // form_data.append('file', file);
-    // console.log(form_data,'ahndkanj');
+        this.myForm.patchValue({
+          ThumbnailImage: res.url,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   categories: any = [

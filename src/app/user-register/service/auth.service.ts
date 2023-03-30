@@ -30,8 +30,8 @@ export class AuthService {
   loginUser(data: userLogin): Observable<any> {
     console.log(data, 'logindata');
 
-    return this.http.post<{ message: string; status: boolean }>(
-      `${this.baseUrl}/api/login`,
+    return this.http.post(
+      `${this.baseUrl}/auth/login`,
       data
     );
   }

@@ -29,7 +29,10 @@ export class LoginComponent {
         console.log(res, 'response');
 
         if (res.status) {
+          
           localStorage.setItem('access_token', res.access_token);
+          console.log(localStorage.getItem('access_token'),'access_tokenaccess_token');
+          
           this.router.navigate(['/']);
         }
       },

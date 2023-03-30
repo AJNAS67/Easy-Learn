@@ -6,7 +6,7 @@
           <mat-label>Course Name</mat-label>
           <input
             matInput
-            formControlName="courseName"
+            formControlName="CourseName"
             placeholder="Ex. Angular Basic"
           />
         </mat-form-field>
@@ -17,16 +17,33 @@
           <mat-label>mentorName</mat-label>
           <input
             matInput
-            formControlName="mentorName"
+            formControlName="MentorName"
             placeholder="Ex. Enter Mentor Name"
           />
         </mat-form-field>
         <br />
         <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Category</mat-label>
+          <mat-select
+            [(ngModel)]="selectedValue"
+            name="Category"
+            formControlName="Category"
+          >
+            <mat-option
+              *ngFor="let category of categories"
+              [value]="category.value"
+            >
+              {{ category.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field appearance="outline" class="example-full-width">
           <mat-label>Total Hr.</mat-label>
           <input
             matInput
-            formControlName="totalHr"
+            formControlName="TotalHr"
             placeholder="total  Hr of your course"
           />
         </mat-form-field>
@@ -34,7 +51,7 @@
         <br />
         <mat-form-field appearance="outline" class="example-full-width">
           <mat-label> Course Description </mat-label>
-          <textarea matInput formControlName="courseDescription"></textarea>
+          <textarea matInput formControlName="CourseDescription"></textarea>
         </mat-form-field>
         <br />
         <div class="custom-file">
@@ -42,9 +59,8 @@
             type="file"
             class="custom-file__input"
             id="field-upload"
-            name="upload"
             required
-            formControlName="thumbnailImage"
+            formControlName="ThumbnailImage"
             (change)="upload($event)"
           />
           <label class="custom-file__label" for="field-upload"
@@ -54,7 +70,7 @@
 
         <br />
 
-        <ng-container formArrayName="videoModule">
+        <ng-container formArrayName="VideoModule">
           <ng-container
             *ngFor="let lessonForm of lessons.controls; let i = index"
           >
@@ -84,13 +100,6 @@
               </div>
               <br />
 
-              <!-- <mat-form-field appearance="outline" class="example-full-width">
-                <input
-                  matInput
-                  formControlName="video"
-                  placeholder="Ex. Angular Basic"
-                />
-              </mat-form-field> -->
               <mat-icon class="delete-btn" (click)="deleteLesson(i)">
                 delete_forever</mat-icon
               >
@@ -103,10 +112,6 @@
             <mat-icon class="add-course-btn">add</mat-icon>
           </button>
         </div>
-
-        <!-- <div formArrayName="video">
-
-        </div> -->
 
         <button
           type="submit"
