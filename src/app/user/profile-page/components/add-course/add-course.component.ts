@@ -50,6 +50,23 @@ export class AddCourseComponent {
   deleteLesson(lessonIndex: number) {
     this.lessons.removeAt(lessonIndex);
   }
+
+  uploadvedio(event: any) {
+    const videoFile = event.target?.files[0];
+    console.log(videoFile, 'file');
+    const form_data = new FormData();
+    form_data.append('file', videoFile);
+    this._userService.uploadCourseVideo(form_data).subscribe(
+      (res) => {
+        console.log(res, 'image uploaded res');
+
+        this.lesForm.patchValue({ video: res.url });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
   // upload(event: any) {
   //   console.log(event, 'files');
 

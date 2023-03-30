@@ -88,15 +88,11 @@
               <div class="custom-file">
                 <input
                   type="file"
-                  class="custom-file__input"
-                  id="field-upload"
-                  name="upload"
                   required
                   formControlName="video"
+                  (change)="uploadvedio($event)"
                 />
-                <label class="custom-file__label" for="field-upload"
-                  >Choose file</label
-                >
+                <!-- <label>Choose file</label> -->
               </div>
               <br />
 
@@ -130,4 +126,5 @@
       </div>
     </form>
   </div>
+  
 </div>
