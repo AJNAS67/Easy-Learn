@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-
+import { AddCourseComponent } from '../add-course/add-course.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-mentor-courses',
   templateUrl: './mentor-courses.component.html',
   styleUrls: ['./mentor-courses.component.scss'],
 })
 export class MentorCoursesComponent {
+  constructor(private _matDialog: MatDialog) {}
   cartItems = [
     {
       coursename: 'Angualar Full course',
@@ -22,4 +24,8 @@ export class MentorCoursesComponent {
       student: 333,
     },
   ];
+
+  openDialog() {
+    this._matDialog.open(AddCourseComponent,{minWidth:'50%'});
+  }
 }

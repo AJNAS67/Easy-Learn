@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddProfileDetailsComponent } from './add-profile-details/add-profile-details.component';
-import { CartComponent } from './cart/cart.component';
-import { EnrolledCoursesComponent } from './enrolled-courses/enrolled-courses.component';
-import { MentorCoursesComponent } from './mentor-courses/mentor-courses.component';
-import { ProfileComponent } from './profile/profile.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
+import { AddProfileDetailsComponent } from './components/add-profile-details/add-profile-details.component';
+import { CartComponent } from './components/cart/cart.component';
+import { EnrolledCoursesComponent } from './components/enrolled-courses/enrolled-courses.component';
+import { MentorCoursesComponent } from './components/mentor-courses/mentor-courses.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 const routes: Routes = [
   {

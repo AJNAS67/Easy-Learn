@@ -2,11 +2,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { userLogin, userRegister,adminLogin } from 'src/app/interface/auth.interface';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  baseUrl = environment.apiUrl;
+
+
   serviceURL!: string;
   private readonly TOKEN_NAME = 'access_token';
 
@@ -19,7 +23,7 @@ export class AuthService {
     this.serviceURL = 'http://localhost:3000/api';
 
     return this.http.post<{ message: string; isAdded: boolean }>(
-      `${this.serviceURL}/register`,
+      `${this.baseUrl}/api/register`,
       data
     );
   }
@@ -27,7 +31,7 @@ export class AuthService {
     console.log(data, 'logindata');
 
     return this.http.post<{ message: string; status: boolean }>(
-      `${this.serviceURL}/login`,
+      `${this.baseUrl}/api/login`,
       data
     );
   }
@@ -35,7 +39,7 @@ export class AuthService {
     console.log(data, 'logindata');
 
     return this.http.post<{ message: string; status: boolean }>(
-      `${this.serviceURL}/admin-login`,
+      `${this.baseUrl}/admin-login`,
       data
     );
   }

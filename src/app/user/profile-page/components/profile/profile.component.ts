@@ -5,7 +5,8 @@ import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { environment } from 'src/environments/environment';
-import { UserService } from '../user.service';
+import { UserService } from '../../service/user.service';
+// import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-profile',

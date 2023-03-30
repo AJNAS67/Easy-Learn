@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { AddProfileDetailsComponent } from './add-profile-details/add-profile-details.component';
+import { AddProfileDetailsComponent } from './components/add-profile-details/add-profile-details.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,14 +14,24 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
-import { CartComponent } from './cart/cart.component';
-import {MatCardModule} from '@angular/material/card';
-import { EnrolledCoursesComponent } from './enrolled-courses/enrolled-courses.component';
-import { MentorCoursesComponent } from './mentor-courses/mentor-courses.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
+import { CartComponent } from './components/cart/cart.component';
+import { MatCardModule } from '@angular/material/card';
+import { EnrolledCoursesComponent } from './components/enrolled-courses/enrolled-courses.component';
+import { MentorCoursesComponent } from './components/mentor-courses/mentor-courses.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { AddCourseComponent } from './components/add-course/add-course.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [ProfileComponent, AddProfileDetailsComponent, CartComponent, EnrolledCoursesComponent, MentorCoursesComponent, WishlistComponent],
+  declarations: [
+    ProfileComponent,
+    AddProfileDetailsComponent,
+    CartComponent,
+    EnrolledCoursesComponent,
+    MentorCoursesComponent,
+    WishlistComponent,
+    AddCourseComponent,
+  ],
   imports: [
     CommonModule,
     ProfileRoutingModule,
@@ -36,7 +46,9 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     MatInputModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatSelectModule,MatCardModule
+    MatSelectModule,
+    MatCardModule,
+    MatDialogModule,
   ],
 })
 export class ProfilePageModule {}

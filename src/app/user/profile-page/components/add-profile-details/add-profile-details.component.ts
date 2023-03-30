@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../service/user.service';
 
 
 @Component({
@@ -75,7 +75,7 @@ export class AddProfileDetailsComponent  implements OnInit{
         this._route
           .navigateByUrl('/add-user-details', { skipLocationChange: true })
           .then(() => {
-            this._route.navigate(['profile-page']);
+            this._route.navigate(['profile']);
           });
       },
 

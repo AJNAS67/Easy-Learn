@@ -18,8 +18,8 @@
     /> -->
 
     <div *ngIf="profilepic; else defualtPic">
-        class="avatar mat-elevation-z8"
-        <img [src]="profilepic"  alt="" />
+      class="avatar mat-elevation-z8"
+      <img [src]="profilepic" alt="" />
     </div>
 
     <ng-template #defualtPic>
@@ -40,23 +40,23 @@
       [routerLink]="['add-profile-details']"
     >
       <mat-icon>home</mat-icon>
-      <span>Home</span>
+      <span>Add Profile details</span>
     </button>
     <button mat-button class="menu-button" [routerLink]="['cart']">
       <mat-icon>person</mat-icon>
-      <span>Profile</span>
+      <span>Cart</span>
     </button>
     <button mat-button class="menu-button" [routerLink]="['enrolled-courses']">
       <mat-icon>info</mat-icon>
-      <span>About</span>
+      <span>enrolled-courses</span>
     </button>
     <button mat-button class="menu-button" [routerLink]="['mentor-courses']">
       <mat-icon>info</mat-icon>
-      <span>About</span>
+      <span>Mentor Course</span>
     </button>
     <button mat-button class="menu-button" [routerLink]="['wishlist']">
       <mat-icon>info</mat-icon>
-      <span>About</span>
+      <span>Wishlist</span>
     </button>
 
     <mat-divider></mat-divider>

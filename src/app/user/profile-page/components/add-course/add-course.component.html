@@ -1,0 +1,128 @@
+<div class="p-5" style="height: calc(100vh - 64px); overflow: auto">
+  <div class="login-form">
+    <form [formGroup]="myForm" class="example-form" (ngSubmit)="onSubmit()">
+      <div>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Course Name</mat-label>
+          <input
+            matInput
+            formControlName="courseName"
+            placeholder="Ex. Angular Basic"
+          />
+        </mat-form-field>
+
+        <br />
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>mentorName</mat-label>
+          <input
+            matInput
+            formControlName="mentorName"
+            placeholder="Ex. Enter Mentor Name"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Total Hr.</mat-label>
+          <input
+            matInput
+            formControlName="totalHr"
+            placeholder="total  Hr of your course"
+          />
+        </mat-form-field>
+
+        <br />
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label> Course Description </mat-label>
+          <textarea matInput formControlName="courseDescription"></textarea>
+        </mat-form-field>
+        <br />
+        <div class="custom-file">
+          <input
+            type="file"
+            class="custom-file__input"
+            id="field-upload"
+            name="upload"
+            required
+            formControlName="thumbnailImage"
+            (change)="upload($event)"
+          />
+          <label class="custom-file__label" for="field-upload"
+            >Choose thumbnailImage</label
+          >
+        </div>
+
+        <br />
+
+        <ng-container formArrayName="videoModule">
+          <ng-container
+            *ngFor="let lessonForm of lessons.controls; let i = index"
+          >
+            <div [formGroup]="lesForm">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Video title <title></title></mat-label>
+                <input
+                  matInput
+                  formControlName="title"
+                  placeholder="Ex. Angular Basic"
+                />
+              </mat-form-field>
+
+              <br />
+              <div class="custom-file">
+                <input
+                  type="file"
+                  class="custom-file__input"
+                  id="field-upload"
+                  name="upload"
+                  required
+                  formControlName="video"
+                />
+                <label class="custom-file__label" for="field-upload"
+                  >Choose file</label
+                >
+              </div>
+              <br />
+
+              <!-- <mat-form-field appearance="outline" class="example-full-width">
+                <input
+                  matInput
+                  formControlName="video"
+                  placeholder="Ex. Angular Basic"
+                />
+              </mat-form-field> -->
+              <mat-icon class="delete-btn" (click)="deleteLesson(i)">
+                delete_forever</mat-icon
+              >
+            </div>
+          </ng-container>
+        </ng-container>
+
+        <div>
+          <button mat-mini-fab (click)="addLesson()">
+            <mat-icon class="add-course-btn">add</mat-icon>
+          </button>
+        </div>
+
+        <!-- <div formArrayName="video">
+
+        </div> -->
+
+        <button
+          type="submit"
+          class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+          mat-dialog-close
+        >
+          cancel
+        </button>
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mx-5"
+          mat-dialog-close
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
