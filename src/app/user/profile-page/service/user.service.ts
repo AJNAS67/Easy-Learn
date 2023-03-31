@@ -33,7 +33,7 @@ export class UserService {
   getUserDetails() {
     return this.http.get(`${this.baseUrl}/api/userDetails`);
   }
-  uploadCourse(course: any): Observable<any>  {
+  uploadCourse(course: any): Observable<any>  {    
     return this.http.post(`${this.baseUrl}/course/add-course`, course);
   }
 }

@@ -1,47 +1,43 @@
 <div style="height: 100%">
-    <div class="bg-lime-100 main-div">
-      <div class="banner container mx-auto px-4 py-5">
-        <div class="banner-child-1">
-          <h1>Mastering Data Modeling</h1>
-          <h1>Fundamentals</h1>
-          <div class="mentor pb-5">
-            <img src="/assets/images/home1.jpg" class="" alt="" />
-            <span class="px-3"><strong>Owen Christ</strong></span
-            ><span class="pr-3">|</span>
-            <span>Last Update December 1, 2020</span>
-          </div>
-          <div class="pt-5">
-            <h3>about this course</h3>
-            <p>
-              In this course, I take you from the fundamentals and concepts of
-              data modeling all the way through a number of best practices and
-              techniques that you’ll need to build data models in your
-              organization. You’ll find many examples that clearly demonstrate the
-              key concepts and techniques covered throughout the course. By the
-              end of the course, you’ll be all set to not only put these
-              principles to work, but also to make the key data modeling and
-              design decisions required by the “art” of data modeling that
-              transcend the nuts-and-bolts techniques and design patterns.
-            </p>
-          </div>
-          <div class="courses my-5">
-            <h3>What you will learn</h3>
-  
-            <div>
-              <mat-accordion>
-                <mat-expansion-panel hideToggle class="my-3">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title class="gap-4">
-                      <mat-icon>add</mat-icon>Section 1 - Deep Learning with
-                      Tensor Flow (Self Learning)
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-                  <p>welcome</p>
-                  <p>Introduction to Tensor Flow</p>
-  
-                  <p>Recurrent Neural Network.</p>
-                </mat-expansion-panel>
-                <mat-expansion-panel hideToggle class="my-3">
+  <div class="bg-lime-100 main-div">
+    <div class="banner container mx-auto px-4 py-5">
+      <div class="banner-child-1">
+        <h1>{{ course.CourseName }}</h1>
+        <h1>Fundamentals</h1>
+        <div class="mentor pb-5">
+          <img src="/assets/images/home1.jpg" class="" alt="" />
+          <span class="px-3"
+            ><strong>{{ course.MentorName }}</strong></span
+          ><span class="pr-3">|</span>
+          <span>Last Update December 1, 2020</span>
+        </div>
+        <div class="pt-5">
+          <h3>about this course</h3>
+          <p>
+            {{ course.CourseDescription }}
+          </p>
+        </div>
+        <div class="courses my-5">
+          <h3>What you will learn</h3>
+
+          <div>
+            <mat-accordion>
+              <mat-expansion-panel
+                hideToggle
+                class="my-3"
+                *ngFor="let crs of course.VideoModule"
+              >
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="gap-4">
+                    <mat-icon>add</mat-icon>Section 1 -{{ crs.title }}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>welcome</p>
+                <p>Introduction to Tensor Flow</p>
+
+                <p>Recurrent Neural Network.</p>
+              </mat-expansion-panel>
+              <!-- <mat-expansion-panel hideToggle class="my-3">
                   <mat-expansion-panel-header>
                     <mat-panel-title class="gap-4">
                       <mat-icon>add</mat-icon>Section 2 - Deep Learning with
@@ -64,141 +60,134 @@
                   <p>Introduction to Tensor Flow</p>
   
                   <p>Recurrent Neural Network.</p>
-                </mat-expansion-panel>
-              </mat-accordion>
-            </div>
+                </mat-expansion-panel> -->
+            </mat-accordion>
           </div>
         </div>
-  
-        <div class="banner-child-2">
-          <mat-card class="example-card">
-            <div class="p-3">
-              <iframe
-                width="380"
-                height="280"
-                src="https://www.youtube.com/embed/-DUhQqnwlcs"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <div class="price px-3">
-              <h2>$25000</h2>
-              <mat-card class="px-1 text-center" style="height: 30px">
-                39% OFF</mat-card
-              >
+      </div>
+
+      <div class="banner-child-2">
+        <mat-card class="example-card">
+          <div class="p-3">
+            <video width="400" height="280" controls>
+              <source [src]="course.VideoModule[1].video" type="video/mp4" />
+            </video>
+          </div>
+          <div class="price px-3">
+            <h2>$25000</h2>
+            <mat-card class="px-1 text-center" style="height: 30px">
+              39% OFF</mat-card
+            >
+          </div>
+          <mat-divider></mat-divider>
+          <div>
+            <div
+              class="px-3 py-2"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div style="display: flex; align-items: center; gap: 10px">
+                <span> <mat-icon> format_indent_increase</mat-icon> </span>
+                <span>Level</span>
+              </div>
+              <div>
+                <span>Beginner</span>
+              </div>
             </div>
             <mat-divider></mat-divider>
-            <div>
-              <div
-                class="px-3 py-2"
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
-                <div style="display: flex; align-items: center; gap: 10px">
-                  <span> <mat-icon> format_indent_increase</mat-icon> </span>
-                  <span>Level</span>
-                </div>
-                <div>
-                  <span>Beginner</span>
-                </div>
+
+            <div
+              class="px-3 py-2"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div style="display: flex; align-items: center; gap: 10px">
+                <span>
+                  <mat-icon>access_time</mat-icon>
+                </span>
+                <span>Duration</span>
               </div>
-              <mat-divider></mat-divider>
-  
-              <div
-                class="px-3 py-2"
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
-                <div style="display: flex; align-items: center; gap: 10px">
-                  <span>
-                    <mat-icon>access_time</mat-icon>
-                  </span>
-                  <span>Duration</span>
-                </div>
-                <div>
-                  <span>15.3 hours </span>
-                </div>
-              </div>
-              <mat-divider></mat-divider>
-  
-              <div
-                class="px-3 py-2"
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
-                <div style="display: flex; align-items: center; gap: 10px">
-                  <span> <mat-icon>play_circle_filled</mat-icon> </span>
-                  <span>Lectures</span>
-                </div>
-                <div>
-                  <span>4 lectures </span>
-                </div>
-              </div>
-              <div
-                class="px-3 py-2"
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
-                <div style="display: flex; align-items: center; gap: 10px">
-                  <span> <mat-icon>subject</mat-icon> </span>
-                  <span>Subject</span>
-                </div>
-                <div>
-                  <span>Data Modeling</span>
-                </div>
-              </div>
-              <mat-divider></mat-divider>
-              <div
-                class="px-3 py-2"
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
-                <div style="display: flex; align-items: center; gap: 10px">
-                  <span> <mat-icon>language</mat-icon></span>
-                  <span>Language</span>
-                </div>
-                <div>
-                  <span> English </span>
-                </div>
-              </div>
-              <mat-divider></mat-divider>
-              <div class="px-3 py-2">
-                <button
-                  (click)="addToCart()"
-                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
-                >
-                  <span>Add to cart</span>
-                </button>
-              </div>
-              <div class="px-3 py-2">
-                <button
-                  (click)="addToWishlist()"
-                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
-                >
-                  <span>Add to wishlist</span>
-                </button>
+              <div>
+                <span>15.3 hours </span>
               </div>
             </div>
-          </mat-card>
-        </div>
+            <mat-divider></mat-divider>
+
+            <div
+              class="px-3 py-2"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div style="display: flex; align-items: center; gap: 10px">
+                <span> <mat-icon>play_circle_filled</mat-icon> </span>
+                <span>Lectures</span>
+              </div>
+              <div>
+                <span>4 lectures </span>
+              </div>
+            </div>
+            <div
+              class="px-3 py-2"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div style="display: flex; align-items: center; gap: 10px">
+                <span> <mat-icon>subject</mat-icon> </span>
+                <span>Subject</span>
+              </div>
+              <div>
+                <span>Data Modeling</span>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div
+              class="px-3 py-2"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div style="display: flex; align-items: center; gap: 10px">
+                <span> <mat-icon>language</mat-icon></span>
+                <span>Language</span>
+              </div>
+              <div>
+                <span> English </span>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="px-3 py-2">
+              <button
+                (click)="addToCart()"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+              >
+                <span>Add to cart</span>
+              </button>
+            </div>
+            <div class="px-3 py-2">
+              <button
+                (click)="addToWishlist()"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+              >
+                <span>Add to wishlist</span>
+              </button>
+            </div>
+          </div>
+        </mat-card>
       </div>
     </div>
   </div>
-
+</div>

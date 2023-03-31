@@ -13,11 +13,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { CourseDetailsComponent } from './course-details/course-details.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HomePageService } from './service/home-page.service';
 
 @NgModule({
-  declarations: [HomePageComponent, AboutUsComponent, CategoryComponent, CourseDetailsComponent],
+  declarations: [
+    HomePageComponent,
+    AboutUsComponent,
+    CategoryComponent,
+    CourseDetailsComponent,
+  ],
   imports: [
     CommonModule,
     MatIconModule,
@@ -29,7 +34,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
+  providers: [HomePageService],
 })
 export class HomePageModule {}

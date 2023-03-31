@@ -29,9 +29,8 @@ export class AddCourseComponent {
   }
   onSubmit() {
     console.log(this.myForm.value, 'my form');
-    // this._userService.uploadCourse(this.myForm.value).subscribe((res) => {
-    //   console.log(res, 'ressssssssssss');
-    // });
+    this._userService.uploadCourse(this.myForm.value).subscribe((res) => {
+    });
   }
 
   get lessons() {
@@ -67,41 +66,7 @@ export class AddCourseComponent {
       }
     );
   }
-  // upload(event: any) {
-  //   console.log(event, 'files');
-
-  //   if (event.target.files && event.target.files.length) {
-  //     console.log(event, 'files');
-
-  //     const file = event.target?.files[0];
-  //     console.log(file, 'file');
-  //     const formdata = new FormData();
-  //     formdata.append('file', file);
-  //     console.log(formdata, 'formdata');
-
-  //     this.myForm.patchValue({
-  //       thumbnailImage: formdata,
-  //     });
-  //     // const reader = new FileReader();
-  //     // const [file] = event.target.files;
-  //     //
-  //     // reader.readAsDataURL(file);
-
-  //     // reader.onload = () => {
-  //     //   this.imageSrc = reader.result as string;
-
-  //     //   this.myForm.patchValue({
-  //     //     thumbnailImage: reader.result,
-  //     //   });
-  //     // };
-  //   }
-
-  //   // const file = event.target?.files[0];
-  //   // console.log(file, 'file');
-  //   // const form_data = new FormData();
-  //   // form_data.append('file', file);
-  //   // console.log(form_data,'ahndkanj');
-  // }
+  
   upload(event: any) {
     const file = event.target?.files[0];
     console.log(file, 'file');
@@ -130,18 +95,3 @@ export class AddCourseComponent {
     { value: 'Digital Marketing' },
   ];
 }
-
-// addNewRow() {
-//   this.item = this.myForm.get('videos') as FormArray;
-//   this.item.push(this.Genrow());
-// }
-// get deladdress() {
-//   return this.myForm.get('videos') as FormArray;
-// }
-
-// Genrow(): FormGroup {
-//   return new FormGroup({
-//     video: new FormControl('', Validators.required),
-//     title: new FormControl('', Validators.required),
-//   });
-// }

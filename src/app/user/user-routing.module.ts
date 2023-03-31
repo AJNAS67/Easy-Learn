@@ -13,10 +13,13 @@ const routes: Routes = [
     children: [
       { path: 'home', component: HomePageComponent },
       { path: 'about-us', component: AboutUsComponent },
-      {path:'course-details',component:CourseDetailsComponent},
+      { path: 'course-details/:courseId', component: CourseDetailsComponent },
       {
         path: 'profile',
-        loadChildren: () => import('./profile-page/profile-page.module').then((m) => m.ProfilePageModule),
+        loadChildren: () =>
+          import('./profile-page/profile-page.module').then(
+            (m) => m.ProfilePageModule
+          ),
       },
     ],
   },
