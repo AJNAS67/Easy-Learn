@@ -28,7 +28,6 @@ export class CourseDetailsComponent implements OnInit {
     private _homeService: HomePageService
   ) {}
   ngOnInit() {
-
     this.courseIdSubscription = this._activatedRoute.params.subscribe(
       (params) => {
         this.courseId = params['courseId'];
@@ -48,9 +47,15 @@ export class CourseDetailsComponent implements OnInit {
     });
   }
   addToCart() {
-    this._snackBar.open('Course Added to Cart!!', 'Ok', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
+    this._homeService.addToCart(this.course._id).subscribe((res: any) => {
+      this._snackBar.open(res.message, 'Ok', {
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      });
     });
+  }
+  ngOnDestroy(): void {
+    this.courseIdSubscription.unsubscribe();
+    this.courseDetailsFetchSubscription.unsubscribe();
   }
 }

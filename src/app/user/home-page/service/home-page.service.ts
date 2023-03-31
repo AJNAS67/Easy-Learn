@@ -15,4 +15,7 @@ export class HomePageService {
   fetchCourseDetails(id: string) {
     return this.http.get(`${this.baseUrl}/course/course/${id}`);
   }
+  addToCart(courseId: string) {
+    return this.http.post(`${this.baseUrl}/cart/addToCart`, {courseId:courseId});
+  }
 }
