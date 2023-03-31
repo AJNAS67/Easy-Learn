@@ -16,6 +16,13 @@ export class HomePageService {
     return this.http.get(`${this.baseUrl}/course/course/${id}`);
   }
   addToCart(courseId: string) {
-    return this.http.post(`${this.baseUrl}/cart/addToCart`, {courseId:courseId});
+    return this.http.post(`${this.baseUrl}/cart/addToCart`, {
+      courseId: courseId,
+    });
+  }
+  addToWishlist(courseId: string) {
+    return this.http.post(`${this.baseUrl}/wishlist/addToWishlist`, {
+      courseId: courseId,
+    });
   }
 }

@@ -40,18 +40,21 @@ export class CourseDetailsComponent implements OnInit {
       });
   }
 
-  addToWishlist() {
-    this._snackBar.open('Course Added to wishlist!!', 'Ok', {
+  popUpMessage(message: string) {
+    this._snackBar.open(`${message}`, 'Ok', {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
     });
   }
+
+  addToWishlist() {
+    this._homeService.addToWishlist(this.course._id).subscribe((res: any) => {
+      this.popUpMessage(res.message);
+    });
+  }
   addToCart() {
     this._homeService.addToCart(this.course._id).subscribe((res: any) => {
-      this._snackBar.open(res.message, 'Ok', {
-        horizontalPosition: this.horizontalPosition,
-        verticalPosition: this.verticalPosition,
-      });
+      this.popUpMessage(res.message);
     });
   }
   ngOnDestroy(): void {
