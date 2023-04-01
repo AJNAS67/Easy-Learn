@@ -22,7 +22,7 @@
   >
     <span>{{ item.courseName }}</span>
     <span>{{ item.price }}</span>
-    <span><mat-icon>remove_circle</mat-icon></span>
+    <span (click)="removeCart(item.courseId)"><mat-icon>remove_circle</mat-icon></span>
   </mat-card>
 </div>
 <div class="container my-5">

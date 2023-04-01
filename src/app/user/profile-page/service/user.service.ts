@@ -49,6 +49,13 @@ export class UserService {
     );
   }
   removeFromWishlist(id: string) {
-    return this.http.delete(`${this.baseUrl}/wishlist/removeFromWishlist/${id}`)
-}
+    return this.http.delete(
+      `${this.baseUrl}/wishlist/removeFromWishlist/${id}`
+    );
+  }
+  removeFromCart(id: string) {
+    return this.http.delete(
+      `${this.baseUrl}/cart/removeFromCart/${id}`
+    );
+  }
 }
