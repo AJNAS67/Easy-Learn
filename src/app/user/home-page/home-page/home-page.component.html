@@ -40,8 +40,8 @@
   </div>
   
   <div class="container categories my-5 ">
-    <mat-card *ngFor="let arr of array" class="hover:bg-gray-100">
-      <span>{{ arr.name }} </span></mat-card
+    <mat-card *ngFor="let arr of categories" class="hover:bg-gray-100">
+      <span>{{ arr.value }} </span></mat-card
     >
   </div>
   <app-category [Courses]="allCourse$"></app-category>

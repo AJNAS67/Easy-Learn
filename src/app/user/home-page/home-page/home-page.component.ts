@@ -27,4 +27,12 @@ export class HomePageComponent implements OnInit {
     { name: 'Music' },
     { name: 'Teaching & Academics' },
   ];
+  categories: any = [
+    { value: 'Data Science & Business Analytics' },
+    { value: 'AI & Machine Learning' },
+    { value: 'Cyber Security' },
+    { value: 'Cloud Computing' },
+    { value: 'Software Development' },
+    { value: 'Digital Marketing' },
+  ];
 }

@@ -19,7 +19,7 @@
           ><br />
           <span>{{ course.MentorName }}</span>
           <br />
-          <span>$ 5566</span>
+          <span>{{ course.Price | currency: 'INR':true}}</span>
         </div>
       </div>
     </div>
