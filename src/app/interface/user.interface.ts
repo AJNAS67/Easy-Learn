@@ -12,3 +12,8 @@ export interface cartResponse {
   userId: string;
   _id: string;
 }
+export interface wishlistResponse {
+  course: [{ courseId: string; courseName: string; price: number }];
+  userId: string;
+  _id: string;
+}

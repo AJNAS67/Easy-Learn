@@ -27,6 +27,16 @@
         src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
       />
     </ng-template>
+    <label>
+      <!-- <mat-icon
+        aria-hidden="false"
+        aria-label="Example upload icon"
+        fontIcon="cloud_upload"
+      ></mat-icon> -->
+      update Pic
+
+      <input type="file" size="60" (change)="upload($event)" />
+    </label>
 
     <h4 class="name">John Smith</h4>
     <p class="designation">Software Engineer</p>

@@ -1,21 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../service/user.service';
+import { wishlistResponse } from 'src/app/interface/user.interface';
 
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
-  styleUrls: ['./wishlist.component.scss']
+  styleUrls: ['./wishlist.component.scss'],
 })
-export class WishlistComponent {
-  cartItem = [
-    { coursename: 'Angualar Full course', price: 4000 },
-    {
-      coursename: 'javascript Advanced',
-      price: 5000,
-    },
-    {
-      coursename: 'Machine learning',
-      price: 15000,
-    },
-  ];
-
+export class WishlistComponent implements OnInit {
+  wishlistItems!: wishlistResponse;
+  constructor(private _userService: UserService) {}
+  ngOnInit(): void {
+    this._userService.getWishlistItems().subscribe((res: wishlistResponse) => {
+      this.wishlistItems = res;
+      {
+        console.log(res, 'wishlist res');
+      }
+    });
+  }
 }

@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { cartResponse } from 'src/app/interface/user.interface';
+import {
+  cartResponse,
+  wishlistResponse,
+} from 'src/app/interface/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -39,5 +42,10 @@ export class UserService {
   }
   getCartItems() {
     return this.http.get<cartResponse>(`${this.baseUrl}/cart/userCart`);
+  }
+  getWishlistItems() {
+    return this.http.get<wishlistResponse>(
+      `${this.baseUrl}/wishlist/userWishlist`
+    );
   }
 }

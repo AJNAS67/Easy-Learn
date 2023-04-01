@@ -60,4 +60,21 @@ export class ProfileComponent  implements OnInit{
       });
   }
 
+  upload(event: any) {
+    console.log(event, 'files');
+
+    const file = event.target?.files[0];
+    console.log(file, 'file');
+    const form_data = new FormData();
+    form_data.append('file', file);
+    this._userService.uploadProfilePick(form_data).subscribe(
+      (res) => {
+        console.log(res, 'image uploaded res');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
 }
