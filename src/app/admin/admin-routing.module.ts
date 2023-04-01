@@ -5,15 +5,9 @@ import { ViewCourseComponent } from './components/view-course/view-course.compon
 import { ViewUserComponent } from './components/view-user/view-user.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AdminComponent,
-
-    children: [
-      { path: 'view-user', component: ViewUserComponent },
-      { path: 'view-course', component: ViewCourseComponent },
-    ],
-  },
+  { path: '', redirectTo: 'view-user', pathMatch: 'full' },
+  { path: 'view-user', component: ViewUserComponent },
+  { path: 'view-course', component: ViewCourseComponent },
 ];
 
 @NgModule({

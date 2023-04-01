@@ -1,73 +1,50 @@
 <mat-toolbar class="mat-elevation-z8">
-    <button
-      mat-icon-button
-      *ngIf="sidenav.mode === 'over'"
-      (click)="sidenav.toggle()"
-    >
-      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
-      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8" >
+    <img
+      class="avatar mat-elevation-z8"
+      style="object-fit: cover;"
+      src="https://res.cloudinary.com/dlcknrzgd/image/upload/v1679645454/de6sk47ogdsnkmgd74ul.jpg"
+    />
+
+    <h4 class="name">Muhammed Ajnas</h4>
+    <p class="designation">ajnaskp67@gmail.com</p>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" [routerLink]="['view-user']">
+      <mat-icon>person</mat-icon>
+      <span>User</span>
     </button>
-    Responsive side navigation
-  </mat-toolbar>
-  
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-      <!-- <img
-        class="avatar mat-elevation-z8"
-        src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
-      /> -->
-    
- 
-  
-      <ng-template #defualtPic>
-        <img
-          class="avatar mat-elevation-z8"
-          src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
-        />
-      </ng-template>
-  
-      <h4 class="name">John Smith</h4>
-      <p class="designation">Software Engineer</p>
-  
-      <mat-divider></mat-divider>
-  
-      <button
-        mat-button
-        class="menu-button"
-        [routerLink]="['view-user']"
-      >
-        <mat-icon>home</mat-icon>
-        <span>Home</span>
-      </button>
-      <button mat-button class="menu-button" [routerLink]="['view-course']">
-        <mat-icon>person</mat-icon>
-        <span>Profile</span>
-      </button>
-      <button mat-button class="menu-button" [routerLink]="['enrolled-courses']">
-        <mat-icon>info</mat-icon>
-        <span>About</span>
-      </button>
-      <button mat-button class="menu-button" [routerLink]="['mentor-courses']">
-        <mat-icon>info</mat-icon>
-        <span>About</span>
-      </button>
-      <button mat-button class="menu-button" [routerLink]="['wishlist']">
-        <mat-icon>info</mat-icon>
-        <span>About</span>
-      </button>
-  
-      <mat-divider></mat-divider>
-  
-      <button mat-button class="menu-button" routerLink="/help">
-        <mat-icon>help</mat-icon>
-        <span>Help</span>
-      </button>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="content mat-elevation-z8">
-        <router-outlet></router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
-<router-outlet></router-outlet>
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" [routerLink]="['view-course']">
+      <mat-icon>golf_course</mat-icon>
+      <span>course</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/admin">
+      <mat-icon>help</mat-icon>
+      <span>Help</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- <router-outlet></router-outlet> -->
