@@ -18,4 +18,22 @@ export class WishlistComponent implements OnInit {
       }
     });
   }
+  // deleteWishlist(id: string, index: number) {
+  //   console.log(index)
+  //   this.$removeFromWishlistSubscription = this.mainService.removeFromWishlist(id)
+  //     .subscribe({
+  //       next: (data) => {
+  //         this.wishlist.data.splice(index, 1);
+  //         this.mainService.successMessageEmitter.emit('successfully removed!');
+  //       },
+  //       error: (err) => {
+  //         this.mainService.errorMessageEmitter.emit(err.message)
+  //       }
+  //     })
+  // }
+  removeWishlist(courseId: string) {
+    this._userService.removeFromWishlist(courseId).subscribe((res) => {
+      console.log(res, 'res');
+    });
+  }
 }

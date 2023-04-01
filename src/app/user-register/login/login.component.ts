@@ -26,13 +26,13 @@ export class LoginComponent {
     console.log(this.myForm.value, 'my form');
     this.authService.loginUser(this.myForm.value).subscribe(
       (res) => {
-        console.log(res, 'response');
-
-        if (res.status) {
-          
+        if (res.status && res.admin == false) {
           localStorage.setItem('access_token', res.access_token);
-          console.log(localStorage.getItem('access_token'),'access_tokenaccess_token');
-          
+          console.log(
+            localStorage.getItem('access_token'),
+            'access_tokenaccess_token'
+          );
+
           this.router.navigate(['/']);
         }
       },

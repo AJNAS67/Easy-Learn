@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { untilDestroyed } from '@ngneat/until-destroy';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -43,5 +43,8 @@ export class AdminComponent {
           this.sidenav.close();
         }
       });
+  }
+  logout() {
+    localStorage.removeItem('admin_token');
   }
 }

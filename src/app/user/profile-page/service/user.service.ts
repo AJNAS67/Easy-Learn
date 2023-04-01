@@ -48,4 +48,7 @@ export class UserService {
       `${this.baseUrl}/wishlist/userWishlist`
     );
   }
+  removeFromWishlist(id: string) {
+    return this.http.delete(`${this.baseUrl}/wishlist/removeFromWishlist/${id}`)
+}
 }
