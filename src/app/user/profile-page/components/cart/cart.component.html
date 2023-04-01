@@ -1,52 +1,48 @@
 <div class="cart container grid gap-4 grid-cols-1">
-    <mat-card class="sm: w-5/6 md:w-4/5 lg:w-3/4 header">
-      <div
-        style="display: flex; justify-content: space-around; align-items: center"
-        class="py-2"
+  <mat-card class="sm: w-5/6 md:w-4/5 lg:w-3/4 header">
+    <div
+      style="display: flex; justify-content: space-around; align-items: center"
+      class="py-2"
+    >
+      <h4>Course</h4>
+      <h4>Price</h4>
+      <h4>Remove</h4>
+    </div>
+    <!-- <mat-card-content> </mat-card-content> -->
+  </mat-card>
+  <mat-card
+    class="sm: w-5/6 md:w-4/5 lg:w-3/4 py-3"
+    *ngFor="let item of cartItems.course"
+    style="
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center; ;
+    "
+  >
+    <span>{{ item.courseName }}</span>
+    <span>{{ item.price }}</span>
+    <span><mat-icon>remove_circle</mat-icon></span>
+  </mat-card>
+</div>
+<div class="container my-5">
+  <button
+    class="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded p-3"
+  >
+    Continue with shopping
+  </button>
+  <mat-divider class="my-5"></mat-divider>
+  <div class="checkout">
+    <div class="card">
+      <div style="display: flex; justify-content: space-between">
+        <h3>Total</h3>
+        <h3>{{ cartItems.totalPrice }}</h3>
+      </div>
+      <button
+        class="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded p-3 mt-4"
       >
-        <h4>Course</h4>
-        <h4>Price</h4>
-        <h4>Remove</h4>
-      </div>
-      <!-- <mat-card-content> </mat-card-content> -->
-    </mat-card>
-    <mat-card
-      class="sm: w-5/6 md:w-4/5 lg:w-3/4 py-3"
-      *ngFor="let item of cartItem"
-      style="
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center; ;
-      "
-    >
-      <!-- <div style="display: flex; justify-content: space-around"> -->
-      <span>{{ item.coursename }}</span>
-      <span>{{ item.price }}</span>
-      <span><mat-icon>remove</mat-icon></span>
-      <!-- </div> -->
-      <!-- <mat-card-content> </mat-card-content> -->
-    </mat-card>
-  </div>
-  <div class="container my-5">
-    <button
-      class="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded p-3"
-    >
-      Continue with shoping
-    </button>
-    <mat-divider class="my-5"></mat-divider>
-    <div class="checkout">
-      <div class="card">
-        <div style="display: flex; justify-content: space-between">
-          <h3>Total</h3>
-          <h3>$567847</h3>
-        </div>
-        <button
-          class="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded p-3 mt-4"
-        >
-          Checkout
-        </button>
-      </div>
+        Checkout
+      </button>
     </div>
   </div>
-  
+</div>
