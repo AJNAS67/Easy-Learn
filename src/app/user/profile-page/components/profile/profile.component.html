@@ -7,19 +7,18 @@
     <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
     <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
   </button>
-  Responsive side navigation
 </mat-toolbar>
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-    <!-- <img
-      class="avatar mat-elevation-z8"
-      src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
-    /> -->
 
     <div *ngIf="profilepic; else defualtPic">
-      class="avatar mat-elevation-z8"
-      <img [src]="profilepic" alt="" />
+      <img
+        [src]="profilepic"
+        alt="profilepic"
+        class="avatar mat-elevation-z8"
+        style="object-fit: cover"
+      />
     </div>
 
     <ng-template #defualtPic>
@@ -39,23 +38,23 @@
       class="menu-button"
       [routerLink]="['add-profile-details']"
     >
-      <mat-icon>home</mat-icon>
+      <mat-icon>person</mat-icon>
       <span>Add Profile details</span>
     </button>
     <button mat-button class="menu-button" [routerLink]="['cart']">
-      <mat-icon>person</mat-icon>
+      <mat-icon>shopping_cart</mat-icon>
       <span>Cart</span>
     </button>
     <button mat-button class="menu-button" [routerLink]="['enrolled-courses']">
-      <mat-icon>info</mat-icon>
+      <mat-icon>golf_course</mat-icon>
       <span>enrolled-courses</span>
     </button>
     <button mat-button class="menu-button" [routerLink]="['mentor-courses']">
-      <mat-icon>info</mat-icon>
+      <mat-icon>library_books</mat-icon>
       <span>Mentor Course</span>
     </button>
     <button mat-button class="menu-button" [routerLink]="['wishlist']">
-      <mat-icon>info</mat-icon>
+      <mat-icon>favorite</mat-icon>
       <span>Wishlist</span>
     </button>
 
