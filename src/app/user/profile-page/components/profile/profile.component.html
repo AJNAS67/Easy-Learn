@@ -11,16 +11,16 @@
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-    <div *ngIf="profilepic; else defualtPic">
+    <div *ngIf="profile_pic; else defualt_Pic">
       <img
-        [src]="profilepic"
-        alt="profilepic"
+        [src]="profile_pic"
+        alt="profile_pic"
         class="avatar mat-elevation-z8"
         style="object-fit: cover"
       />
     </div>
 
-    <ng-template #defualtPic>
+    <ng-template #defualt_Pic>
       <img
         class="avatar mat-elevation-z8"
         src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
@@ -37,8 +37,8 @@
       <input type="file" size="60" (change)="upload($event)" />
     </label>
 
-    <h4 class="name">John Smith</h4>
-    <p class="designation">Software Engineer</p>
+    <h4 class="name">{{ useName }}</h4>
+    <p class="designation">{{ email }}</p>
 
     <mat-divider></mat-divider>
 

@@ -11,34 +11,35 @@ import { UserService } from '../../service/user.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent  implements OnInit{
-
-
+export class ProfileComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   baseUrl = environment.apiUrl;
-  profilepic: any = null;
+  profile_pic!: string;
+  useName!: string;
+  email!: string;
 
+  constructor(
+    private observer: BreakpointObserver,
+    private router: Router,
+    private _userService: UserService
+  ) {}
 
-  
-
-  constructor(private observer: BreakpointObserver, private router: Router,private _userService:UserService) {}
-  
   ngOnInit(): void {
     this._userService.getUserDetails().subscribe((data: any) => {
       console.log(data, '_pic');
-      this.profilepic = data.profile_pic;
+      this.profile_pic = data.profile_pic;
+      this.useName = data.firstName;
+      this.email = data.email;
     });
-
-    
   }
   ngAfterViewInit() {
     this.observer
       .observe(['(max-width: 800px)'])
       .pipe(delay(1), untilDestroyed(this))
-      .subscribe((res:any) => {
+      .subscribe((res: any) => {
         if (res.matches) {
           this.sidenav.mode = 'over';
           this.sidenav.close();
@@ -76,5 +77,4 @@ export class ProfileComponent  implements OnInit{
       }
     );
   }
-
 }
