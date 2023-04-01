@@ -25,19 +25,20 @@ export class AdminLoginComponent {
   }
   onSubmit() {
     console.log(this.myForm.value, 'my form');
-    this.authService.loginAdmin(this.myForm.value).subscribe(
-      (res) => {
-        console.log(res, 'response');
+    this.router.navigate(['/admin'])
+    // this.authService.loginAdmin(this.myForm.value).subscribe(
+    //   (res) => {
+    //     console.log(res, 'response');
 
-        if (res.status) {
-          localStorage.setItem('access_token', res.access_token);
-          this.router.navigate(['/']);
-        }
-      },
-      (error) => {
-        // Swal.fire('Hi', `${error.error.message}`, 'error');
-      }
-    );
+    //     if (res.status) {
+    //       localStorage.setItem('access_token', res.access_token);
+    //       this.router.navigate(['/']);
+    //     }
+    //   },
+    //   (error) => {
+    //     // Swal.fire('Hi', `${error.error.message}`, 'error');
+    //   }
+    // );
   }
   directToRegisterPage() {
     this, this.router.navigate(['user/register']);
