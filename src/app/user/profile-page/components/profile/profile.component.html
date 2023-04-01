@@ -11,7 +11,6 @@
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-
     <div *ngIf="profilepic; else defualtPic">
       <img
         [src]="profilepic"
@@ -51,28 +50,29 @@
       <mat-icon>person</mat-icon>
       <span>Add Profile details</span>
     </button>
+    <mat-divider></mat-divider>
+
     <button mat-button class="menu-button" [routerLink]="['cart']">
       <mat-icon>shopping_cart</mat-icon>
       <span>Cart</span>
     </button>
+    <mat-divider></mat-divider>
+
     <button mat-button class="menu-button" [routerLink]="['enrolled-courses']">
       <mat-icon>golf_course</mat-icon>
       <span>enrolled-courses</span>
     </button>
+    <mat-divider></mat-divider>
+
     <button mat-button class="menu-button" [routerLink]="['mentor-courses']">
       <mat-icon>library_books</mat-icon>
       <span>Mentor Course</span>
     </button>
+    <mat-divider></mat-divider>
+
     <button mat-button class="menu-button" [routerLink]="['wishlist']">
       <mat-icon>favorite</mat-icon>
       <span>Wishlist</span>
-    </button>
-
-    <mat-divider></mat-divider>
-
-    <button mat-button class="menu-button" routerLink="/">
-      <mat-icon>help</mat-icon>
-      <span>Help</span>
     </button>
   </mat-sidenav>
   <mat-sidenav-content>
