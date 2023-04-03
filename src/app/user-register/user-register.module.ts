@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackBarService } from './service/snack-bar.service';
 
 @NgModule({
   declarations: [RegisterComponent, LoginComponent, AdminLoginComponent],
@@ -25,6 +27,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatCardModule,
+    MatSnackBarModule,
   ],
+  providers: [SnackBarService],
 })
 export class UserRegisterModule {}

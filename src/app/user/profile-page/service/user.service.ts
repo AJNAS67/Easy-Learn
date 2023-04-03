@@ -25,6 +25,12 @@ export class UserService {
   uploadProfilePick(uploadImage: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/upload`, uploadImage);
   }
+   // to upload course thumbnail 
+   uploadThumbnail(uploadImage: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/upload_thumbnail`, uploadImage);
+  }
+  
+  
 
   uploadCourseVideo(uploadVideo: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/upload_video`, uploadVideo);

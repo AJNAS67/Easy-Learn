@@ -71,6 +71,8 @@ export class ProfileComponent implements OnInit {
     this._userService.uploadProfilePick(form_data).subscribe(
       (res) => {
         console.log(res, 'image uploaded res');
+      this.profile_pic = res.profile_pic;
+
       },
       (error) => {
         console.log(error);

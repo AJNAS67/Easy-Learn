@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+import { SnackBarService } from '../service/snack-bar.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -14,7 +15,8 @@ export class AdminLoginComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private _snackBarService: SnackBarService
   ) {}
 
   ngOnInit(): void {
@@ -26,15 +28,15 @@ export class AdminLoginComponent {
   onSubmit() {
     this.authService.loginUser(this.myForm.value).subscribe(
       (res) => {
-        console.log(res, 'response');
-
         if (res.status && res.admin) {
+          this._snackBarService.popUpMessage("Login successfully");
           localStorage.setItem('admin_token', res.access_token);
-          this.router.navigate(['/']);
+          this.router.navigate(['/admin']);
         }
       },
       (error) => {
-        // Swal.fire('Hi', `${error.error.message}`, 'error');
+        this._snackBarService.popUpMessage("Email or password Incorrect");
+
       }
     );
   }

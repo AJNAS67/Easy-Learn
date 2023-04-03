@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+import { SnackBarService } from '../service/snack-bar.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private _snackBarService: SnackBarService
   ) {}
 
   ngOnInit(): void {
@@ -26,18 +28,17 @@ export class LoginComponent {
     console.log(this.myForm.value, 'my form');
     this.authService.loginUser(this.myForm.value).subscribe(
       (res) => {
+        console.log(res, 'res');
+
         if (res.status && res.admin == false) {
           localStorage.setItem('access_token', res.access_token);
-          console.log(
-            localStorage.getItem('access_token'),
-            'access_tokenaccess_token'
-          );
-
+          this._snackBarService.popUpMessage("Login successfully !!");
           this.router.navigate(['/']);
         }
       },
       (error) => {
-        // Swal.fire('Hi', `${error.error.message}`, 'error');
+        this._snackBarService.popUpMessage('email or password incorrect');
+        console.log(error.message);
       }
     );
   }

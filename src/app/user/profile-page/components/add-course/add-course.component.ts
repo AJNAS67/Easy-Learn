@@ -76,8 +76,8 @@ export class AddCourseComponent {
     console.log(file, 'file');
     const formdata = new FormData();
     formdata.append('file', file);
-    this._userService.uploadProfilePick(formdata).subscribe(
-      (res) => {
+    this._userService.uploadThumbnail(formdata).subscribe(
+      (res:any) => {
         console.log(res, 'image uploaded res');
 
         this.myForm.patchValue({
