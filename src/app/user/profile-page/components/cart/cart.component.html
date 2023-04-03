@@ -1,48 +1,54 @@
-<div class="cart container grid gap-4 grid-cols-1">
-  <mat-card class="sm: w-5/6 md:w-4/5 lg:w-3/4 header">
-    <div
-      style="display: flex; justify-content: space-around; align-items: center"
-      class="py-2"
-    >
-      <h4>Course</h4>
-      <h4>Price</h4>
-      <h4>Remove</h4>
-    </div>
-    <!-- <mat-card-content> </mat-card-content> -->
-  </mat-card>
-  <mat-card
-    class="sm: w-5/6 md:w-4/5 lg:w-3/4 py-3"
-    *ngFor="let item of cartItems.course"
-    style="
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center; ;
-    "
-  >
-    <span>{{ item.courseName }}</span>
-    <span>{{ item.price }}</span>
-    <span (click)="removeCart(item.courseId)"><mat-icon>remove_circle</mat-icon></span>
-  </mat-card>
-</div>
-<div class="container my-5">
-  <button
-    class="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded p-3"
-  >
-    Continue with shopping
-  </button>
-  <mat-divider class="my-5"></mat-divider>
-  <div class="checkout">
-    <div class="card">
-      <div style="display: flex; justify-content: space-between">
-        <h3>Total</h3>
-        <h3>{{ cartItems.totalPrice }}</h3>
-      </div>
-      <button
-        class="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded p-3 mt-4"
-      >
-        Checkout
-      </button>
-    </div>
+<ng-container *ngIf="cartItems; else newDeb">
+  <div class="cart">
+    <h1>Shopping Cart</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Product</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems.course">
+          <td>
+            <div class="product">
+              <img
+                style="width: 100px; height: 70px; object-fit: cover"
+                [src]="item.image"
+              />
+              <div class="product-details"></div>
+            </div>
+          </td>
+          <td>
+            <h2>{{ item.courseName }}</h2>
+          </td>
+          <td>{{ item.price }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">
+            <h2>Total:</h2>
+          </td>
+          <td>{{ cartItems.totalPrice }}</td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="container my-5">
+  
+      <mat-divider class="my-5"></mat-divider>
+          
+          <button
+            class="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded p-3 mt-4"
+          >
+            Checkout
+          </button>
   </div>
 </div>
+
+
+</ng-container>
+<ng-template #newDeb>
+  <p>cart is empty</p>
+</ng-template>
