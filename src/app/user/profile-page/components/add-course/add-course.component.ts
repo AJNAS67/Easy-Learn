@@ -25,11 +25,15 @@ export class AddCourseComponent {
       CourseDescription: ['', Validators.required],
       ThumbnailImage: ['', Validators.required],
       VideoModule: this.fb.array([]),
+      Level: ['', Validators.required],
+      Language: ['', Validators.required],
+      Price: ['', Validators.required],
     });
   }
   onSubmit() {
     console.log(this.myForm.value, 'my form');
     this._userService.uploadCourse(this.myForm.value).subscribe((res) => {
+      console.log(res, 'ressssssssssss');
     });
   }
 
@@ -50,23 +54,23 @@ export class AddCourseComponent {
     this.lessons.removeAt(lessonIndex);
   }
 
-  uploadvedio(event: any) {
+  uploadvedio(event: any, index: number) {
     const videoFile = event.target?.files[0];
     console.log(videoFile, 'file');
     const form_data = new FormData();
     form_data.append('file', videoFile);
     this._userService.uploadCourseVideo(form_data).subscribe(
       (res) => {
-        console.log(res, 'image uploaded res');
-
-        this.lesForm.patchValue({ video: res.url });
+        console.log(res, 'video uploaded res');
+        const lessonForm = this.lessons.at(index) as FormGroup;
+        lessonForm.patchValue({ video: res.url });
       },
       (error) => {
         console.log(error);
       }
     );
   }
-  
+
   upload(event: any) {
     const file = event.target?.files[0];
     console.log(file, 'file');
@@ -93,5 +97,17 @@ export class AddCourseComponent {
     { value: 'Cloud Computing' },
     { value: 'Software Development' },
     { value: 'Digital Marketing' },
+  ];
+  levels: any = [
+    { value: 'Bigener' },
+    { value: 'Intermediate' },
+    { value: 'Advanced' },
+    { value: 'All Levels' },
+  ];
+  Languages: any = [
+    { value: 'English' },
+    { value: 'Malayalam' },
+    { value: 'Hindi' },
+    { value: 'Arabic' },
   ];
 }

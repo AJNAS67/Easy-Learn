@@ -54,6 +54,34 @@
           <textarea matInput formControlName="CourseDescription"></textarea>
         </mat-form-field>
         <br />
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Level</mat-label>
+          <mat-select name="Category" formControlName="Level">
+            <mat-option *ngFor="let level of levels" [value]="level.value">
+              {{ level.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Language</mat-label>
+          <mat-select name="Language" formControlName="Language">
+            <mat-option
+              *ngFor="let Language of Languages"
+              [value]="Language.value"
+            >
+              {{ Language.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label> Price </mat-label>
+          <input matInput formControlName="Price" />
+        </mat-form-field>
+        <br />
+
         <div class="custom-file">
           <input
             type="file"
@@ -90,7 +118,7 @@
                   type="file"
                   required
                   formControlName="video"
-                  (change)="uploadvedio($event)"
+                  (change)="uploadvedio($event,i)"
                 />
                 <!-- <label>Choose file</label> -->
               </div>
@@ -104,9 +132,9 @@
         </ng-container>
 
         <div>
-          <button mat-mini-fab (click)="addLesson()">
+          <a mat-mini-fab (click)="addLesson()">
             <mat-icon class="add-course-btn">add</mat-icon>
-          </button>
+          </a>
         </div>
 
         <button
@@ -126,5 +154,4 @@
       </div>
     </form>
   </div>
-  
 </div>

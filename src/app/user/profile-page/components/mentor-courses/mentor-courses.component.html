@@ -1,5 +1,5 @@
 
-<button mat-raised-button color="primary" (click)="openDialog()">Open dialog</button>
+<button mat-raised-button color="primary" (click)="openDialog()">Add Course</button>
 
 <a
   *ngFor="let item of cartItems"
@@ -20,7 +20,7 @@
       {{ item.price }}
     </p>
     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 gap-4">
-      <span>Studnt: {{ item.student }}</span
+      <span>Student: {{ item.student }}</span
       ><span class="ml-5">Duration :{{ item.Duration }}</span>
     </p>
 
