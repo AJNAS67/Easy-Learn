@@ -14,16 +14,25 @@ import {
 })
 export class CartComponent implements OnInit {
   cartItems!: cartResponse;
+
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   constructor(
     private _userService: UserService,
-    private _snackBar: MatSnackBar,
+    private _snackBar: MatSnackBar
   ) {}
   ngOnInit(): void {
     this._userService.getCartItems().subscribe((res: cartResponse) => {
       this.cartItems = res;
+
     });
+  }
+  checkCartLength() {
+    if (this.cartItems?.course.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
   getAllCartItem() {
     this._userService.getCartItems().subscribe((res: cartResponse) => {
@@ -32,7 +41,6 @@ export class CartComponent implements OnInit {
   }
   removeCart(courseId: string) {
     this._userService.removeFromCart(courseId).subscribe((res) => {
-      console.log(res, 'res');
       this.popUpMessage('course removed from cart !!');
       this.getAllCartItem();
     });

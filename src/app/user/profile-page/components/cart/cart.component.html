@@ -1,4 +1,9 @@
-<ng-container *ngIf="cartItems; else newDeb">
+<ng-container
+  *ngIf="cartItems?.course == null || !checkCartLength(); else haveCart"
+>
+  <h1 class="text-center">No cart items available</h1>
+</ng-container>
+<ng-template #haveCart>
   <div class="cart">
     <h1>Shopping Cart</h1>
     <table>
@@ -51,7 +56,4 @@
       </button>
     </div>
   </div>
-</ng-container>
-<ng-template #newDeb>
-  <p>cart is empty</p>
 </ng-template>

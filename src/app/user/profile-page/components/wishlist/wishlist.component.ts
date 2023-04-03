@@ -16,23 +16,37 @@ export class WishlistComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   wishlistItems!: wishlistResponse;
-  constructor(private _userService: UserService,private _snackBar: MatSnackBar) {}
+  constructor(
+    private _userService: UserService,
+    private _snackBar: MatSnackBar
+  ) {}
   ngOnInit(): void {
     this._userService.getWishlistItems().subscribe((res: wishlistResponse) => {
       this.wishlistItems = res;
-      {
-        console.log(res, 'wishlist res');
-      }
     });
   }
- 
+
+  getAllWishlistItem() {
+    this._userService.getCartItems().subscribe((res: wishlistResponse) => {
+      this.wishlistItems = res;
+    });
+  }
+
   removeWishlist(courseId: string) {
     this._userService.removeFromWishlist(courseId).subscribe((res) => {
-      console.log(res, 'res');
       this._snackBar.open(`course removed from your wishlist`, 'Ok', {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
       });
+      this.getAllWishlistItem();
     });
+  }
+
+  checkCartLength() {
+    if (this.wishlistItems?.course.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
