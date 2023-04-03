@@ -18,9 +18,14 @@ export class CartComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   constructor(
     private _userService: UserService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
   ) {}
   ngOnInit(): void {
+    this._userService.getCartItems().subscribe((res: cartResponse) => {
+      this.cartItems = res;
+    });
+  }
+  getAllCartItem() {
     this._userService.getCartItems().subscribe((res: cartResponse) => {
       this.cartItems = res;
     });
@@ -29,6 +34,7 @@ export class CartComponent implements OnInit {
     this._userService.removeFromCart(courseId).subscribe((res) => {
       console.log(res, 'res');
       this.popUpMessage('course removed from cart !!');
+      this.getAllCartItem();
     });
   }
   popUpMessage(message: string) {

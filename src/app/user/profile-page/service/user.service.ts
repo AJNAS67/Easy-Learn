@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import {
   cartResponse,
   wishlistResponse,
+  CourseResponse,
 } from 'src/app/interface/user.interface';
 
 @Injectable({
@@ -25,11 +26,10 @@ export class UserService {
   uploadProfilePick(uploadImage: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/upload`, uploadImage);
   }
-   // to upload course thumbnail 
-   uploadThumbnail(uploadImage: any): Observable<any> {
+  // to upload course thumbnail
+  uploadThumbnail(uploadImage: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/upload_thumbnail`, uploadImage);
   }
-  
 
   uploadCourseVideo(uploadVideo: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/upload_video`, uploadVideo);
@@ -59,8 +59,11 @@ export class UserService {
     );
   }
   removeFromCart(id: string) {
-    return this.http.delete(
-      `${this.baseUrl}/cart/removeFromCart/${id}`
+    return this.http.delete(`${this.baseUrl}/cart/removeFromCart/${id}`);
+  }
+  getMentorCourse() {
+    return this.http.get<CourseResponse>(
+      `${this.baseUrl}/course/mentor_course`
     );
   }
 }

@@ -17,3 +17,18 @@ export interface wishlistResponse {
   userId: string;
   _id: string;
 }
+export interface CourseResponse {
+  _id: string;
+  UserId: string;
+  CourseName: string;
+  MentorName: string;
+  Category: string;
+  TotalHr: number;
+  ThumbnailImage: string;
+  CourseDescription: string;
+  VideoModule: { title: string, video: string }[];
+  date: string;
+  Level: string;
+  Language: string;
+  Price: number;
+}

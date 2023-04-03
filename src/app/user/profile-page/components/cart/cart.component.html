@@ -4,9 +4,10 @@
     <table>
       <thead>
         <tr>
-          <th>Product</th>
-          <th>Product</th>
+          <th></th>
+          <th>Course</th>
           <th>Price</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +25,11 @@
             <h2>{{ item.courseName }}</h2>
           </td>
           <td>{{ item.price }}</td>
+          <td>
+            <span (click)="removeCart(item.courseId)"
+              ><mat-icon>remove_circle</mat-icon></span
+            >
+          </td>
         </tr>
       </tbody>
       <tfoot>
@@ -36,18 +42,15 @@
       </tfoot>
     </table>
     <div class="container my-5">
-  
       <mat-divider class="my-5"></mat-divider>
-          
-          <button
-            class="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded p-3 mt-4"
-          >
-            Checkout
-          </button>
+
+      <button
+        class="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded p-3 mt-4"
+      >
+        Checkout
+      </button>
+    </div>
   </div>
-</div>
-
-
 </ng-container>
 <ng-template #newDeb>
   <p>cart is empty</p>

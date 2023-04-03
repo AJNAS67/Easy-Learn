@@ -1,31 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AddCourseComponent } from '../add-course/add-course.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UserService } from '../../service/user.service';
+import { CourseResponse } from 'src/app/interface/user.interface';
 @Component({
   selector: 'app-mentor-courses',
   templateUrl: './mentor-courses.component.html',
   styleUrls: ['./mentor-courses.component.scss'],
 })
-export class MentorCoursesComponent {
-  constructor(private _matDialog: MatDialog) {}
-  cartItems = [
-    {
-      coursename: 'Angualar Full course',
-      price: 4000,
-      image: 'https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg',
-      Duration: '15.4hr',
-      student: 33,
-    },
-    {
-      coursename: 'javascript Advanced',
-      price: 5000,
-      image: 'https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg',
-      Duration: '15.4hr',
-      student: 333,
-    },
-  ];
+export class MentorCoursesComponent implements OnInit {
+  mentorCourses$!:any ;
+  constructor(
+    private _matDialog: MatDialog,
+    private _userService: UserService
+  ) {}
+  ngOnInit(): void {
+    this._userService.getMentorCourse().subscribe((res:CourseResponse) => {
+      this.mentorCourses$ = res;
+    });
+  }
+
 
   openDialog() {
-    this._matDialog.open(AddCourseComponent,{minWidth:'50%'});
+    this._matDialog.open(AddCourseComponent, { minWidth: '50%' });
   }
+  
+  
 }
