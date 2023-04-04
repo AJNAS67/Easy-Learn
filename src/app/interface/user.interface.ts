@@ -40,3 +40,10 @@ export interface DeleteResponse {
   acknowledged: boolean;
   deletedCount: number;
 }
+export interface getUserDetailsResp {
+  email: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: number;
+  profile_pic: string ;
+}

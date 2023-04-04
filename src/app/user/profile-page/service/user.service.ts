@@ -7,6 +7,7 @@ import {
   wishlistResponse,
   CourseResponse,
   DeleteResponse,
+  getUserDetailsResp,
 } from 'src/app/interface/user.interface';
 
 @Injectable({
@@ -41,10 +42,10 @@ export class UserService {
     return this.http.post<any>(`${this.baseUrl}/upload_thumbnail`, uploadImage);
   }
   getUserDetails() {
-    return this.http.get(`${this.baseUrl}/api/userDetails`);
+    return this.http.get<getUserDetailsResp>(`${this.baseUrl}/api/userDetails`);
   }
 
-  uploadCourse(course: any): Observable<any> {
+  uploadCourse(course: CourseResponse): Observable<any> {
     return this.http.post(`${this.baseUrl}/course/add-course`, course);
   }
   deleteCourse(courseId: string) {

@@ -6,6 +6,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../../service/user.service';
+import { getUserDetailsResp } from 'src/app/interface/user.interface';
 // import { UserService } from '../user.service';
 
 @Component({
@@ -28,8 +29,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._userService.getUserDetails().subscribe((data: any) => {
-      console.log(data, '_pic');
+    this._userService.getUserDetails().subscribe((data: getUserDetailsResp) => {
       this.profile_pic = data.profile_pic;
       this.useName = data.firstName;
       this.email = data.email;

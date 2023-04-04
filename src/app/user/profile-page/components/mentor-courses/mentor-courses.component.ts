@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AddCourseComponent } from '../add-course/add-course.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../service/user.service';
@@ -7,29 +7,32 @@ import {
   DeleteResponse,
 } from 'src/app/interface/user.interface';
 import { SnackBarService } from 'src/app/snack-bar/snack-bar.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-mentor-courses',
   templateUrl: './mentor-courses.component.html',
   styleUrls: ['./mentor-courses.component.scss'],
 })
-export class MentorCoursesComponent implements OnInit {
+export class MentorCoursesComponent implements OnInit, OnDestroy {
   mentorCourses$!: any;
+  courseSubscription!: Subscription;
   constructor(
     private _matDialog: MatDialog,
     private _userService: UserService,
     private _snackBarService: SnackBarService
   ) {}
   ngOnInit(): void {
-    this._userService.getMentorCourse().subscribe((res: CourseResponse) => {
-      this.mentorCourses$ = res;
-    });
+    this.getCourse();
   }
 
   getCourse() {
-    this._userService.getMentorCourse().subscribe((res: CourseResponse) => {
-      this.mentorCourses$ = res;
-    });
+    this.courseSubscription = this._userService
+      .getMentorCourse()
+      .subscribe((res: CourseResponse) => {
+        this.mentorCourses$ = res;
+      });
   }
+  
   openDialog() {
     this._matDialog.open(AddCourseComponent, { minWidth: '50%' });
   }
@@ -45,5 +48,8 @@ export class MentorCoursesComponent implements OnInit {
         }
         this.getCourse();
       });
+  }
+  ngOnDestroy(): void {
+    this.courseSubscription.unsubscribe();
   }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormArray, FormGroup } from '@angular/forms';
 // import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { UserService } from '../../service/user.service';
+import { CourseResponse } from 'src/app/interface/user.interface';
 
 @Component({
   selector: 'app-add-course',
@@ -32,9 +33,10 @@ export class AddCourseComponent {
   }
   onSubmit() {
     console.log(this.myForm.value, 'my form');
-    this._userService.uploadCourse(this.myForm.value).subscribe((res) => {
-      
-    });
+    this._userService
+      .uploadCourse(this.myForm.value)
+      .subscribe((res: CourseResponse) => {
+      });
   }
 
   get lessons() {
@@ -75,7 +77,7 @@ export class AddCourseComponent {
     const formdata = new FormData();
     formdata.append('file', file);
     this._userService.uploadThumbnail(formdata).subscribe(
-      (res:any) => {
+      (res: any) => {
         console.log(res, 'image uploaded res');
 
         this.myForm.patchValue({
