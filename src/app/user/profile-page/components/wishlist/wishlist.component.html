@@ -1,7 +1,23 @@
 <ng-container
   *ngIf="wishlistItems?.course == null || !checkCartLength(); else noItem"
 >
-  <h1 class="text-center">No wishlists course</h1>
+
+<div class="container">
+  <div class="text-center">
+  <!-- <h1 class="text-center">No cart items available</h1> -->
+    <div class="">
+      <div class="flex items-center justify-center">
+        <img  src="/assets/images/emptycart.png" style="width: 44%" alt="" />
+      </div>
+      <div>
+        <div class="cart__btn">
+          <a href="/">Continue Shopping</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </ng-container>
 <ng-template #noItem>
   <div class="container h-2/3 py-5">
