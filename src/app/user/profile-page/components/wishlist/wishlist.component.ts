@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { wishlistResponse } from 'src/app/interface/user.interface';
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar';
+
+import { SnackBarService } from 'src/app/snack-bar/snack-bar.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -13,12 +10,10 @@ import {
   styleUrls: ['./wishlist.component.scss'],
 })
 export class WishlistComponent implements OnInit {
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
   wishlistItems!: wishlistResponse;
   constructor(
     private _userService: UserService,
-    private _snackBar: MatSnackBar
+    private _snackBarService: SnackBarService
   ) {}
   ngOnInit(): void {
     this._userService.getWishlistItems().subscribe((res: wishlistResponse) => {
@@ -27,17 +22,14 @@ export class WishlistComponent implements OnInit {
   }
 
   getAllWishlistItem() {
-    this._userService.getCartItems().subscribe((res: wishlistResponse) => {
+    this._userService.getWishlistItems().subscribe((res: wishlistResponse) => {
       this.wishlistItems = res;
     });
   }
 
   removeWishlist(courseId: string) {
     this._userService.removeFromWishlist(courseId).subscribe((res) => {
-      this._snackBar.open(`course removed from your wishlist`, 'Ok', {
-        horizontalPosition: this.horizontalPosition,
-        verticalPosition: this.verticalPosition,
-      });
+      this._snackBarService.popUpMessage('course removed from your wishlist');
       this.getAllWishlistItem();
     });
   }
