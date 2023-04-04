@@ -33,6 +33,7 @@ export class AddCourseComponent {
   onSubmit() {
     console.log(this.myForm.value, 'my form');
     this._userService.uploadCourse(this.myForm.value).subscribe((res) => {
+      
     });
   }
 

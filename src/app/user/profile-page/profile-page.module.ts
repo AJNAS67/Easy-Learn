@@ -21,6 +21,7 @@ import { MentorCoursesComponent } from './components/mentor-courses/mentor-cours
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SnackBarModule } from 'src/app/snack-bar/snack-bar/snack-bar.module';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatCardModule,
     MatDialogModule,
+    SnackBarModule,
   ],
 })
 export class ProfilePageModule {}

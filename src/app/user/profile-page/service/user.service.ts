@@ -6,6 +6,7 @@ import {
   cartResponse,
   wishlistResponse,
   CourseResponse,
+  DeleteResponse,
 } from 'src/app/interface/user.interface';
 
 @Injectable({
@@ -43,12 +44,13 @@ export class UserService {
     return this.http.get(`${this.baseUrl}/api/userDetails`);
   }
 
-  
   uploadCourse(course: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/course/add-course`, course);
   }
   deleteCourse(courseId: string) {
-    return this.http.delete(`${this.baseUrl}/course/deleteCourse/${courseId}`);
+    return this.http.delete<DeleteResponse>(
+      `${this.baseUrl}/course/deleteCourse/${courseId}`
+    );
   }
   getMentorCourse() {
     return this.http.get<CourseResponse>(
@@ -72,6 +74,4 @@ export class UserService {
   removeFromCart(id: string) {
     return this.http.delete(`${this.baseUrl}/cart/removeFromCart/${id}`);
   }
-  
-  
 }
