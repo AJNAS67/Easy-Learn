@@ -9,21 +9,30 @@ import { CourseResponse } from 'src/app/interface/user.interface';
   styleUrls: ['./mentor-courses.component.scss'],
 })
 export class MentorCoursesComponent implements OnInit {
-  mentorCourses$!:any ;
+  mentorCourses$!: any;
   constructor(
     private _matDialog: MatDialog,
     private _userService: UserService
   ) {}
   ngOnInit(): void {
-    this._userService.getMentorCourse().subscribe((res:CourseResponse) => {
+    this._userService.getMentorCourse().subscribe((res: CourseResponse) => {
       this.mentorCourses$ = res;
     });
   }
 
-
+  getCourse() {
+    this._userService.getMentorCourse().subscribe((res: CourseResponse) => {
+      this.mentorCourses$ = res;
+    });
+  }
   openDialog() {
     this._matDialog.open(AddCourseComponent, { minWidth: '50%' });
   }
-  
-  
+
+  deleteCourse(courseId: string) {
+    this._userService.deleteCourse(courseId).subscribe((res) => {
+      console.log(res, 'res');
+      this.getCourse();
+    });
+  }
 }

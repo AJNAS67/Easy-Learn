@@ -42,9 +42,20 @@ export class UserService {
   getUserDetails() {
     return this.http.get(`${this.baseUrl}/api/userDetails`);
   }
+
+  
   uploadCourse(course: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/course/add-course`, course);
   }
+  deleteCourse(courseId: string) {
+    return this.http.delete(`${this.baseUrl}/course/deleteCourse/${courseId}`);
+  }
+  getMentorCourse() {
+    return this.http.get<CourseResponse>(
+      `${this.baseUrl}/course/mentor_course`
+    );
+  }
+
   getCartItems() {
     return this.http.get<cartResponse>(`${this.baseUrl}/cart/userCart`);
   }
@@ -61,9 +72,6 @@ export class UserService {
   removeFromCart(id: string) {
     return this.http.delete(`${this.baseUrl}/cart/removeFromCart/${id}`);
   }
-  getMentorCourse() {
-    return this.http.get<CourseResponse>(
-      `${this.baseUrl}/course/mentor_course`
-    );
-  }
+  
+  
 }
