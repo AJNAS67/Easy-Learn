@@ -22,13 +22,20 @@ export class RegisterComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
+      firstName: ['', [Validators.required,Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^[1-9]\d{9}$/)]],
+      password: ['', [Validators.required,Validators.minLength(5)]],
     });
   }
+  get phoneNumberControl() {
+    return this.myForm.get('phoneNumber');
+  }
+  get isPhoneNumberValid() {
+    return this.phoneNumberControl?.touched && this.phoneNumberControl?.invalid;
+  }
+  
 
   onSubmit() {
     console.log(this.myForm.value, 'my form');

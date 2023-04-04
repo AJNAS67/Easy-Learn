@@ -20,23 +20,22 @@ export class AddCourseComponent {
   ngOnInit(): void {
     this.myForm = this.fb.group({
       CourseName: ['', [Validators.required]],
-      MentorName: ['', Validators.required],
-      Category: ['', Validators.required],
-      TotalHr: ['', Validators.required],
+      MentorName: ['', [Validators.required]],
+      Category: ['', [Validators.required]],
+      TotalHr: ['', [Validators.required, Validators.min(0)]],
       CourseDescription: ['', Validators.required],
       ThumbnailImage: ['', Validators.required],
       VideoModule: this.fb.array([]),
       Level: ['', Validators.required],
       Language: ['', Validators.required],
-      Price: ['', Validators.required],
+      Price: ['', [Validators.required, Validators.min(0)]],
     });
   }
   onSubmit() {
     console.log(this.myForm.value, 'my form');
     this._userService
       .uploadCourse(this.myForm.value)
-      .subscribe((res: CourseResponse) => {
-      });
+      .subscribe((res: CourseResponse) => {});
   }
 
   get lessons() {

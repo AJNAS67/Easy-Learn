@@ -46,13 +46,36 @@
             formControlName="TotalHr"
             placeholder="total  Hr of your course"
           />
+          <mat-error *ngIf="myForm.get('TotalHr')?.hasError('required')"
+            >TotalHr field is required</mat-error
+          >
+
+          <mat-error
+            *ngIf="
+              myForm.get('TotalHr')?.errors &&
+              !myForm.get('TotalHr')?.hasError('required')
+            "
+            >should enter valid input
+          </mat-error>
+          <mat-error
+            *ngIf="
+              myForm.get('TotalHr')?.errors &&
+              !myForm.get('TotalHr')?.hasError('required')
+            "
+            >First name should need 3 character
+          </mat-error>
         </mat-form-field>
 
         <br />
         <mat-form-field appearance="outline" class="example-full-width">
           <mat-label> Course Description </mat-label>
           <textarea matInput formControlName="CourseDescription"></textarea>
+          <mat-error
+            *ngIf="myForm.get('CourseDescription')?.hasError('required')"
+            >Course description is required</mat-error
+          >
         </mat-form-field>
+
         <br />
 
         <mat-form-field appearance="outline" class="example-full-width">
@@ -62,6 +85,9 @@
               {{ level.value }}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="myForm.get('Level')?.hasError('required')"
+            >Level is required</mat-error
+          >
         </mat-form-field>
         <br />
         <mat-form-field appearance="outline" class="example-full-width">
@@ -74,11 +100,24 @@
               {{ Language.value }}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="myForm.get('Language')?.hasError('required')"
+            >Language required</mat-error
+          >
         </mat-form-field>
         <br />
         <mat-form-field appearance="outline" class="example-full-width">
           <mat-label> Price </mat-label>
           <input matInput formControlName="Price" />
+          <mat-error *ngIf="myForm.get('Price')?.hasError('required')"
+            >Price is required</mat-error
+          >
+          <mat-error
+            *ngIf="
+              myForm.get('Price')?.errors &&
+              !myForm.get('Price')?.hasError('required')
+            "
+            >should enter positive Value
+          </mat-error>
         </mat-form-field>
         <br />
 
@@ -90,6 +129,7 @@
             required
             formControlName="ThumbnailImage"
             (change)="upload($event)"
+            accept="image/*"
           />
           <label class="custom-file__label" for="field-upload"
             >Choose thumbnailImage</label
@@ -118,7 +158,7 @@
                   type="file"
                   required
                   formControlName="video"
-                  (change)="uploadVideo($event,i)"
+                  (change)="uploadVideo($event, i)"
                 />
                 <!-- <label>Choose file</label> -->
               </div>
