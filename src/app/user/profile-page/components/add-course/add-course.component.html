@@ -30,10 +30,10 @@
             formControlName="Category"
           >
             <mat-option
-              *ngFor="let category of categories"
-              [value]="category.value"
+              *ngFor="let category of Categories"
+              [value]="category._id"
             >
-              {{ category.value }}
+              {{ category.course_category }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -104,6 +104,18 @@
             >Language required</mat-error
           >
         </mat-form-field>
+
+        <mat-checkbox formControlName="Popularity" class="px-3"
+          >Popularity</mat-checkbox
+        >
+        <mat-checkbox formControlName="Trending" class="px-3"
+          >Trending</mat-checkbox
+        ><mat-checkbox formControlName="Featured" class="px-3"
+          >Featured</mat-checkbox
+        ><mat-checkbox formControlName="AI_and_ML" class="px-3"
+          >ML or AI</mat-checkbox
+        >
+
         <br />
         <mat-form-field appearance="outline" class="example-full-width">
           <mat-label> Price </mat-label>

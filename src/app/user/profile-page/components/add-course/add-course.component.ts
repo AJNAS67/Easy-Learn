@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormArray, FormGroup } from '@angular/forms';
 // import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { UserService } from '../../service/user.service';
-import { CourseResponse } from 'src/app/interface/user.interface';
+import { Category, CourseResponse } from 'src/app/interface/user.interface';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-course',
   templateUrl: './add-course.component.html',
   styleUrls: ['./add-course.component.scss'],
 })
-export class AddCourseComponent {
+export class AddCourseComponent implements OnInit, OnDestroy {
   myForm!: FormGroup;
   lesForm!: FormGroup;
   selectedValue!: string;
   imageSrc!: string;
   item!: FormArray;
+  Categories!: Array<Category>;
+  categorySubscription!: Subscription;
   constructor(private fb: FormBuilder, private _userService: UserService) {}
 
   ngOnInit(): void {
@@ -29,13 +32,29 @@ export class AddCourseComponent {
       Level: ['', Validators.required],
       Language: ['', Validators.required],
       Price: ['', [Validators.required, Validators.min(0)]],
+      Popularity: [false],
+      Trending: [false],
+      Featured: [false],
+      AI_and_ML: [false],
     });
+    this.getCategories();
+  }
+  getCategories() {
+    this.categorySubscription = this._userService
+      .getAllCategory()
+      .subscribe((res: Array<Category>) => {
+        this.Categories = res;
+        console.log(this.Categories, 'Categories');
+      });
   }
   onSubmit() {
     console.log(this.myForm.value, 'my form');
     this._userService
       .uploadCourse(this.myForm.value)
-      .subscribe((res: CourseResponse) => {});
+      .subscribe((res: CourseResponse) => {
+        console.log(res,res);
+        
+      });
   }
 
   get lessons() {
@@ -109,4 +128,8 @@ export class AddCourseComponent {
     { value: 'Hindi' },
     { value: 'Arabic' },
   ];
+
+  ngOnDestroy(): void {
+    this.categorySubscription.unsubscribe();
+  }
 }

@@ -8,6 +8,7 @@ import {
   CourseResponse,
   DeleteResponse,
   getUserDetailsResp,
+  Category,
 } from 'src/app/interface/user.interface';
 
 @Injectable({
@@ -57,6 +58,9 @@ export class UserService {
     return this.http.get<Array<CourseResponse>>(
       `${this.baseUrl}/course/mentor_course`
     );
+  }
+  getAllCategory() {
+    return this.http.get<Array<Category>>(`${this.baseUrl}/category/all_category`);
   }
 
   getCartItems() {

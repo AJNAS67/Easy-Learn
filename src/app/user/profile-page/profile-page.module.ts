@@ -22,6 +22,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SnackBarModule } from 'src/app/snack-bar/snack-bar/snack-bar.module';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { SnackBarModule } from 'src/app/snack-bar/snack-bar/snack-bar.module';
     MatCardModule,
     MatDialogModule,
     SnackBarModule,
+    MatCheckboxModule,
   ],
 })
 export class ProfilePageModule {}

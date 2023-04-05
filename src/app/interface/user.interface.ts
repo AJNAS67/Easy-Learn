@@ -26,7 +26,7 @@ export interface CourseResponse {
   UserId: string;
   CourseName: string;
   MentorName: string;
-  Category: string;
+  Category: Category[];
   TotalHr: number;
   ThumbnailImage: string;
   CourseDescription: string;
@@ -35,6 +35,14 @@ export interface CourseResponse {
   Level: string;
   Language: string;
   Price: number;
+  Popularity: boolean;
+  Trending: boolean;
+  Featured: boolean;
+  AI_and_ML: boolean;
+}
+export interface Category {
+  _id: string;
+  course_category: string;
 }
 export interface DeleteResponse {
   acknowledged: boolean;
@@ -49,4 +57,8 @@ export interface getUserDetailsResp {
 }
 export interface addTocartResponse {
   message: string;
+}
+export interface Category {
+  _id: string;
+  course_category: string;
 }
