@@ -29,30 +29,71 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Trending"> Trending </mat-tab>
 
-    <mat-tab label="Featured">
+    <mat-tab label="Trending">
       <div class="container categories mt-5">
-        <div *ngFor="let course of courses" class="mb-3">
+        <div *ngFor="let course of trendingCourses" class="mb-3">
           <div>
             <img
               class="cat-img"
-              src="/assets/images/home1.jpg"
+              [src]="course.ThumbnailImage"
               alt=""
               style="width: 250px; object-fit: cover; height: 150px"
             />
           </div>
           <div>
-            <span>{{ course.course_name }}</span
+            <span>{{ course.CourseName }}</span
             ><br />
-            <span>{{ course.toter }}</span>
+            <span>{{ course.MentorName }}</span>
             <br />
-            <span>$ {{ course.fee }}</span>
+            <span>$ {{ course.Price }}</span>
           </div>
         </div>
       </div>
     </mat-tab>
 
-    <mat-tab label="Machine learning"> </mat-tab>
+    <mat-tab label="Featured">
+      <div class="container categories mt-5">
+        <div *ngFor="let course of featuredCourses" class="mb-3">
+          <div>
+            <img
+              class="cat-img"
+              [src]="course.ThumbnailImage"
+              alt=""
+              style="width: 250px; object-fit: cover; height: 150px"
+            />
+          </div>
+          <div>
+            <span>{{ course.CourseName }}</span
+            ><br />
+            <span>{{ course.MentorName }}</span>
+            <br />
+            <span>$ {{ course.Price }}</span>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Popular">
+      <div class="container categories mt-5">
+        <div *ngFor="let course of popularCourses" class="mb-3">
+          <div>
+            <img
+              class="cat-img"
+              [src]="course.ThumbnailImage"
+              alt=""
+              style="width: 250px; object-fit: cover; height: 150px"
+            />
+          </div>
+          <div>
+            <span>{{ course.CourseName }}</span
+            ><br />
+            <span>{{ course.MentorName }}</span>
+            <br />
+            <span>$ {{ course.Price }}</span>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
   </mat-tab-group>
 </div>

@@ -10,8 +10,34 @@ export class HomePageService {
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
+  // getAllCourse
   getAllCourse() {
-    return this.http.get<Array<CourseResponse>>(`${this.baseUrl}/course/getCourses`);
+    return this.http.get<Array<CourseResponse>>(
+      `${this.baseUrl}/course/getCourses`
+    );
+  }
+
+  getTrendingCourses() {
+    return this.http.get<Array<CourseResponse>>(
+      `${this.baseUrl}/course/trending_courses`
+    );
+  }
+
+  getPopularCourses() {
+    return this.http.get<Array<CourseResponse>>(
+      `${this.baseUrl}/course/popular_courses`
+    );
+  }
+  getFeaturedCourses() {
+    return this.http.get<Array<CourseResponse>>(
+      `${this.baseUrl}/course/featured_courses`
+    );
+  }
+  
+  getMLCourses() {
+    return this.http.get<Array<CourseResponse>>(
+      `${this.baseUrl}/course/ml_courses`
+    );
   }
   fetchCourseDetails(id: string) {
     return this.http.get(`${this.baseUrl}/course/course/${id}`);

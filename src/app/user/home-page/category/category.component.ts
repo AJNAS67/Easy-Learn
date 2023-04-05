@@ -9,9 +9,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss'],
 })
-export class CategoryComponent implements OnInit,OnDestroy {
+export class CategoryComponent implements OnInit, OnDestroy {
   allCourse$!: Array<CourseResponse>;
   @Input() Courses: any;
+  @Input() trendingCourses!: Array<CourseResponse>;
+  @Input() featuredCourses!: Array<CourseResponse>;
+  @Input() popularCourses!: Array<CourseResponse>;
   filtersLoaded!: Promise<boolean>;
   getCourseSubscription!: Subscription;
 
@@ -25,63 +28,10 @@ export class CategoryComponent implements OnInit,OnDestroy {
       });
   }
 
-  courses = [
-    { course_name: 'Angular', toter: 'Ajnas', level: 'Intermediate', fee: 499 },
-
-    {
-      course_name: 'Javascript',
-      toter: 'Farsin',
-      level: 'Advanced',
-      fee: 1499,
-    },
-    {
-      course_name: 'Javascript',
-      toter: 'Farsin',
-      level: 'Advanced',
-      fee: 1499,
-    },
-    {
-      course_name: 'Javascript',
-      toter: 'Farsin',
-      level: 'Advanced',
-      fee: 1499,
-    },
-    {
-      course_name: 'Javascript',
-      toter: 'Farsin',
-      level: 'Advanced',
-      fee: 1499,
-    },
-    {
-      course_name: 'Javascript',
-      toter: 'Farsin',
-      level: 'Advanced',
-      fee: 1499,
-    },
-    {
-      course_name: 'Angular Advance',
-      toter: 'Ajnas',
-      level: 'Intermediate',
-      fee: 499,
-    },
-    { course_name: 'Angular', toter: 'Ajnas', level: 'Intermediate', fee: 499 },
-    {
-      course_name: 'Javascript',
-      toter: 'Farsin',
-      level: 'Advanced',
-      fee: 1499,
-    },
-    {
-      course_name: 'Javascript',
-      toter: 'Farsin',
-      level: 'Advanced',
-      fee: 1499,
-    },
-  ];
   courseDetails(_id: string) {
     this._router.navigate(['/course-details', _id]);
   }
   ngOnDestroy(): void {
-    this.getCourseSubscription.unsubscribe()
+    this.getCourseSubscription.unsubscribe();
   }
 }
