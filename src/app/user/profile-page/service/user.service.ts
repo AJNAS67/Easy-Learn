@@ -54,7 +54,7 @@ export class UserService {
     );
   }
   getMentorCourse() {
-    return this.http.get<CourseResponse>(
+    return this.http.get<Array<CourseResponse>>(
       `${this.baseUrl}/course/mentor_course`
     );
   }

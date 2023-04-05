@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { SnackBarService } from '../service/snack-bar.service';
@@ -9,7 +9,7 @@ import { SnackBarService } from '../service/snack-bar.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  myForm: any;
+  myForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,

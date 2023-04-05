@@ -1,22 +1,28 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomePageService } from '../service/home-page.service';
+import { CourseResponse } from 'src/app/interface/user.interface';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss'],
 })
-export class CategoryComponent implements OnInit {
-  allCourse$: any;
+export class CategoryComponent implements OnInit,OnDestroy {
+  allCourse$!: Array<CourseResponse>;
   @Input() Courses: any;
   filtersLoaded!: Promise<boolean>;
+  getCourseSubscription!: Subscription;
 
   constructor(private _homeService: HomePageService, private _router: Router) {}
+
   ngOnInit(): void {
-    this._homeService.getAllCourse().subscribe((res) => {
-      this.allCourse$ = res;
-    });
+    this.getCourseSubscription = this._homeService
+      .getAllCourse()
+      .subscribe((res: Array<CourseResponse>) => {
+        this.allCourse$ = res;
+      });
   }
 
   courses = [
@@ -72,7 +78,10 @@ export class CategoryComponent implements OnInit {
       fee: 1499,
     },
   ];
-  courseDetails(_id:any) {
-    this._router.navigate(['/course-details',_id]);
+  courseDetails(_id: string) {
+    this._router.navigate(['/course-details', _id]);
+  }
+  ngOnDestroy(): void {
+    this.getCourseSubscription.unsubscribe()
   }
 }

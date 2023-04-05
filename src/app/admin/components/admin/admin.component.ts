@@ -15,7 +15,6 @@ export class AdminComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   baseUrl = environment.apiUrl;
-  profilepic: any = null;
 
   constructor(private observer: BreakpointObserver, private router: Router) {}
 

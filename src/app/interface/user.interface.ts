@@ -45,5 +45,8 @@ export interface getUserDetailsResp {
   firstName: string;
   lastName: string;
   phoneNumber: number;
-  profile_pic: string ;
+  profile_pic: string;
+}
+export interface addTocartResponse {
+  message: string;
 }

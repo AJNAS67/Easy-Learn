@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -13,7 +13,7 @@ import { HomePageService } from '../service/home-page.service';
   templateUrl: './course-details.component.html',
   styleUrls: ['./course-details.component.scss'],
 })
-export class CourseDetailsComponent implements OnInit {
+export class CourseDetailsComponent implements OnInit, OnDestroy {
   courseIdSubscription!: Subscription;
   courseDetailsFetchSubscription!: Subscription;
   courseId = '';

@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./mentor-courses.component.scss'],
 })
 export class MentorCoursesComponent implements OnInit, OnDestroy {
-  mentorCourses$!: any;
+  mentorCourses$!: Array<CourseResponse>;
   courseSubscription!: Subscription;
   constructor(
     private _matDialog: MatDialog,
@@ -28,7 +28,7 @@ export class MentorCoursesComponent implements OnInit, OnDestroy {
   getCourse() {
     this.courseSubscription = this._userService
       .getMentorCourse()
-      .subscribe((res: CourseResponse) => {
+      .subscribe((res: Array<CourseResponse>) => {
         this.mentorCourses$ = res;
       });
   }

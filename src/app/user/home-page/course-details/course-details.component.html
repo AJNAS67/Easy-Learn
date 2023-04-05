@@ -2,18 +2,18 @@
   <div class="bg-lime-100 main-div">
     <div class="banner container mx-auto px-4 py-5">
       <div class="banner-child-1">
-        <h1>{{ course.CourseName }}</h1>
+        <h1>{{ course?.CourseName }}</h1>
         <div class="mentor pb-5">
           <img src="/assets/images/home1.jpg" class="" alt="" />
           <span class="px-3"
-            ><strong>{{ course.MentorName }}</strong></span
+            ><strong>{{ course?.MentorName }}</strong></span
           ><span class="pr-3">|</span>
           <span>Last Update December 1, 2020</span>
         </div>
         <div class="pt-5">
           <h3>about this course</h3>
           <p>
-            {{ course.CourseDescription }}
+            {{ course?.CourseDescription }}
           </p>
         </div>
         <div class="courses my-5">
@@ -24,11 +24,11 @@
               <mat-expansion-panel
                 hideToggle
                 class="my-3"
-                *ngFor="let crs of course.VideoModule"
+                *ngFor="let crs of course?.VideoModule"
               >
                 <mat-expansion-panel-header>
                   <mat-panel-title class="gap-4">
-                    <mat-icon>add</mat-icon>Section 1 -{{ crs.title }}
+                    <mat-icon>add</mat-icon>Section 1 -{{ crs?.title }}
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 <p>welcome</p>
@@ -40,16 +40,15 @@
           </div>
         </div>
       </div>
-
       <div class="banner-child-2">
         <mat-card class="example-card">
           <div class="p-3">
             <video width="400" height="280" controls>
-              <source [src]="course.VideoModule[0].video" type="video/mp4" />
+              <source [src]="course?.VideoModule[0]?.video" type="video/mp4" />
             </video>
           </div>
           <div class="price px-3">
-            <h2>$25000</h2>
+            <h2>{{ course?.Price }}</h2>
             <mat-card class="px-1 text-center" style="height: 30px">
               39% OFF</mat-card
             >
@@ -69,7 +68,7 @@
                 <span>Level</span>
               </div>
               <div>
-                <span>Beginner</span>
+                <span>{{ course?.Level }}</span>
               </div>
             </div>
             <mat-divider></mat-divider>
@@ -89,7 +88,7 @@
                 <span>Duration</span>
               </div>
               <div>
-                <span>15.3 hours </span>
+                <span>{{ course?.TotalHr }} hours </span>
               </div>
             </div>
             <mat-divider></mat-divider>
@@ -107,7 +106,7 @@
                 <span>Lectures</span>
               </div>
               <div>
-                <span>4 lectures </span>
+                <span>{{ course?.VideoModule?.length }} lectures </span>
               </div>
             </div>
             <div
@@ -140,7 +139,7 @@
                 <span>Language</span>
               </div>
               <div>
-                <span> English </span>
+                <span> {{ course?.Language }} </span>
               </div>
             </div>
             <mat-divider></mat-divider>

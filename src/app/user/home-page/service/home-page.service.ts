@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { CourseResponse } from 'src/app/interface/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class HomePageService {
 
   constructor(private http: HttpClient) {}
   getAllCourse() {
-    return this.http.get(`${this.baseUrl}/course/getCourses`);
+    return this.http.get<Array<CourseResponse>>(`${this.baseUrl}/course/getCourses`);
   }
   fetchCourseDetails(id: string) {
     return this.http.get(`${this.baseUrl}/course/course/${id}`);

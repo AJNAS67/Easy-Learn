@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { SnackBarService } from '../service/snack-bar.service';
@@ -10,7 +10,7 @@ import { SnackBarService } from '../service/snack-bar.service';
   styleUrls: ['./admin-login.component.scss'],
 })
 export class AdminLoginComponent {
-  myForm: any;
+  myForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -29,14 +29,13 @@ export class AdminLoginComponent {
     this.authService.loginUser(this.myForm.value).subscribe(
       (res) => {
         if (res.status && res.admin) {
-          this._snackBarService.popUpMessage("Login successfully");
+          this._snackBarService.popUpMessage('Login successfully');
           localStorage.setItem('admin_token', res.access_token);
           this.router.navigate(['/admin']);
         }
       },
       (error) => {
-        this._snackBarService.popUpMessage("Email or password Incorrect");
-
+        this._snackBarService.popUpMessage('Email or password Incorrect');
       }
     );
   }
