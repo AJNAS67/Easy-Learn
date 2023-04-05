@@ -15,6 +15,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
   @Input() trendingCourses!: Array<CourseResponse>;
   @Input() featuredCourses!: Array<CourseResponse>;
   @Input() popularCourses!: Array<CourseResponse>;
+  @Input() mL_aiCourses!: Array<CourseResponse>;
   filtersLoaded!: Promise<boolean>;
   getCourseSubscription!: Subscription;
 

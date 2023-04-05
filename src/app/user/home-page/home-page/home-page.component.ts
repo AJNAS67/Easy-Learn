@@ -13,10 +13,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
   trendingCourses$!: Array<CourseResponse>;
   featuredCourses$!: Array<CourseResponse>;
   popularCourses$!: Array<CourseResponse>;
+  mL_aiCourses$!: Array<CourseResponse>;
 
   trendingSubscription!: Subscription;
   featuredSubscription!: Subscription;
   popularSubscription!: Subscription;
+  mlSubscription!: Subscription;
 
   constructor(private _homeService: HomePageService) {}
 
@@ -48,6 +50,11 @@ export class HomePageComponent implements OnInit, OnDestroy {
         this.popularCourses$ = res;
       });
   }
+  getML_AI() {
+    this.mlSubscription = this._homeService.getMLCourses().subscribe((res) => {
+      this.mL_aiCourses$ = res;
+    });
+  }
 
   array = [
     { name: 'Art & Design' },
@@ -75,5 +82,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.trendingSubscription.unsubscribe();
     this.featuredSubscription.unsubscribe();
     this.popularSubscription.unsubscribe();
+    this.mlSubscription.unsubscribe();
   }
 }
