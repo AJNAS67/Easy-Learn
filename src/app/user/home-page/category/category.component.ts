@@ -27,6 +27,9 @@ export class CategoryComponent implements OnInit, OnDestroy {
       .subscribe((res: Array<CourseResponse>) => {
         this.allCourse$ = res;
       });
+
+      
+      
   }
 
   courseDetails(_id: string) {
