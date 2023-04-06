@@ -1,0 +1,26 @@
+<h2>category courses</h2>
+<ng-container *ngIf="categoryCourse?.length; else newDeb">
+  <div class="container categories mt-5">
+    <div *ngFor="let course of categoryCourse" class="mb-3">
+      <div (click)="courseDetails(course._id)">
+        <img
+          class="cat-img"
+          [src]="course.ThumbnailImage"
+          alt="course image"
+          style="width: 250px; object-fit: cover; height: 150px"
+        />
+      </div>
+      <div>
+        <span>{{ course.CourseName }}</span
+        ><br />
+        <span>{{ course.MentorName }}</span>
+        <br />
+        <span>$ {{ course.Price }}</span>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #newDeb>
+  <img src="assets/images/empty_course_1.jpg" alt="" />
+  <h1 class="text-center py-3">Sorry No course available</h1>
+</ng-template>

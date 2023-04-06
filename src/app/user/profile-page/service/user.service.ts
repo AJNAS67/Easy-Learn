@@ -59,9 +59,7 @@ export class UserService {
       `${this.baseUrl}/course/mentor_course`
     );
   }
-  getAllCategory() {
-    return this.http.get<Array<Category>>(`${this.baseUrl}/category/all_category`);
-  }
+  
 
   getCartItems() {
     return this.http.get<cartResponse>(`${this.baseUrl}/cart/userCart`);

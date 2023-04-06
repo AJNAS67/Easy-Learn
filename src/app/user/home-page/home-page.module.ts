@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomePageService } from './service/home-page.service';
+import { CategoryFilterComponent } from './category-filter/category-filter.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HomePageService } from './service/home-page.service';
     AboutUsComponent,
     CategoryComponent,
     CourseDetailsComponent,
+    CategoryFilterComponent,
   ],
   imports: [
     CommonModule,

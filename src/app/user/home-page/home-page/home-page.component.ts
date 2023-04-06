@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HomePageService } from '../service/home-page.service';
-import { CourseResponse } from 'src/app/interface/user.interface';
+import { Category, CourseResponse } from 'src/app/interface/user.interface';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -14,19 +15,30 @@ export class HomePageComponent implements OnInit, OnDestroy {
   featuredCourses$!: Array<CourseResponse>;
   popularCourses$!: Array<CourseResponse>;
   mL_aiCourses$!: Array<CourseResponse>;
+  allCategory!: Array<Category>;
 
   trendingSubscription!: Subscription;
   featuredSubscription!: Subscription;
   popularSubscription!: Subscription;
   mlSubscription!: Subscription;
+  allCategorySubscription!: Subscription;
 
-  constructor(private _homeService: HomePageService) {}
+  constructor(private _homeService: HomePageService,private _router:Router) {}
 
   ngOnInit(): void {
     this.allCourse$ = this._homeService.getAllCourse();
     this.getTrending();
     this.getFeatured();
     this.getPopulated();
+    this.getAllCourseCategory();
+    this.getML_AI()
+  }
+  getAllCourseCategory() {
+    this.allCategorySubscription = this._homeService
+      .getAllCategory()
+      .subscribe((res) => {
+        this.allCategory = res;
+      });
   }
 
   getTrending() {
@@ -54,34 +66,19 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.mlSubscription = this._homeService.getMLCourses().subscribe((res) => {
       this.mL_aiCourses$ = res;
     });
+
   }
 
-  array = [
-    { name: 'Art & Design' },
-    { name: 'Development' },
-    { name: 'Lifestyle' },
-    { name: 'Personal Development' },
-    { name: 'Business' },
-    { name: 'Finance' },
-    { name: 'Marketing' },
-    { name: 'Photography' },
-    { name: 'Data Science' },
-    { name: 'Health & Fitness' },
-    { name: 'Music' },
-    { name: 'Teaching & Academics' },
-  ];
-  categories: any = [
-    { value: 'Data Science & Business Analytics' },
-    { value: 'AI & Machine Learning' },
-    { value: 'Cyber Security' },
-    { value: 'Cloud Computing' },
-    { value: 'Software Development' },
-    { value: 'Digital Marketing' },
-  ];
+  categoryFilter(_id: string) {
+    this._router.navigate(['/filter-category',_id]);
+    
+  }
+
   ngOnDestroy(): void {
     this.trendingSubscription.unsubscribe();
     this.featuredSubscription.unsubscribe();
     this.popularSubscription.unsubscribe();
     this.mlSubscription.unsubscribe();
+    this.allCategorySubscription.unsubscribe();
   }
 }

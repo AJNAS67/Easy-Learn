@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { CourseResponse } from 'src/app/interface/user.interface';
+import { Category, CourseResponse } from 'src/app/interface/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -33,10 +33,19 @@ export class HomePageService {
       `${this.baseUrl}/course/featured_courses`
     );
   }
-  
+
   getMLCourses() {
     return this.http.get<Array<CourseResponse>>(
       `${this.baseUrl}/course/ml_courses`
+    );
+  }
+  fetchCategoryCourse(id: string) {
+    return this.http.get(`${this.baseUrl}/course/category_course/${id}`);
+  }
+
+  getAllCategory() {
+    return this.http.get<Array<Category>>(
+      `${this.baseUrl}/category/all_category`
     );
   }
   fetchCourseDetails(id: string) {

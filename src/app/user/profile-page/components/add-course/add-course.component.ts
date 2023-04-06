@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormArray, FormGroup } from '@angular/forms';
-// import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { UserService } from '../../service/user.service';
 import { Category, CourseResponse } from 'src/app/interface/user.interface';
 import { Subscription } from 'rxjs';
+import { HomePageService } from 'src/app/user/home-page/service/home-page.service';
 
 @Component({
   selector: 'app-add-course',
@@ -18,7 +18,11 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   item!: FormArray;
   Categories!: Array<Category>;
   categorySubscription!: Subscription;
-  constructor(private fb: FormBuilder, private _userService: UserService) {}
+  constructor(
+    private fb: FormBuilder,
+    private _userService: UserService,
+    private _homePageService: HomePageService
+  ) {}
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
@@ -40,11 +44,10 @@ export class AddCourseComponent implements OnInit, OnDestroy {
     this.getCategories();
   }
   getCategories() {
-    this.categorySubscription = this._userService
+    this.categorySubscription = this._homePageService
       .getAllCategory()
       .subscribe((res: Array<Category>) => {
         this.Categories = res;
-        console.log(this.Categories, 'Categories');
       });
   }
   onSubmit() {
@@ -52,8 +55,6 @@ export class AddCourseComponent implements OnInit, OnDestroy {
     this._userService
       .uploadCourse(this.myForm.value)
       .subscribe((res: CourseResponse) => {
-        console.log(res,res);
-        
       });
   }
 

@@ -5,6 +5,7 @@ import { CourseDetailsComponent } from './home-page/course-details/course-detail
 import { HomePageComponent } from './home-page/home-page/home-page.component';
 import { UserComponent } from './user.component';
 import { ProfileComponent } from './profile-page/components/profile/profile.component';
+import { CategoryFilterComponent } from './home-page/category-filter/category-filter.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'home', component: HomePageComponent },
       { path: 'about-us', component: AboutUsComponent },
       { path: 'course-details/:courseId', component: CourseDetailsComponent },
+      { path: 'filter-category/:categoryId', component: CategoryFilterComponent },
       {
         path: 'profile',
         component: ProfileComponent,

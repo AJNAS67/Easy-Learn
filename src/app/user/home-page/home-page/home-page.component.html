@@ -22,7 +22,7 @@
     <img
       src="/assets/images/home-01-hero-image.webp"
       class="d-block w-100"
-      alt=""
+      alt="Home image"
     />
   </div>
 </div>
@@ -38,8 +38,10 @@
 </div>
 
 <div class="container mx-auto px-4 categories my-5">
-  <mat-card *ngFor="let arr of categories" class="hover:bg-gray-100 p-3">
-    <span>{{ arr.value }} </span></mat-card
+  <mat-card *ngFor="let category of allCategory" class="hover:bg-gray-100 p-3">
+    <button (click)="categoryFilter(category._id)">
+      {{ category.course_category }}
+    </button></mat-card
   >
 </div>
 <app-category
