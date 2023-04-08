@@ -2,16 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
-
+import { State } from 'src/app/interface/user.interface';
 
 @Component({
   selector: 'app-add-profile-details',
   templateUrl: './add-profile-details.component.html',
-  styleUrls: ['./add-profile-details.component.scss']
+  styleUrls: ['./add-profile-details.component.scss'],
 })
-export class AddProfileDetailsComponent  implements OnInit{
-
-
+export class AddProfileDetailsComponent implements OnInit {
   selectedValue!: string;
   selectedCar!: string;
   profileDetails: any;
@@ -29,12 +27,7 @@ export class AddProfileDetailsComponent  implements OnInit{
     private fb: FormBuilder,
     private userService: UserService,
     private _route: Router
-  ) {
-    // this.mainService.getProfileData().subscribe((res) => {
-    //   this.profileDetails = res;
-    //   console.log(res, 'user_details');
-    // });
-  }
+  ) {}
   ngOnInit(): void {
     this.myForm = this.fb.group({
       fullName: ['', [Validators.required]],
@@ -54,7 +47,7 @@ export class AddProfileDetailsComponent  implements OnInit{
     });
   }
 
-  states: any = [
+  states: State[] = [
     { value: '1', viewValue: 'Andhra Pradesh' },
     { value: '2', viewValue: 'Arunachal Pradesh' },
     { value: '3', viewValue: 'Assam' },
@@ -65,13 +58,8 @@ export class AddProfileDetailsComponent  implements OnInit{
     { value: '8', viewValue: 'Kerala' },
   ];
   onSubmit() {
-    console.log(this.myForm.value, 'my form');
-    console.log(typeof this.myForm.value.dateofBirth, 'type');
-
     this.userService.uploadProfileDetails(this.myForm.value).subscribe(
       (res) => {
-        console.log(res, 'res');
-        // Swal.fire('Hi', `user details succesfully added`, 'success');
         this._route
           .navigateByUrl('/add-user-details', { skipLocationChange: true })
           .then(() => {
@@ -81,9 +69,7 @@ export class AddProfileDetailsComponent  implements OnInit{
 
       (error) => {
         console.log('Post request failed', error);
-        // Swal.fire('Hi', `${error.error.message}`, 'error');
       }
     );
   }
-
 }

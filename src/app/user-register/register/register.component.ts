@@ -38,10 +38,7 @@ export class RegisterComponent implements OnInit {
   
 
   onSubmit() {
-    console.log(this.myForm.value, 'my form');
-
-    this.authService.registerUser(this.myForm.value).subscribe((res: any) => {
-      console.log(res, 'resform resister component');
+    this.authService.registerUser(this.myForm.value).subscribe((res) => {
       if (res.isAdded) {
         this._snackBarService.popUpMessage(res.message);
         this.router.navigate(['user/login']);

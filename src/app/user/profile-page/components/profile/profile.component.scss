@@ -20,7 +20,7 @@ mat-toolbar {
     margin: 16px;
     margin-left: 32px;
     padding: 16px;
-    overflow: auto;
+    overflow: hidden !important;
   }
   
   mat-sidenav-container {
@@ -87,4 +87,10 @@ mat-toolbar {
     display: none;
   }
   
-  
+  .menu-overflow-hidden {
+    overflow: hidden !important;
+  }
+  mat-sidenav{
+    overflow: hidden !important;
+
+  }

@@ -9,8 +9,8 @@
   </button>
 </mat-toolbar>
 
-<mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+<mat-sidenav-container  >
+  <mat-sidenav #sidenav="matSidenav" class=" menu-overflow-hidden mat-elevation-z8 " >
     <div *ngIf="profile_pic; else defualt_Pic">
       <img
         [src]="profile_pic"
@@ -43,7 +43,7 @@
     <mat-divider></mat-divider>
 
     <button
-      mat-button
+      
       class="menu-button"
       [routerLink]="['add-profile-details']"
     >
@@ -52,25 +52,25 @@
     </button>
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" [routerLink]="['cart']">
+    <button  class="menu-button" [routerLink]="['cart']">
       <mat-icon>shopping_cart</mat-icon>
       <span>Cart</span>
     </button>
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" [routerLink]="['enrolled-courses']">
+    <button  class="menu-button" [routerLink]="['enrolled-courses']">
       <mat-icon>golf_course</mat-icon>
-      <span>enrolled-courses</span>
+      <span>Enrolled-courses</span>
     </button>
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" [routerLink]="['mentor-courses']">
+    <button  class="menu-button" [routerLink]="['mentor-courses']">
       <mat-icon>library_books</mat-icon>
       <span>Mentor Course</span>
     </button>
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" [routerLink]="['wishlist']">
+    <button  class="menu-button" [routerLink]="['wishlist']">
       <mat-icon>favorite</mat-icon>
       <span>Wishlist</span>
     </button>

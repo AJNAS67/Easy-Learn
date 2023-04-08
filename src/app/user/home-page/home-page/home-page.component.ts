@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit, OnDestroy {
-  allCourse$!: any;
   trendingCourses$!: Array<CourseResponse>;
   featuredCourses$!: Array<CourseResponse>;
   popularCourses$!: Array<CourseResponse>;
@@ -26,7 +25,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
   constructor(private _homeService: HomePageService,private _router:Router) {}
 
   ngOnInit(): void {
-    this.allCourse$ = this._homeService.getAllCourse();
     this.getTrending();
     this.getFeatured();
     this.getPopulated();

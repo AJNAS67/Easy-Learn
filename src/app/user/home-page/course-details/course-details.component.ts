@@ -7,6 +7,10 @@ import {
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { HomePageService } from '../service/home-page.service';
+import {
+  AddToCartResponse,
+  CourseResponse,
+} from 'src/app/interface/user.interface';
 
 @Component({
   selector: 'app-course-details',
@@ -17,7 +21,8 @@ export class CourseDetailsComponent implements OnInit, OnDestroy {
   courseIdSubscription!: Subscription;
   courseDetailsFetchSubscription!: Subscription;
   courseId = '';
-  course!: any;
+  course!: CourseResponse;
+  video!: string;
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
@@ -37,6 +42,7 @@ export class CourseDetailsComponent implements OnInit, OnDestroy {
       .fetchCourseDetails(this.courseId)
       .subscribe((data) => {
         this.course = data;
+        this.video = data?.VideoModule[0]?.video;
       });
   }
 
@@ -48,14 +54,18 @@ export class CourseDetailsComponent implements OnInit, OnDestroy {
   }
 
   addToWishlist() {
-    this._homeService.addToWishlist(this.course._id).subscribe((res: any) => {
-      this.popUpMessage(res.message);
-    });
+    this._homeService
+      .addToWishlist(this.course._id)
+      .subscribe((res: AddToCartResponse) => {
+        this.popUpMessage(res.message);
+      });
   }
   addToCart() {
-    this._homeService.addToCart(this.course._id).subscribe((res: any) => {
-      this.popUpMessage(res.message);
-    });
+    this._homeService
+      .addToCart(this.course._id)
+      .subscribe((res: AddToCartResponse) => {
+        this.popUpMessage(res.message);
+      });
   }
   ngOnDestroy(): void {
     this.courseIdSubscription.unsubscribe();

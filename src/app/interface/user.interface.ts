@@ -71,3 +71,26 @@ export interface EnrolledCourse {
   totalPrice: number;
   paymentStatus: boolean;
 }
+export interface AddToCartResponse {
+  message: string;
+}
+export interface State {
+  value: string;
+  viewValue: string;
+}
+export interface Common {
+  value: string;
+}
+export interface LoginResponse {
+  access_token: string;
+  admin: boolean;
+  status: true;
+  user: getUserDetailsResp;
+}
+export interface RegisterResponse {
+  message: string;
+  isAdded: boolean;
+}
+export interface PaymentResponse{
+  
+}

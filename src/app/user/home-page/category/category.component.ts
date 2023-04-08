@@ -11,7 +11,6 @@ import { Subscription } from 'rxjs';
 })
 export class CategoryComponent implements OnInit, OnDestroy {
   allCourse$!: Array<CourseResponse>;
-  @Input() Courses: any;
   @Input() trendingCourses!: Array<CourseResponse>;
   @Input() featuredCourses!: Array<CourseResponse>;
   @Input() popularCourses!: Array<CourseResponse>;

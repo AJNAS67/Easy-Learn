@@ -1,7 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormArray, FormGroup } from '@angular/forms';
 import { UserService } from '../../service/user.service';
-import { Category, CourseResponse } from 'src/app/interface/user.interface';
+import {
+  Category,
+  Common,
+  CourseResponse,
+} from 'src/app/interface/user.interface';
 import { Subscription } from 'rxjs';
 import { HomePageService } from 'src/app/user/home-page/service/home-page.service';
 
@@ -18,6 +22,7 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   item!: FormArray;
   Categories!: Array<Category>;
   categorySubscription!: Subscription;
+  uploadCourseSubscription!: Subscription;
   constructor(
     private fb: FormBuilder,
     private _userService: UserService,
@@ -51,11 +56,9 @@ export class AddCourseComponent implements OnInit, OnDestroy {
       });
   }
   onSubmit() {
-    console.log(this.myForm.value, 'my form');
-    this._userService
+    this.uploadCourseSubscription = this._userService
       .uploadCourse(this.myForm.value)
-      .subscribe((res: CourseResponse) => {
-      });
+      .subscribe((res: CourseResponse) => {});
   }
 
   get lessons() {
@@ -109,7 +112,7 @@ export class AddCourseComponent implements OnInit, OnDestroy {
     );
   }
 
-  categories: any = [
+  categories: Common[] = [
     { value: 'Data Science & Business Analytics' },
     { value: 'AI & Machine Learning' },
     { value: 'Cyber Security' },
@@ -117,13 +120,13 @@ export class AddCourseComponent implements OnInit, OnDestroy {
     { value: 'Software Development' },
     { value: 'Digital Marketing' },
   ];
-  levels: any = [
+  levels: Common[] = [
     { value: 'Bigener' },
     { value: 'Intermediate' },
     { value: 'Advanced' },
     { value: 'All Levels' },
   ];
-  Languages: any = [
+  Languages: Common[] = [
     { value: 'English' },
     { value: 'Malayalam' },
     { value: 'Hindi' },
@@ -132,5 +135,6 @@ export class AddCourseComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.categorySubscription.unsubscribe();
+    this.uploadCourseSubscription.unsubscribe();
   }
 }

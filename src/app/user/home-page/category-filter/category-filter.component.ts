@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HomePageService } from '../service/home-page.service';
+import { CourseResponse } from 'src/app/interface/user.interface';
 
 @Component({
   selector: 'app-category-filter',
@@ -12,7 +13,7 @@ export class CategoryFilterComponent implements OnInit, OnDestroy {
   categoryIdSubscription!: Subscription;
   categoryFilterSubscription!: Subscription;
   categoryId = '';
-  categoryCourse!: any;
+  categoryCourse!: Array<CourseResponse>;
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _homeService: HomePageService,
@@ -26,7 +27,7 @@ export class CategoryFilterComponent implements OnInit, OnDestroy {
     );
     this.categoryFilterSubscription = this._homeService
       .fetchCategoryCourse(this.categoryId)
-      .subscribe((data) => {
+      .subscribe((data: Array<CourseResponse>) => {
         this.categoryCourse = data;
       });
   }

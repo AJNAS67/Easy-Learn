@@ -43,6 +43,7 @@
           <mat-label>Total Hr.</mat-label>
           <input
             matInput
+            type="number"
             formControlName="TotalHr"
             placeholder="total  Hr of your course"
           />
@@ -56,13 +57,6 @@
               !myForm.get('TotalHr')?.hasError('required')
             "
             >should enter valid input
-          </mat-error>
-          <mat-error
-            *ngIf="
-              myForm.get('TotalHr')?.errors &&
-              !myForm.get('TotalHr')?.hasError('required')
-            "
-            >First name should need 3 character
           </mat-error>
         </mat-form-field>
 
@@ -156,7 +150,7 @@
           >
             <div [formGroup]="lesForm">
               <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Video title <title></title></mat-label>
+                <mat-label>Video title </mat-label>
                 <input
                   matInput
                   formControlName="title"
@@ -170,36 +164,43 @@
                   type="file"
                   required
                   formControlName="video"
+                  accept="video/*"
                   (change)="uploadVideo($event, i)"
                 />
-                <!-- <label>Choose file</label> -->
               </div>
               <br />
 
-              <mat-icon class="delete-btn" (click)="deleteLesson(i)">
-                delete_forever</mat-icon
-              >
+              <a mat-mini-fab (click)="deleteLesson(i)" style="background-color: brown;" class="my-3">
+                <mat-icon
+                  aria-hidden="false"
+                
+                  aria-label="Example home icon"
+                  fontIcon="delete"
+                ></mat-icon>
+              </a>
+              
             </div>
           </ng-container>
         </ng-container>
 
-        <div>
+        <div class="mb-3">
           <a mat-mini-fab (click)="addLesson()">
             <mat-icon class="add-course-btn">add</mat-icon>
           </a>
         </div>
 
-        <button
-          type="submit"
-          class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
-          mat-dialog-close
-        >
-          cancel
+        <button mat-dialog-close mat-raised-button color="warn">
+          Cancel
         </button>
-        <button
+
+
+
+        <button class="mx-5"
           type="submit"
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mx-5"
           mat-dialog-close
+          mat-raised-button
+          color="primary"
+          [disabled]="myForm.invalid"
         >
           Save
         </button>

@@ -3,6 +3,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { SnackBarService } from '../service/snack-bar.service';
+import { LoginResponse } from 'src/app/interface/user.interface';
 
 @Component({
   selector: 'app-admin-login',
@@ -27,7 +28,7 @@ export class AdminLoginComponent {
   }
   onSubmit() {
     this.authService.loginUser(this.myForm.value).subscribe(
-      (res) => {
+      (res:LoginResponse) => {
         if (res.status && res.admin) {
           this._snackBarService.popUpMessage('Login successfully');
           localStorage.setItem('admin_token', res.access_token);
@@ -42,9 +43,5 @@ export class AdminLoginComponent {
   directToRegisterPage() {
     this, this.router.navigate(['user/register']);
   }
-  checkValid() {
-    this.authService.check().subscribe((res: any) => {
-      console.log(res, 'res');
-    });
-  }
+  
 }

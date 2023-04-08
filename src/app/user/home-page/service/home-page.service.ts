@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Category, CourseResponse } from 'src/app/interface/user.interface';
+import { AddToCartResponse, Category, CourseResponse } from 'src/app/interface/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -40,7 +40,7 @@ export class HomePageService {
     );
   }
   fetchCategoryCourse(id: string) {
-    return this.http.get(`${this.baseUrl}/course/category_course/${id}`);
+    return this.http.get<Array<CourseResponse>>(`${this.baseUrl}/course/category_course/${id}`);
   }
 
   getAllCategory() {
@@ -49,15 +49,15 @@ export class HomePageService {
     );
   }
   fetchCourseDetails(id: string) {
-    return this.http.get(`${this.baseUrl}/course/course/${id}`);
+    return this.http.get<CourseResponse>(`${this.baseUrl}/course/course/${id}`);
   }
   addToCart(courseId: string) {
-    return this.http.post(`${this.baseUrl}/cart/addToCart`, {
+    return this.http.post<AddToCartResponse>(`${this.baseUrl}/cart/addToCart`, {
       courseId: courseId,
     });
   }
   addToWishlist(courseId: string) {
-    return this.http.post(`${this.baseUrl}/wishlist/addToWishlist`, {
+    return this.http.post<AddToCartResponse>(`${this.baseUrl}/wishlist/addToWishlist`, {
       courseId: courseId,
     });
   }

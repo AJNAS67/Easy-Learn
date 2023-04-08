@@ -8,22 +8,15 @@ import {
   CourseResponse,
   DeleteResponse,
   getUserDetailsResp,
-  Category,
   EnrolledCourse,
 } from 'src/app/interface/user.interface';
 
-// function _window() : any {
-  // return the global native browser window object
-  // return window;
-// }
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
 
-//   get nativeWindow() : any {
-//     return _window();
-//  }
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}

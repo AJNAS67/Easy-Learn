@@ -18,9 +18,9 @@ export class CartComponent implements OnInit {
   cartItems!: cartResponse;
   public payPalConfig?: IPayPalConfig;
   details: any;
-  showError!: any;
-  showCancel!: any;
-  showSuccess!: any;
+  showError!: boolean;
+  showCancel!: boolean;
+  showSuccess!: boolean;
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
@@ -42,7 +42,7 @@ export class CartComponent implements OnInit {
     this.payPalConfig = {
       currency: 'USD',
       clientId: `${environment.CLIENT_ID}`,
-      createOrderOnClient: (data: any) =>
+      createOrderOnClient: (data) =>
         <ICreateOrderRequest>{
           intent: 'CAPTURE',
           purchase_units: [

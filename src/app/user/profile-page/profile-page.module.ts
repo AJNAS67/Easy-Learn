@@ -24,7 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SnackBarModule } from 'src/app/snack-bar/snack-bar/snack-bar.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxPayPalModule } from 'ngx-paypal';
-
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -54,7 +54,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
     MatDialogModule,
     SnackBarModule,
     MatCheckboxModule,
-    NgxPayPalModule
+    NgxPayPalModule,
+    MatButtonModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
