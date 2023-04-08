@@ -37,6 +37,7 @@ import { CategoryFilterComponent } from './category-filter/category-filter.compo
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
+
   ],
   providers: [HomePageService],
 })

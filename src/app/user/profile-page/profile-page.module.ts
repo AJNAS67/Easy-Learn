@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileRoutingModule } from './profile-routing.module';
@@ -23,6 +23,7 @@ import { AddCourseComponent } from './components/add-course/add-course.component
 import { MatDialogModule } from '@angular/material/dialog';
 import { SnackBarModule } from 'src/app/snack-bar/snack-bar/snack-bar.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatDialogModule,
     SnackBarModule,
     MatCheckboxModule,
+    NgxPayPalModule
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ProfilePageModule {}

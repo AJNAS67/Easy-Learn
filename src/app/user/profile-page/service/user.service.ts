@@ -9,15 +9,25 @@ import {
   DeleteResponse,
   getUserDetailsResp,
   Category,
+  EnrolledCourse,
 } from 'src/app/interface/user.interface';
 
+// function _window() : any {
+  // return the global native browser window object
+  // return window;
+// }
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+
+//   get nativeWindow() : any {
+//     return _window();
+//  }
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
+  
 
   uploadProfileDetails(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/profile`, data);
@@ -39,9 +49,9 @@ export class UserService {
   }
 
   // to upload video thumbnail
-  uploadVideoThumbnail(uploadImage: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/upload_thumbnail`, uploadImage);
-  }
+  // uploadVideoThumbnail(uploadImage: any): Observable<any> {
+  //   return this.http.post<any>(`${this.baseUrl}/upload_thumbnail`, uploadImage);
+  // }
   getUserDetails() {
     return this.http.get<getUserDetailsResp>(`${this.baseUrl}/api/userDetails`);
   }
@@ -77,4 +87,8 @@ export class UserService {
   removeFromCart(id: string) {
     return this.http.delete(`${this.baseUrl}/cart/removeFromCart/${id}`);
   }
+checkout(order:cartResponse){
+  return this.http.post<EnrolledCourse>(`${this.baseUrl}/enrolled-course/subscribeCourse`,order)
+}
+
 }

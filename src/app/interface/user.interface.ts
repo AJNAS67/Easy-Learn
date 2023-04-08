@@ -62,3 +62,12 @@ export interface Category {
   _id: string;
   course_category: string;
 }
+export interface EnrolledCourse {
+  _id: string;
+  userId: string;
+  course: [
+    { courseId: string; courseName: string; image: string; price: string }
+  ];
+  totalPrice: number;
+  paymentStatus: boolean;
+}
