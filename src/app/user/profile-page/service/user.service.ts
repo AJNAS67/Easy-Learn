@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {
   cartResponse,
@@ -11,16 +11,16 @@ import {
   EnrolledCourse,
 } from 'src/app/interface/user.interface';
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-
   baseUrl = environment.apiUrl;
-
+  private _refreshRequired = new Subject<void>();
+  get RequiredRefresh() {
+    return this._refreshRequired;
+  }
   constructor(private http: HttpClient) {}
-  
 
   uploadProfileDetails(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/profile`, data);
@@ -50,7 +50,9 @@ export class UserService {
   }
 
   uploadCourse(course: CourseResponse): Observable<any> {
-    return this.http.post(`${this.baseUrl}/course/add-course`, course);
+    return this.http.post(`${this.baseUrl}/course/add-course`, course).pipe(tap(()=>{
+      this.RequiredRefresh.next()
+    }))
   }
   deleteCourse(courseId: string) {
     return this.http.delete<DeleteResponse>(
@@ -62,7 +64,6 @@ export class UserService {
       `${this.baseUrl}/course/mentor_course`
     );
   }
-  
 
   getCartItems() {
     return this.http.get<cartResponse>(`${this.baseUrl}/cart/userCart`);
@@ -80,8 +81,10 @@ export class UserService {
   removeFromCart(id: string) {
     return this.http.delete(`${this.baseUrl}/cart/removeFromCart/${id}`);
   }
-checkout(order:cartResponse){
-  return this.http.post<EnrolledCourse>(`${this.baseUrl}/enrolled-course/subscribeCourse`,order)
-}
-
+  checkout(order: cartResponse) {
+    return this.http.post<EnrolledCourse>(
+      `${this.baseUrl}/enrolled-course/subscribeCourse`,
+      order
+    );
+  }
 }

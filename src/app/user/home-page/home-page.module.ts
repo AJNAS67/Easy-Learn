@@ -16,6 +16,7 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomePageService } from './service/home-page.service';
 import { CategoryFilterComponent } from './category-filter/category-filter.component';
+import { NoCourseFoundComponent } from './no-course-found/no-course-found.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CategoryFilterComponent } from './category-filter/category-filter.compo
     CategoryComponent,
     CourseDetailsComponent,
     CategoryFilterComponent,
+    NoCourseFoundComponent,
   ],
   imports: [
     CommonModule,

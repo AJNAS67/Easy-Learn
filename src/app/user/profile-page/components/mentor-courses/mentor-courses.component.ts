@@ -23,6 +23,9 @@ export class MentorCoursesComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): void {
     this.getCourse();
+    this._userService.RequiredRefresh.subscribe((r) => {
+      this.getCourse();
+    });
   }
 
   getCourse() {
@@ -32,7 +35,7 @@ export class MentorCoursesComponent implements OnInit, OnDestroy {
         this.mentorCourses$ = res;
       });
   }
-  
+
   openDialog() {
     this._matDialog.open(AddCourseComponent, { minWidth: '50%' });
   }

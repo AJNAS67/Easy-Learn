@@ -24,7 +24,7 @@
             ><br />
             <span>{{ course.MentorName }}</span>
             <br />
-            <span>{{ course.Price | currency : "INR" : true }}</span>
+            <span>$ {{ course.Price }}</span>
           </div>
         </div>
       </div>
@@ -54,19 +54,14 @@
           </div>
         </ng-container>
         <ng-template #newDeb>
-          <h3 class="text-center">sorry ! no course found !</h3>
-          <img
-            style="width: 450px; height: 250px; object-fit: cover"
-            src="/assets/images/empty_course_1.jpg"
-            alt=""
-          />
+          <app-no-course-found></app-no-course-found>
         </ng-template>
       </div>
     </mat-tab>
 
     <mat-tab label="Featured">
       <div class="container categories mt-5">
-        <ng-container *ngIf="featuredCourses?.length; else newDeb">
+        <ng-container *ngIf="featuredCourses?.length; else NOfeaturedCourses">
           <div class="container categories mt-5">
             <div *ngFor="let course of featuredCourses" class="mb-3">
               <div>
@@ -87,19 +82,14 @@
             </div>
           </div>
         </ng-container>
-        <ng-template #newDeb>
-          <h3 class="text-center">sorry ! no course found !</h3>
-          <img
-            style="width: 450px; height: 250px; object-fit: cover"
-            src="/assets/images/empty_course_1.jpg"
-            alt=""
-          />
+        <ng-template #NOfeaturedCourses>
+          <app-no-course-found></app-no-course-found>
         </ng-template>
       </div>
     </mat-tab>
 
     <mat-tab label="Popular">
-      <ng-container *ngIf="popularCourses?.length; else newDeb">
+      <ng-container *ngIf="popularCourses?.length; else noPopular">
         <div class="container categories mt-5">
           <div *ngFor="let course of popularCourses" class="mb-3">
             <div>
@@ -120,18 +110,13 @@
           </div>
         </div>
       </ng-container>
-      <ng-template #newDeb>
-        <h3 class="text-center">sorry ! no course found !</h3>
-        <img
-          style="width: 450px; height: 250px; object-fit: cover"
-          src="/assets/images/empty_course_1.jpg"
-          alt=""
-        />
+      <ng-template #noPopular>
+        <app-no-course-found></app-no-course-found>
       </ng-template>
     </mat-tab>
     <mat-tab label="ML and AI">
       <div class="container categories mt-5">
-        <ng-container *ngIf="mL_aiCourses?.length; else newDeb">
+        <ng-container *ngIf="mL_aiCourses?.length; else noML_course">
           <div *ngFor="let course of mL_aiCourses" class="mb-3">
             <div>
               <img
@@ -150,17 +135,8 @@
             </div>
           </div>
         </ng-container>
-        <ng-template #newDeb>
-          <div>
-            <h3 class="text-center">sorry ! no course found !</h3>
-          </div>
-          <div>
-            <img
-              style="width: 450px; height: 250px; object-fit: cover"
-              src="/assets/images/empty_course_1.jpg"
-              alt=""
-            />
-          </div>
+        <ng-template #noML_course>
+          <app-no-course-found></app-no-course-found>
         </ng-template>
       </div>
     </mat-tab>

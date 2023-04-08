@@ -8,6 +8,7 @@ import {
 } from 'src/app/interface/user.interface';
 import { Subscription } from 'rxjs';
 import { HomePageService } from 'src/app/user/home-page/service/home-page.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-course',
@@ -26,7 +27,8 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private _userService: UserService,
-    private _homePageService: HomePageService
+    private _homePageService: HomePageService,
+    public dialogRef: MatDialogRef<AddCourseComponent>
   ) {}
 
   ngOnInit(): void {
@@ -58,7 +60,9 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.uploadCourseSubscription = this._userService
       .uploadCourse(this.myForm.value)
-      .subscribe((res: CourseResponse) => {});
+      .subscribe((res: CourseResponse) => {
+        this.dialogRef.close();
+      });
   }
 
   get lessons() {

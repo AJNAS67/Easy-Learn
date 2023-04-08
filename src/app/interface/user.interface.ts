@@ -91,6 +91,16 @@ export interface RegisterResponse {
   message: string;
   isAdded: boolean;
 }
-export interface PaymentResponse{
-  
+export interface PaymentResponse {}
+export interface imageUploadResponse {
+  api_key: string;
+  asset_id: string;
+  bytes: number;
+  formate: string;
+  original_filename: string;
+  placeholder: boolean;
+  type: string;
+  public_id: string;
+  secure_url: string;
+  url: string;
 }
