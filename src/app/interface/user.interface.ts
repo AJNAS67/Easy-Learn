@@ -96,11 +96,43 @@ export interface imageUploadResponse {
   api_key: string;
   asset_id: string;
   bytes: number;
+  created_at:string;
   formate: string;
   original_filename: string;
   placeholder: boolean;
+  resource_type:string;
   type: string;
   public_id: string;
   secure_url: string;
   url: string;
+}
+
+export interface VideoUploadResponse {
+  api_key: string;
+  asset_id: string;
+  bit_rate:number;
+  duration:number;
+  bytes: number;
+  created_at:string;
+  formate: string;
+  frame_rate:number;
+  original_filename: string;
+  placeholder: boolean;
+  resource_type:string;
+  type: string;
+  public_id: string;
+  secure_url: string;
+  url: string;
+}
+export interface profileUpdate {
+  fullName: string;
+  email: string;
+  pinCode: number;
+  phoneNumber: number;
+  dateofBirth: string;
+  state: string;
+  district: string;
+  city: string;
+  address: string;
+  userId:string;
 }

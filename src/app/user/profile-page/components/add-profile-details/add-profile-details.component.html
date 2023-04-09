@@ -1,190 +1,180 @@
 <div *ngIf="profileDetail != undefined; else add_details">
-    <form>
-      <div class="flex flex-wrap gap-3">
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>Full Name</mat-label>
-  
-          <input matInput [value]="profileDetail?.fullName" />
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>Email</mat-label>
-          <input
-            matInput
-            placeholder="Ex. pat@example.com"
-            [value]="profileDetail?.email"
-          />
-        </mat-form-field>
-      </div>
-      <div class="flex flex-wrap gap-3">
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>pinCode</mat-label>
-  
-          <input
-            matInput
-            #postalCode
-            maxlength="5"
-            placeholder="Ex. 94105"
-            [value]="profileDetail?.pinCode"
-          />
-        </mat-form-field>
-        <mat-form-field class="sm:w-full md:w-5/6 lg:w-2/5" appearance="outline">
-          <mat-label>PhoneNumber</mat-label>
-          <span matPrefix> &nbsp;&nbsp;+91 &nbsp;</span>
-          <input
-            type="tel"
-            matInput
-            placeholder="555-555-1234"
-            [value]="profileDetail?.phoneNumber"
-          />
-          <mat-icon matSuffix>mode_edit</mat-icon>
-        </mat-form-field>
-      </div>
-      <div class="flex flex-wrap gap-3">
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>Date of Birth</mat-label>
-  
-          <input matInput [value]="profileDetail?.dateofBirth" />
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>State</mat-label>
-  
-          <input matInput [value]="profileDetail?.state" />
-        </mat-form-field>
-      </div>
-  
-      <div class="flex gap-3">
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>District</mat-label>
-  
-          <input matInput [value]="profileDetail?.city" />
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>City</mat-label>
-  
-          <input matInput />
-        </mat-form-field>
-      </div>
-      <div class="flex gap-3">
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label> Address </mat-label>
-          <textarea matInput [value]="profileDetail?.address"></textarea>
-        </mat-form-field>
-      </div>
-      <!-- <button
-        type="subimit"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
-        [disabled]="myForm.Invalid"
-      >
-        save
-      </button> -->
-    </form>
-  </div>
-  
-  <ng-template #add_details>
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-      <div class="flex flex-wrap gap-3">
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>Full Name</mat-label>
-  
-          <input matInput formControlName="fullName" />
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>Email</mat-label>
-          <input
-            matInput
-            formControlName="email"
-            placeholder="Ex. pat@example.com"
-          />
-          <mat-error *ngIf="myForm.get('email').hasError('required')"
-            >Email is required</mat-error
-          >
-          <mat-error *ngIf="myForm.get('email').hasError('email')"
-            >Invalid email format</mat-error
-          >
-        </mat-form-field>
-      </div>
-      <div class="flex flex-wrap gap-3">
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>pinCode</mat-label>
-  
-          <input
-            matInput
-            type="number"
-            #postalCode
-            maxlength="5"
-            placeholder="Ex. 94105"
-            formControlName="pinCode"
-          />
-        </mat-form-field>
-        <mat-form-field class="sm:w-full md:w-5/6 lg:w-2/5" appearance="outline">
-          <mat-label>PhoneNumber</mat-label>
-          <span matPrefix> &nbsp;&nbsp;+91 &nbsp;</span>
-          <input
-            type="tel"
-            matInput
-            placeholder="555-555-1234"
-            formControlName="phoneNumber"
-          />
-          <mat-icon matSuffix>mode_edit</mat-icon>
-        </mat-form-field>
-      </div>
-      <div class="flex flex-wrap gap-3">
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>Date of Birth</mat-label>
-          <input
-            matInput
-            [matDatepicker]="picker"
-            formControlName="dateofBirth"
-          />
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>State</mat-label>
-          <mat-select
-            [(ngModel)]="selectedValue"
-            name="state"
-            formControlName="state"
-          >
-            <mat-option *ngFor="let state of states" [value]="state.viewValue">
-              {{ state.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-  
-      <div class="flex gap-3">
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>District</mat-label>
-  
-          <input matInput formControlName="district" />
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label>City</mat-label>
-  
-          <input matInput formControlName="city" />
-        </mat-form-field>
-      </div>
-      <div class="flex gap-3">
-        <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
-          <mat-label> Address </mat-label>
-          <textarea matInput formControlName="address"></textarea>
-        </mat-form-field>
-      </div>
-      <button
-        type="submit"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
-        [disabled]="myForm.invalid"
-      >
-        save
-      </button>
-    </form>
-  </ng-template>
-  
- 
+  <form>
+    <div class="flex flex-wrap gap-3">
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>Full Name</mat-label>
+
+        <input matInput [value]="profileDetail?.fullName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="Ex. pat@example.com"
+          [value]="profileDetail?.email"
+        />
+      </mat-form-field>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>pinCode</mat-label>
+
+        <input
+          matInput
+          #postalCode
+          maxlength="5"
+          placeholder="Ex. 94105"
+          [value]="profileDetail?.pinCode"
+        />
+      </mat-form-field>
+      <mat-form-field class="sm:w-full md:w-5/6 lg:w-2/5" appearance="outline">
+        <mat-label>PhoneNumber</mat-label>
+        <span matPrefix> &nbsp;&nbsp;+91 &nbsp;</span>
+        <input
+          type="tel"
+          matInput
+          placeholder="555-555-1234"
+          [value]="profileDetail?.phoneNumber"
+        />
+        <mat-icon matSuffix>mode_edit</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>Date of Birth</mat-label>
+
+        <input matInput [value]="profileDetail?.dateofBirth" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>State</mat-label>
+
+        <input matInput [value]="profileDetail?.state" />
+      </mat-form-field>
+    </div>
+
+    <div class="flex gap-3">
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>District</mat-label>
+
+        <input matInput [value]="profileDetail?.district" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>City</mat-label>
+        <input matInput [value]="profileDetail?.city" />
+      </mat-form-field>
+    </div>
+    <div class="flex gap-3">
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label> Address </mat-label>
+        <textarea matInput [value]="profileDetail?.address"></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+
+<ng-template #add_details>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="flex flex-wrap gap-3">
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>Full Name</mat-label>
+
+        <input matInput formControlName="fullName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          placeholder="Ex. pat@example.com"
+        />
+        <mat-error *ngIf="myForm.get('email')?.hasError('required')"
+          >Email is required</mat-error
+        >
+        <mat-error *ngIf="myForm.get('email')?.hasError('email')"
+          >Invalid email format</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>pinCode</mat-label>
+
+        <input
+          matInput
+          type="number"
+          #postalCode
+          maxlength="5"
+          placeholder="Ex. 94105"
+          formControlName="pinCode"
+        />
+      </mat-form-field>
+      <mat-form-field class="sm:w-full md:w-5/6 lg:w-2/5" appearance="outline">
+        <mat-label>PhoneNumber</mat-label>
+        <span matPrefix> &nbsp;&nbsp;+91 &nbsp;</span>
+        <input
+          type="tel"
+          matInput
+          placeholder="555-555-1234"
+          formControlName="phoneNumber"
+        />
+        <mat-icon matSuffix>mode_edit</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>Date of Birth</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="dateofBirth"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>State</mat-label>
+        <mat-select
+          [(ngModel)]="selectedValue"
+          name="state"
+          formControlName="state"
+        >
+          <mat-option *ngFor="let state of states" [value]="state.viewValue">
+            {{ state.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="flex gap-3">
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>District</mat-label>
+
+        <input matInput formControlName="district" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label>City</mat-label>
+
+        <input matInput formControlName="city" />
+      </mat-form-field>
+    </div>
+    <div class="flex gap-3">
+      <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+        <mat-label> Address </mat-label>
+        <textarea matInput formControlName="address"></textarea>
+      </mat-form-field>
+    </div>
+    <button
+      type="submit"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+      [disabled]="myForm.invalid"
+    >
+      save
+    </button>
+  </form>
+</ng-template>

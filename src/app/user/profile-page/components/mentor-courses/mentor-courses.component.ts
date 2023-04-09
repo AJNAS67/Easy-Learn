@@ -16,6 +16,9 @@ import { Subscription } from 'rxjs';
 export class MentorCoursesComponent implements OnInit, OnDestroy {
   mentorCourses$!: Array<CourseResponse>;
   courseSubscription!: Subscription;
+  closeModalSubscription$!: Subscription;
+  deleteCourseSubscription$!: Subscription;
+
   constructor(
     private _matDialog: MatDialog,
     private _userService: UserService,
@@ -36,12 +39,20 @@ export class MentorCoursesComponent implements OnInit, OnDestroy {
       });
   }
 
-  openDialog() {
-    this._matDialog.open(AddCourseComponent, { minWidth: '50%' });
+  openDialog(): void {
+    const dialogRef = this._matDialog.open(AddCourseComponent, {
+      data: { mentorCourses: this.mentorCourses$ },
+    });
+
+    this.closeModalSubscription$ = dialogRef
+      .afterClosed()
+      .subscribe((result) => {
+        this.getCourse();
+      });
   }
 
   deleteCourse(courseId: string) {
-    this._userService
+    this.deleteCourseSubscription$ = this._userService
       .deleteCourse(courseId)
       .subscribe((res: DeleteResponse) => {
         if (res.acknowledged) {
@@ -53,6 +64,8 @@ export class MentorCoursesComponent implements OnInit, OnDestroy {
       });
   }
   ngOnDestroy(): void {
-    this.courseSubscription.unsubscribe();
+    this.courseSubscription?.unsubscribe();
+    this.closeModalSubscription$?.unsubscribe();
+    this.deleteCourseSubscription$?.unsubscribe();
   }
 }

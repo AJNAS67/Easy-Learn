@@ -3,46 +3,49 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { untilDestroyed } from '@ngneat/until-destroy';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../../service/user.service';
 import { getUserDetailsResp } from 'src/app/interface/user.interface';
 import { Subscription } from 'rxjs';
-// import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit ,OnDestroy{
+export class ProfileComponent implements OnInit, OnDestroy {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   baseUrl = environment.apiUrl;
   profile_pic!: string;
   useName!: string;
   email!: string;
-  userDetailsSubscription$!:Subscription
+  userDetailsSubscription$!: Subscription;
+  observerSubscription$!: Subscription;
+  uploadProfilePickSubscription$!: Subscription;
+  untilDestroyedSubscription$!: Subscription;
 
   constructor(
     private observer: BreakpointObserver,
     private router: Router,
     private _userService: UserService
   ) {}
-  
 
   ngOnInit(): void {
     this.userDetails();
   }
   userDetails() {
-    this.userDetailsSubscription$=this._userService.getUserDetails().subscribe((data: getUserDetailsResp) => {
-      this.profile_pic = data.profile_pic;
-      this.useName = data.firstName;
-      this.email = data.email;
-    });
+    this.userDetailsSubscription$ = this._userService
+      .getUserDetails()
+      .subscribe((data: getUserDetailsResp) => {
+        this.profile_pic = data.profile_pic;
+        this.useName = data.firstName;
+        this.email = data.email;
+      });
   }
   ngAfterViewInit() {
-    this.observer
+    this.observerSubscription$ = this.observer
       .observe(['(max-width: 800px)'])
       .pipe(delay(1), untilDestroyed(this))
       .subscribe((res) => {
@@ -55,7 +58,7 @@ export class ProfileComponent implements OnInit ,OnDestroy{
         }
       });
 
-    this.router.events
+    this.untilDestroyedSubscription$ = this.router.events
       .pipe(
         untilDestroyed(this),
         filter((e) => e instanceof NavigationEnd)
@@ -68,25 +71,25 @@ export class ProfileComponent implements OnInit ,OnDestroy{
   }
 
   upload(event: any) {
-    console.log(event, 'files');
-
     const file = event.target?.files[0];
-    console.log(file, 'file');
     const form_data = new FormData();
     form_data.append('file', file);
-    this._userService.uploadProfilePick(form_data).subscribe(
-      (res) => {
-        console.log(res, 'image uploaded res');
-        this.userDetails()
-        this.profile_pic = res.profile_pic;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.uploadProfilePickSubscription$ = this._userService
+      .uploadProfilePick(form_data)
+      .subscribe(
+        (res) => {
+          this.userDetails();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   ngOnDestroy(): void {
-    this.userDetailsSubscription$.unsubscribe()
+    this.userDetailsSubscription$?.unsubscribe();
+    this.observerSubscription$?.unsubscribe();
+    this.uploadProfilePickSubscription$?.unsubscribe();
+    this.untilDestroyedSubscription$?.unsubscribe();
   }
 }

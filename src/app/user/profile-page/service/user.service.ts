@@ -9,6 +9,9 @@ import {
   DeleteResponse,
   getUserDetailsResp,
   EnrolledCourse,
+  imageUploadResponse,
+  profileUpdate,
+  VideoUploadResponse,
 } from 'src/app/interface/user.interface';
 
 @Injectable({
@@ -22,29 +25,26 @@ export class UserService {
   }
   constructor(private http: HttpClient) {}
 
-  uploadProfileDetails(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/profile`, data);
+  uploadProfileDetails(data: profileUpdate): Observable<profileUpdate> {
+    return this.http.post<profileUpdate>(`${this.baseUrl}/profile`, data);
   }
   getProfileData() {
-    return this.http.get(`${this.baseUrl}/get_user_details`);
+    return this.http.get<Array< profileUpdate>>(`${this.baseUrl}/get_user_details`);
   }
   // to upload profile pic
-  uploadProfilePick(uploadImage: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/upload`, uploadImage);
+  uploadProfilePick(uploadImage: FormData): Observable<imageUploadResponse> {
+    return this.http.post<imageUploadResponse>(`${this.baseUrl}/upload`, uploadImage);
   }
   // to upload course thumbnail
-  uploadThumbnail(uploadImage: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/upload_thumbnail`, uploadImage);
+  uploadThumbnail(uploadImage: FormData): Observable<imageUploadResponse> {
+    return this.http.post<imageUploadResponse>(`${this.baseUrl}/upload_thumbnail`, uploadImage);
   }
 
-  uploadCourseVideo(uploadVideo: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/upload_video`, uploadVideo);
+  uploadCourseVideo(uploadVideo: FormData): Observable<VideoUploadResponse> {
+    return this.http.post<VideoUploadResponse>(`${this.baseUrl}/upload_video`, uploadVideo);
   }
 
-  // to upload video thumbnail
-  // uploadVideoThumbnail(uploadImage: any): Observable<any> {
-  //   return this.http.post<any>(`${this.baseUrl}/upload_thumbnail`, uploadImage);
-  // }
+  
   getUserDetails() {
     return this.http.get<getUserDetailsResp>(`${this.baseUrl}/api/userDetails`);
   }

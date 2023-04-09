@@ -5,6 +5,7 @@ import {
   Category,
   Common,
   CourseResponse,
+  imageUploadResponse,
 } from 'src/app/interface/user.interface';
 import { Subscription } from 'rxjs';
 import { HomePageService } from 'src/app/user/home-page/service/home-page.service';
@@ -99,13 +100,10 @@ export class AddCourseComponent implements OnInit, OnDestroy {
 
   upload(event: any) {
     const file = event.target?.files[0];
-    console.log(file, 'file');
-    const formdata = new FormData();
-    formdata.append('file', file);
-    this._userService.uploadThumbnail(formdata).subscribe(
-      (res: any) => {
-        console.log(res, 'image uploaded res');
-
+    const form_data = new FormData();
+    form_data.append('file', file);
+    this._userService.uploadThumbnail(form_data).subscribe(
+      (res: imageUploadResponse) => {
         this.myForm.patchValue({
           ThumbnailImage: res.url,
         });
