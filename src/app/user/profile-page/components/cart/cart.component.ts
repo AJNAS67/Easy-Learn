@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
-import { EnrolledCourse, cartResponse } from 'src/app/interface/user.interface';
+import {
+  EnrolledCourse,
+  OrderResponse,
+  cartResponse,
+} from 'src/app/interface/user.interface';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -99,7 +103,7 @@ export class CartComponent implements OnInit {
         if (data.status == 'COMPLETED') {
           this._userService
             .checkout(this.cartItems)
-            .subscribe((res: EnrolledCourse) => {
+            .subscribe((res: OrderResponse) => {
               if (res.paymentStatus) {
                 this.popUpMessage(
                   'payment successfully complected! check your course on Enrolled Courses'

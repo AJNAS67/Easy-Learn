@@ -12,6 +12,7 @@ import {
   imageUploadResponse,
   profileUpdate,
   VideoUploadResponse,
+  OrderResponse,
 } from 'src/app/interface/user.interface';
 
 @Injectable({
@@ -29,30 +30,42 @@ export class UserService {
     return this.http.post<profileUpdate>(`${this.baseUrl}/profile`, data);
   }
   getProfileData() {
-    return this.http.get<Array< profileUpdate>>(`${this.baseUrl}/get_user_details`);
+    return this.http.get<Array<profileUpdate>>(
+      `${this.baseUrl}/get_user_details`
+    );
   }
   // to upload profile pic
   uploadProfilePick(uploadImage: FormData): Observable<imageUploadResponse> {
-    return this.http.post<imageUploadResponse>(`${this.baseUrl}/upload`, uploadImage);
+    return this.http.post<imageUploadResponse>(
+      `${this.baseUrl}/upload`,
+      uploadImage
+    );
   }
   // to upload course thumbnail
   uploadThumbnail(uploadImage: FormData): Observable<imageUploadResponse> {
-    return this.http.post<imageUploadResponse>(`${this.baseUrl}/upload_thumbnail`, uploadImage);
+    return this.http.post<imageUploadResponse>(
+      `${this.baseUrl}/upload_thumbnail`,
+      uploadImage
+    );
   }
 
   uploadCourseVideo(uploadVideo: FormData): Observable<VideoUploadResponse> {
-    return this.http.post<VideoUploadResponse>(`${this.baseUrl}/upload_video`, uploadVideo);
+    return this.http.post<VideoUploadResponse>(
+      `${this.baseUrl}/upload_video`,
+      uploadVideo
+    );
   }
 
-  
   getUserDetails() {
     return this.http.get<getUserDetailsResp>(`${this.baseUrl}/api/userDetails`);
   }
 
   uploadCourse(course: CourseResponse): Observable<any> {
-    return this.http.post(`${this.baseUrl}/course/add-course`, course).pipe(tap(()=>{
-      this.RequiredRefresh.next()
-    }))
+    return this.http.post(`${this.baseUrl}/course/add-course`, course).pipe(
+      tap(() => {
+        this.RequiredRefresh.next();
+      })
+    );
   }
   deleteCourse(courseId: string) {
     return this.http.delete<DeleteResponse>(
@@ -63,6 +76,9 @@ export class UserService {
     return this.http.get<Array<CourseResponse>>(
       `${this.baseUrl}/course/mentor_course`
     );
+  }
+  getEnrolledCourses() {
+    return this.http.get<any>(`${this.baseUrl}/enrolled-course/get_enrolled_course`);
   }
 
   getCartItems() {
@@ -82,7 +98,7 @@ export class UserService {
     return this.http.delete(`${this.baseUrl}/cart/removeFromCart/${id}`);
   }
   checkout(order: cartResponse) {
-    return this.http.post<EnrolledCourse>(
+    return this.http.post<OrderResponse>(
       `${this.baseUrl}/enrolled-course/subscribeCourse`,
       order
     );

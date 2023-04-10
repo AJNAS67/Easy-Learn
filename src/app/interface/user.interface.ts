@@ -40,6 +40,11 @@ export interface CourseResponse {
   Featured: boolean;
   AI_and_ML: boolean;
 }
+export interface MentorCourse {
+  course: [{ courseId: CourseResponse }];
+  paymentStatus: boolean;
+  totalPrice: number;
+}
 export interface Category {
   _id: string;
   course_category: string;
@@ -71,6 +76,10 @@ export interface EnrolledCourse {
   totalPrice: number;
   paymentStatus: boolean;
 }
+export interface OrderResponse {
+  message: string;
+  paymentStatus: boolean;
+}
 export interface AddToCartResponse {
   message: string;
 }
@@ -96,11 +105,11 @@ export interface imageUploadResponse {
   api_key: string;
   asset_id: string;
   bytes: number;
-  created_at:string;
+  created_at: string;
   formate: string;
   original_filename: string;
   placeholder: boolean;
-  resource_type:string;
+  resource_type: string;
   type: string;
   public_id: string;
   secure_url: string;
@@ -110,15 +119,15 @@ export interface imageUploadResponse {
 export interface VideoUploadResponse {
   api_key: string;
   asset_id: string;
-  bit_rate:number;
-  duration:number;
+  bit_rate: number;
+  duration: number;
   bytes: number;
-  created_at:string;
+  created_at: string;
   formate: string;
-  frame_rate:number;
+  frame_rate: number;
   original_filename: string;
   placeholder: boolean;
-  resource_type:string;
+  resource_type: string;
   type: string;
   public_id: string;
   secure_url: string;
@@ -134,5 +143,5 @@ export interface profileUpdate {
   district: string;
   city: string;
   address: string;
-  userId:string;
+  userId: string;
 }

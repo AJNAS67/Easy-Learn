@@ -25,6 +25,7 @@ import { SnackBarModule } from 'src/app/snack-bar/snack-bar/snack-bar.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxPayPalModule } from 'ngx-paypal';
 import {MatButtonModule} from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -55,7 +56,8 @@ import {MatButtonModule} from '@angular/material/button';
     SnackBarModule,
     MatCheckboxModule,
     NgxPayPalModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressSpinnerModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

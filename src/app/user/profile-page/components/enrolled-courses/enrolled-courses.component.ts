@@ -1,36 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { UserService } from '../../service/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-enrolled-courses',
   templateUrl: './enrolled-courses.component.html',
-  styleUrls: ['./enrolled-courses.component.scss']
+  styleUrls: ['./enrolled-courses.component.scss'],
 })
-export class EnrolledCoursesComponent {
+export class EnrolledCoursesComponent implements OnInit, OnDestroy {
+  enrolledCourse!: any;
+  enrolledCourseSubscription$!: Subscription;
+  constructor(private _userService: UserService) {}
 
+  ngOnInit(): void {
+    this.enrolledCourseSubscription$ = this._userService
+      .getEnrolledCourses()
+      .subscribe((res) => {
+        let ar = [];
+        for (let i = 0; i < res.length; i++) {
+          const order = res[i];
+          for (let j = 0; j < order.course.length; j++) {
+            ar.push(order.course[j]);
+          }
+        }
+        this.enrolledCourse = ar;
+      });
+  }
 
-  cartItem = [
-    {
-      coursename: 'Angualar Full course',
-      price: 4000,
-      mentor: 'Jhon cina',
-      image: 'https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg',
-      Duration: '15.4hr',
-    },
-    {
-      coursename: 'javascript Advanced',
-      price: 5000,
-      mentor: 'Jhon cina',
-      image: 'https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg',
-      Duration: '15.4hr',
-    },
-    {
-      coursename: 'Machine learning',
-      price: 15000,
-      mentor: 'Jhon cina',
-      image: 'https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg',
-      Duration: '15.4hr',
-    },
-  ];
-
-
+  ngOnDestroy(): void {
+    this.enrolledCourseSubscription$.unsubscribe();
+  }
 }

@@ -21,6 +21,7 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   lesForm!: FormGroup;
   selectedValue!: string;
   imageSrc!: string;
+  isLoader!: boolean;
   item!: FormArray;
   Categories!: Array<Category>;
   categorySubscription!: Subscription;
@@ -99,11 +100,14 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   }
 
   upload(event: any) {
+    this.isLoader = true;
     const file = event.target?.files[0];
     const form_data = new FormData();
     form_data.append('file', file);
     this._userService.uploadThumbnail(form_data).subscribe(
       (res: imageUploadResponse) => {
+        this.isLoader = false;
+
         this.myForm.patchValue({
           ThumbnailImage: res.url,
         });

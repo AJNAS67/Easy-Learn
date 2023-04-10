@@ -1,3 +1,4 @@
+
 <div class="p-5" style="height: calc(100vh - 64px); overflow: auto">
   <div class="login-form">
     <form [formGroup]="myForm" class="example-form" (ngSubmit)="onSubmit()">
@@ -170,15 +171,18 @@
               </div>
               <br />
 
-              <a mat-mini-fab (click)="deleteLesson(i)" style="background-color: brown;" class="my-3">
+              <a
+                mat-mini-fab
+                (click)="deleteLesson(i)"
+                style="background-color: brown"
+                class="my-3"
+              >
                 <mat-icon
                   aria-hidden="false"
-                
                   aria-label="Example home icon"
                   fontIcon="delete"
                 ></mat-icon>
               </a>
-              
             </div>
           </ng-container>
         </ng-container>
@@ -189,13 +193,10 @@
           </a>
         </div>
 
-        <button mat-dialog-close mat-raised-button color="warn">
-          Cancel
-        </button>
+        <button mat-dialog-close mat-raised-button color="warn">Cancel</button>
 
-
-
-        <button class="mx-5"
+        <button
+          class="mx-5"
           type="submit"
           mat-dialog-close
           mat-raised-button
@@ -208,3 +209,8 @@
     </form>
   </div>
 </div>
+<div class="center">
+  <div class="ring"></div>
+  <span>Loading...</span>
+</div>
+
