@@ -24,8 +24,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SnackBarModule } from 'src/app/snack-bar/snack-bar/snack-bar.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxPayPalModule } from 'ngx-paypal';
-import {MatButtonModule} from '@angular/material/button';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { WatchCourseComponent } from './components/watch-course/watch-course.component';
+import { CourseSyllabusComponent } from './components/course-syllabus/course-syllabus.component';
+
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -35,6 +38,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MentorCoursesComponent,
     WishlistComponent,
     AddCourseComponent,
+    WatchCourseComponent,
+    CourseSyllabusComponent,
   ],
   imports: [
     CommonModule,
@@ -57,8 +62,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatCheckboxModule,
     NgxPayPalModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ProfilePageModule {}

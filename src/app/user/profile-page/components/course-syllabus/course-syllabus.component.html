@@ -1,0 +1,12 @@
+<button type="button" mat-button (click)="drawer.toggle()">
+  Toggle sidenav
+</button>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <button (click)="passVideo()" mat-raised-button>Toggle extra text</button>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <app-watch-course [title]="videoTitle"></app-watch-course>
+  </div>
+</mat-drawer-container>

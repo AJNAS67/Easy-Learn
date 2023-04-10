@@ -5,6 +5,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { EnrolledCoursesComponent } from './components/enrolled-courses/enrolled-courses.component';
 import { MentorCoursesComponent } from './components/mentor-courses/mentor-courses.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { CourseSyllabusComponent } from './components/course-syllabus/course-syllabus.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'add-profile-details', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'enrolled-courses', component: EnrolledCoursesComponent },
   { path: 'mentor-courses', component: MentorCoursesComponent },
   { path: 'wishlist', component: WishlistComponent },
+  { path: 'course', component: CourseSyllabusComponent },
 ];
 
 @NgModule({
