@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-enrolled-courses',
@@ -10,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class EnrolledCoursesComponent implements OnInit, OnDestroy {
   enrolledCourse!: any;
   enrolledCourseSubscription$!: Subscription;
-  constructor(private _userService: UserService) {}
+  constructor(private _userService: UserService, private _router: Router) {}
 
   ngOnInit(): void {
     this.enrolledCourseSubscription$ = this._userService
@@ -25,6 +26,9 @@ export class EnrolledCoursesComponent implements OnInit, OnDestroy {
         }
         this.enrolledCourse = ar;
       });
+  }
+  courseDetails(_id: string) {
+    this._router.navigate(['profile/course', _id]);
   }
 
   ngOnDestroy(): void {

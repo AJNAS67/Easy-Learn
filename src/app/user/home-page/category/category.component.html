@@ -34,7 +34,11 @@
       <div class="container categories mt-5">
         <ng-container *ngIf="trendingCourses?.length; else newDeb">
           <div class="container categories mt-5">
-            <div *ngFor="let course of trendingCourses" class="mb-3">
+            <div
+              *ngFor="let course of trendingCourses"
+              class="mb-3"
+              (click)="courseDetails(course._id)"
+            >
               <div>
                 <img
                   class="cat-img"
@@ -63,7 +67,11 @@
       <div class="container categories mt-5">
         <ng-container *ngIf="featuredCourses?.length; else NOfeaturedCourses">
           <div class="container categories mt-5">
-            <div *ngFor="let course of featuredCourses" class="mb-3">
+            <div
+              *ngFor="let course of featuredCourses"
+              class="mb-3"
+              (click)="courseDetails(course._id)"
+            >
               <div>
                 <img
                   class="cat-img"
@@ -91,7 +99,11 @@
     <mat-tab label="Popular">
       <ng-container *ngIf="popularCourses?.length; else noPopular">
         <div class="container categories mt-5">
-          <div *ngFor="let course of popularCourses" class="mb-3">
+          <div
+            *ngFor="let course of popularCourses"
+            class="mb-3"
+            (click)="courseDetails(course._id)"
+          >
             <div>
               <img
                 class="cat-img"
@@ -117,7 +129,11 @@
     <mat-tab label="ML and AI">
       <div class="container categories mt-5">
         <ng-container *ngIf="mL_aiCourses?.length; else noML_course">
-          <div *ngFor="let course of mL_aiCourses" class="mb-3">
+          <div
+            *ngFor="let course of mL_aiCourses"
+            class="mb-3"
+            (click)="courseDetails(course._id)"
+          >
             <div>
               <img
                 class="cat-img"

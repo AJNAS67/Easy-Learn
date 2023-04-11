@@ -1,8 +1,10 @@
-<h3 class="text-center">{{ title }}</h3>
+<div *ngIf="isLoading; else loadingCompleted">
+  <h1>loading ...........</h1>
+</div>
 
-<video style="max-width: 700px" controls>
-  <source
-    src="http://res.cloudinary.com/dlcknrzgd/video/upload/v1680687885/jkxqutn0mqiposdqdsey.mp4"
-    type="video/mp4"
-  />
-</video>
+<ng-template #loadingCompleted>
+  <h3 class="text-center">{{ title }}</h3>
+  <video style="max-width: 700px" controls *ngIf="videoUrl">
+    <source [src]="videoUrl" type="video/mp4" />
+  </video>
+</ng-template>

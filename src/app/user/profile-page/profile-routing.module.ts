@@ -14,7 +14,8 @@ const routes: Routes = [
   { path: 'enrolled-courses', component: EnrolledCoursesComponent },
   { path: 'mentor-courses', component: MentorCoursesComponent },
   { path: 'wishlist', component: WishlistComponent },
-  { path: 'course', component: CourseSyllabusComponent },
+  { path: 'course/:courseId', component: CourseSyllabusComponent },
+
 ];
 
 @NgModule({

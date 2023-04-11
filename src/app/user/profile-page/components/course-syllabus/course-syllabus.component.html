@@ -1,12 +1,23 @@
 <button type="button" mat-button (click)="drawer.toggle()">
-  Toggle sidenav
+  <mat-icon> menu </mat-icon>
 </button>
+
+<h2 class="text-center">{{ course?.CourseName }}</h2>
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <button (click)="passVideo()" mat-raised-button>Toggle extra text</button>
+    <div *ngFor="let module of course?.VideoModule">
+      <button (click)="passVideo(module)" mat-raised-button class="my-5">
+        {{ module?.title }}
+      </button>
+
+      <mat-divider></mat-divider>
+    </div>
   </mat-drawer>
 
   <div class="example-sidenav-content">
-    <app-watch-course [title]="videoTitle"></app-watch-course>
+    <app-watch-course
+      [title]="videoTitle"
+      [videoUrl]="videoUrl"
+    ></app-watch-course>
   </div>
 </mat-drawer-container>
