@@ -6,6 +6,8 @@ import { EnrolledCoursesComponent } from './components/enrolled-courses/enrolled
 import { MentorCoursesComponent } from './components/mentor-courses/mentor-courses.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { CourseSyllabusComponent } from './components/course-syllabus/course-syllabus.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { ChatNavComponent } from './components/chat-nav/chat-nav.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'add-profile-details', pathMatch: 'full' },
@@ -15,7 +17,7 @@ const routes: Routes = [
   { path: 'mentor-courses', component: MentorCoursesComponent },
   { path: 'wishlist', component: WishlistComponent },
   { path: 'course/:courseId', component: CourseSyllabusComponent },
-
+  { path: 'chat', component: ChatNavComponent },
 ];
 
 @NgModule({

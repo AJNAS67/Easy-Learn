@@ -28,6 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { WatchCourseComponent } from './components/watch-course/watch-course.component';
 import { CourseSyllabusComponent } from './components/course-syllabus/course-syllabus.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { ChatNavComponent } from './components/chat-nav/chat-nav.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { CourseSyllabusComponent } from './components/course-syllabus/course-syl
     AddCourseComponent,
     WatchCourseComponent,
     CourseSyllabusComponent,
+    ChatComponent,
+    ChatNavComponent,
   ],
   imports: [
     CommonModule,
