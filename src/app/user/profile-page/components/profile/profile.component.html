@@ -9,8 +9,11 @@
   </button>
 </mat-toolbar>
 
-<mat-sidenav-container  >
-  <mat-sidenav #sidenav="matSidenav" class=" menu-overflow-hidden mat-elevation-z8 " >
+<mat-sidenav-container>
+  <mat-sidenav
+    #sidenav="matSidenav"
+    class="menu-overflow-hidden mat-elevation-z8"
+  >
     <div *ngIf="profile_pic; else defualt_Pic">
       <img
         [src]="profile_pic"
@@ -27,52 +30,56 @@
       />
     </ng-template>
     <label>
-      <!-- <mat-icon
-        aria-hidden="false"
-        aria-label="Example upload icon"
-        fontIcon="cloud_upload"
-      ></mat-icon> -->
       update Pic
 
       <input type="file" size="60" (change)="upload($event)" />
     </label>
 
     <h4 class="name">{{ useName }}</h4>
-    <p class="designation">{{ email }}</p>
+    <!-- <p class="designation">{{ email }}</p> -->
 
-    <mat-divider></mat-divider>
-
-    <button
-      
-      class="menu-button"
-      [routerLink]="['add-profile-details']"
-    >
+    <button class="menu-button" [routerLink]="['add-profile-details']">
       <mat-icon>person</mat-icon>
       <span>Add Profile details</span>
     </button>
     <mat-divider></mat-divider>
 
-    <button  class="menu-button" [routerLink]="['cart']">
+    <button
+      class="menu-button"
+      [routerLink]="['cart']"
+      style="margin-bottom: 20px"
+    >
       <mat-icon>shopping_cart</mat-icon>
       <span>Cart</span>
     </button>
-    <mat-divider></mat-divider>
 
-    <button  class="menu-button" [routerLink]="['enrolled-courses']">
-      <mat-icon>golf_course</mat-icon>
-      <span>Enrolled-courses</span>
+    <button class="menu-button" [routerLink]="['wishlist']">
+      <mat-icon>favorite</mat-icon>
+      <span>Wishlist</span>
     </button>
     <mat-divider></mat-divider>
 
-    <button  class="menu-button" [routerLink]="['mentor-courses']">
+    <button class="menu-button" [routerLink]="['enrolled-courses']">
+      <mat-icon>golf_course</mat-icon>
+      <span>Enrolled-courses</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button class="menu-button" [routerLink]="['mentor-courses']">
       <mat-icon>library_books</mat-icon>
       <span>Mentor Course</span>
     </button>
     <mat-divider></mat-divider>
+    <button class="menu-button" [routerLink]="['mentor-courses']">
+      <mat-icon>library_books</mat-icon>
+      <span>Chat with Mentor</span>
+    </button>
+    <mat-divider></mat-divider>
 
-    <button  class="menu-button" [routerLink]="['wishlist']">
-      <mat-icon>favorite</mat-icon>
-      <span>Wishlist</span>
+    <button class="menu-button" [routerLink]="['mentor-courses']">
+      <mat-icon>library_books</mat-icon>
+      <span>Chat with Mentor</span>
     </button>
   </mat-sidenav>
   <mat-sidenav-content>

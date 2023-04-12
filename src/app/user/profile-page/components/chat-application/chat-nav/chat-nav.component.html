@@ -20,9 +20,17 @@
     </div>
     <!-- CHAT LIST -->
     <div class="chatlist">
-      <div class="block active">
-        <div class="imgBox">
+      <div class="block active" *ngFor="let user of allUsers">
+        <!-- <div class="imgBox">
           <img src="/assets/images/img1.jpg" alt="" class="cover" />
+        </div> -->
+        <div class="imgBox">
+          <ng-container *ngIf="!user.profile_pic; else newDeb">
+            <img src="/assets/images/img1.jpg" alt="" class="cover" />
+          </ng-container>
+          <ng-template #newDeb>
+            <img [src]="user?.profile_pic" class="cover" />
+          </ng-template>
         </div>
         <div class="details">
           <div class="listHead">
@@ -196,7 +204,5 @@
   </div>
   <div class="rightSide">
     <app-chat></app-chat>
-
-    <!-- here -->
   </div>
 </div>

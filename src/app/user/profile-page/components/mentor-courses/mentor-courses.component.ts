@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
 })
 export class MentorCoursesComponent implements OnInit, OnDestroy {
   mentorCourses$!: Array<CourseResponse>;
-  courseSubscription!: Subscription;
+  courseSubscription$!: Subscription;
   closeModalSubscription$!: Subscription;
   deleteCourseSubscription$!: Subscription;
 
@@ -32,7 +32,7 @@ export class MentorCoursesComponent implements OnInit, OnDestroy {
   }
 
   getCourse() {
-    this.courseSubscription = this._userService
+    this.courseSubscription$ = this._userService
       .getMentorCourse()
       .subscribe((res: Array<CourseResponse>) => {
         this.mentorCourses$ = res;
@@ -64,7 +64,7 @@ export class MentorCoursesComponent implements OnInit, OnDestroy {
       });
   }
   ngOnDestroy(): void {
-    this.courseSubscription?.unsubscribe();
+    this.courseSubscription$?.unsubscribe();
     this.closeModalSubscription$?.unsubscribe();
     this.deleteCourseSubscription$?.unsubscribe();
   }
