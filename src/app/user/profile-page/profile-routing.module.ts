@@ -19,9 +19,8 @@ const routes: Routes = [
   { path: 'mentor-courses', component: MentorCoursesComponent },
   { path: 'wishlist', component: WishlistComponent },
   { path: 'course/:courseId', component: CourseSyllabusComponent },
-  { path: 'mentor_chat', component: MentorChatComponent },
-  { path: 'student_chat', component: StudentChatComponent },
   { path: 'chat', component: ChatNavComponent },
+  { path: 'student_chat', component: StudentChatComponent },
 ];
 
 @NgModule({

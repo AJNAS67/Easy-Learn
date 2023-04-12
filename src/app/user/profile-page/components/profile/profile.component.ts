@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   profile_pic!: string;
   useName!: string;
   email!: string;
+  user!: getUserDetailsResp;
   userDetailsSubscription$!: Subscription;
   observerSubscription$!: Subscription;
   uploadProfilePickSubscription$!: Subscription;
@@ -39,6 +40,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.userDetailsSubscription$ = this._userService
       .getUserDetails()
       .subscribe((data: getUserDetailsResp) => {
+        this.user = data;
+
         this.profile_pic = data.profile_pic;
         this.useName = data.firstName;
         this.email = data.email;

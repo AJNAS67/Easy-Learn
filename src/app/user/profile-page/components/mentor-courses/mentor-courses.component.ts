@@ -30,6 +30,9 @@ export class MentorCoursesComponent implements OnInit, OnDestroy {
       this.getCourse();
     });
   }
+  addMentorCourse(index: number, course: CourseResponse): string {
+    return course.CourseName;
+  }
 
   getCourse() {
     this.courseSubscription$ = this._userService

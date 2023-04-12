@@ -56,7 +56,7 @@ export class UserService {
     );
   }
 
-  getUserDetails() {
+  getUserDetails():Observable<getUserDetailsResp> {
     return this.http.get<getUserDetailsResp>(`${this.baseUrl}/api/userDetails`);
   }
 

@@ -26,6 +26,7 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   Categories!: Array<Category>;
   categorySubscription!: Subscription;
   uploadCourseSubscription!: Subscription;
+  uploadThumbnailSubscription$!: Subscription;
   constructor(
     private fb: FormBuilder,
     private _userService: UserService,
@@ -88,25 +89,25 @@ export class AddCourseComponent implements OnInit, OnDestroy {
     const videoFile = event.target?.files[0];
     const form_data = new FormData();
     form_data.append('file', videoFile);
-    this._userService.uploadCourseVideo(form_data).subscribe(
-      (res) => {
-        const lessonForm = this.lessons.at(index) as FormGroup;
-        lessonForm.patchValue({ video: res.url });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.uploadThumbnailSubscription$ = this._userService
+      .uploadCourseVideo(form_data)
+      .subscribe(
+        (res) => {
+          const lessonForm = this.lessons.at(index) as FormGroup;
+          lessonForm.patchValue({ video: res.url });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   upload(event: any) {
-    this.isLoader = true;
     const file = event.target?.files[0];
     const form_data = new FormData();
     form_data.append('file', file);
     this._userService.uploadThumbnail(form_data).subscribe(
-      (res: imageUploadResponse) => {
-        this.isLoader = false;
+      (res) => {
 
         this.myForm.patchValue({
           ThumbnailImage: res.url,
@@ -140,7 +141,8 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   ];
 
   ngOnDestroy(): void {
-    this.categorySubscription.unsubscribe();
-    this.uploadCourseSubscription.unsubscribe();
+    this.categorySubscription?.unsubscribe();
+    this.uploadCourseSubscription?.unsubscribe();
+    this.uploadThumbnailSubscription$?.unsubscribe();
   }
 }

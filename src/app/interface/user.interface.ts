@@ -59,6 +59,8 @@ export interface getUserDetailsResp {
   lastName: string;
   phoneNumber: number;
   profile_pic: string;
+  isAdmin: boolean;
+  isBlock: boolean;
 }
 export interface addTocartResponse {
   message: string;

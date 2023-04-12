@@ -66,21 +66,18 @@
 
     <mat-divider></mat-divider>
 
-    <button class="menu-button" [routerLink]="['mentor-courses']">
+    <span *ngIf="user?.isAdmin">
+      <button class="menu-button" [routerLink]="['mentor-courses']">
+        <mat-icon>library_books</mat-icon>
+        <span>Mentor Course</span>
+      </button>
+      <mat-divider></mat-divider>
+    </span>
+    <button class="menu-button" [routerLink]="['chat']">
       <mat-icon>library_books</mat-icon>
-      <span>Mentor Course</span>
+      <span>Message</span>
     </button>
     <mat-divider></mat-divider>
-    <button class="menu-button" [routerLink]="['mentor-courses']">
-      <mat-icon>library_books</mat-icon>
-      <span>Chat with Mentor</span>
-    </button>
-    <mat-divider></mat-divider>
-
-    <button class="menu-button" [routerLink]="['mentor-courses']">
-      <mat-icon>library_books</mat-icon>
-      <span>Chat with Mentor</span>
-    </button>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="content mat-elevation-z8">

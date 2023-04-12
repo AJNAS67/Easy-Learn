@@ -20,28 +20,52 @@
     </div>
     <!-- CHAT LIST -->
     <div class="chatlist">
-      <div class="block active" *ngFor="let user of allUsers">
-        <!-- <div class="imgBox">
-          <img src="/assets/images/img1.jpg" alt="" class="cover" />
-        </div> -->
-        <div class="imgBox">
-          <ng-container *ngIf="!user.profile_pic; else newDeb">
+      <ng-container *ngIf="user.isAdmin; else student">
+        <div class="block active" *ngFor="let user of allUsers">
+          <!-- <div class="imgBox">
             <img src="/assets/images/img1.jpg" alt="" class="cover" />
-          </ng-container>
-          <ng-template #newDeb>
-            <img [src]="user?.profile_pic" class="cover" />
-          </ng-template>
-        </div>
-        <div class="details">
-          <div class="listHead">
-            <h4>Jhon Doe</h4>
-            <p class="time">10:56</p>
+          </div> -->
+          <div class="imgBox">
+            <ng-container *ngIf="!user.profile_pic; else newDeb">
+              <img src="/assets/images/img1.jpg" alt="" class="cover" />
+            </ng-container>
+            <ng-template #newDeb>
+              <img [src]="user?.profile_pic" class="cover" />
+            </ng-template>
           </div>
-          <div class="message_p">
-            <p>How are you doing?</p>
+          <div class="details">
+            <div class="listHead">
+              <h4>{{ user?.firstName }}</h4>
+              <p class="time">10:56</p>
+            </div>
+            <div class="message_p">
+              <p>How are you doing?</p>
+            </div>
           </div>
         </div>
-      </div>
+      </ng-container>
+      <ng-template #student>
+        <div class="block active" *ngFor="let admin of allAdmins">
+
+          <div class="imgBox">
+            <ng-container *ngIf="!admin.profile_pic; else newDeb">
+              <img src="/assets/images/img1.jpg" alt="" class="cover" />
+            </ng-container>
+            <ng-template #newDeb>
+              <img [src]="admin?.profile_pic" class="cover" />
+            </ng-template>
+          </div>
+          <div class="details">
+            <div class="listHead">
+              <h4>{{ admin?.firstName }}</h4>
+              <p class="time">10:56</p>
+            </div>
+            <div class="message_p">
+              <p>How are you doing?</p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
 
       <div class="block unread">
         <div class="imgBox">
