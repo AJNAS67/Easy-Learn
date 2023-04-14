@@ -30,8 +30,6 @@ import { WatchCourseComponent } from './components/watch-course/watch-course.com
 import { CourseSyllabusComponent } from './components/course-syllabus/course-syllabus.component';
 import { ChatComponent } from './components/chat-application/chat/chat.component';
 import { ChatNavComponent } from './components/chat-application/chat-nav/chat-nav.component';
-import { MentorChatComponent } from './components/chat-application/mentor-chat/mentor-chat.component';
-import { StudentChatComponent } from './components/chat-application/student-chat/student-chat.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from 'src/environments/environment';
 import { ChatService } from './service/chat.service';
@@ -56,8 +54,6 @@ const config: SocketIoConfig = {
     CourseSyllabusComponent,
     ChatComponent,
     ChatNavComponent,
-    MentorChatComponent,
-    StudentChatComponent,
   ],
   imports: [
     CommonModule,
