@@ -2,22 +2,25 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { Observable } from 'rxjs';
-import { CourseInterface, UserInterface } from 'src/app/interface/admin.interface';
+import {
+  CourseInterface,
+  UserInterface,
+} from 'src/app/interface/admin.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminService {
+  baseUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
-
-
+  constructor(private http: HttpClient) {}
 
   fetchUsers(sort: Sort): Observable<UserInterface[]> {
     const params = new HttpParams()
       .set('_sort', sort.active)
       .set('_order', sort.direction);
-    return this.http.get<UserInterface[]>('http://localhost:3000/admin/users', {
+    return this.http.get<UserInterface[]>(`${this.baseUrl}/admin/users`, {
       params,
     });
   }
@@ -25,9 +28,20 @@ export class AdminService {
     const params = new HttpParams()
       .set('_sort', sort.active)
       .set('_order', sort.direction);
-    return this.http.get<CourseInterface[]>('http://localhost:3000/admin/courses', {
+    return this.http.get<CourseInterface[]>(`${this.baseUrl}/admin/courses`, {
       params,
     });
   }
-
+  changeAdminStatus(isAdmin: boolean, userId: string) {
+    return this.http.patch(
+      `${this.baseUrl}/admin/changeAdminStatus/${userId}`,
+      { isAdmin: isAdmin }
+    );
+  }
+  changeBlockStatus(isBlock: boolean, userId: string) {
+    return this.http.patch(
+      `${this.baseUrl}/admin/changeBlockStatus/${userId}`,
+      isBlock
+    );
+  }
 }

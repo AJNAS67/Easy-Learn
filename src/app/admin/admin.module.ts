@@ -14,6 +14,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { AdminService } from './services/admin.service';
 import { UsersDataSource } from './services/users.dataSource';
 import { HttpClientModule } from '@angular/common/http';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AdminComponent, ViewUserComponent, ViewCourseComponent],
@@ -28,6 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatSortModule,
     HttpClientModule,
+    MatSlideToggleModule,
+    FormsModule
   ],
   providers: [AdminService, UsersDataSource],
 })

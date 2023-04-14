@@ -8,6 +8,8 @@ export interface UserInterface {
   id: string;
   fistName: string;
   phoneNumber: number;
+  isBlock: boolean;
+  isAdmin: boolean;
 }
 
 export interface CourseInterface {

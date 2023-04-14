@@ -51,6 +51,38 @@
     </td>
   </ng-container>
 
+  <ng-container matColumnDef="isBlock">
+    <th
+      mat-header-cell
+      mat-sort-header
+      *matHeaderCellDef
+      class="users-table-cell"
+    >
+      IsBlock
+    </th>
+    <td mat-cell *matCellDef="let element" class="users-table-cell">
+      <mat-slide-toggle
+        [(ngModel)]="element.isBlock"
+        (change)="blockUser(element.isAdmin, element)"
+      ></mat-slide-toggle>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="isAdmin">
+    <th
+      mat-header-cell
+      mat-sort-header
+      *matHeaderCellDef
+      class="users-table-cell"
+    >
+      IsAdmin
+    </th>
+    <td mat-cell *matCellDef="let element" class="users-table-cell">
+      <mat-slide-toggle
+        [(ngModel)]="element.isAdmin"
+        (change)="changed(element.isAdmin, element)"
+      ></mat-slide-toggle>
+    </td>
+  </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

@@ -1,5 +1,5 @@
 import { MatSidenav } from '@angular/material/sidenav';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
 })
-export class AdminComponent {
+export class AdminComponent implements AfterViewInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   baseUrl = environment.apiUrl;
