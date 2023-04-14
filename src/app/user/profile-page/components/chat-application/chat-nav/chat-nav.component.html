@@ -20,11 +20,12 @@
     </div>
     <!-- CHAT LIST -->
     <div class="chatlist">
-      <ng-container *ngIf="user.isAdmin; else student">
-        <div class="block active" *ngFor="let user of allUsers">
-          <!-- <div class="imgBox">
-            <img src="/assets/images/img1.jpg" alt="" class="cover" />
-          </div> -->
+      <ng-container *ngIf="user?.isAdmin; else student">
+        <div
+          class="block active"
+          *ngFor="let user of allUsers"
+          (click)="sendReceiver(user)"
+        >
           <div class="imgBox">
             <ng-container *ngIf="!user.profile_pic; else newDeb">
               <img src="/assets/images/img1.jpg" alt="" class="cover" />
@@ -45,8 +46,11 @@
         </div>
       </ng-container>
       <ng-template #student>
-        <div class="block active" *ngFor="let admin of allAdmins">
-
+        <div
+          class="block active"
+          *ngFor="let admin of allAdmins"
+          (click)="sendReceiver(admin)"
+        >
           <div class="imgBox">
             <ng-container *ngIf="!admin.profile_pic; else newDeb">
               <img src="/assets/images/img1.jpg" alt="" class="cover" />
@@ -66,7 +70,7 @@
           </div>
         </div>
       </ng-template>
-
+      <!-- 
       <div class="block unread">
         <div class="imgBox">
           <img src="/assets/images/img1.jpg" alt="" class="cover" />
@@ -223,10 +227,10 @@
             <p>Thanks alot</p>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="rightSide">
-    <app-chat></app-chat>
+    <app-chat [userId]="userId" [receiverDetails]="receiver" [getMessages]="getMessages"></app-chat>
   </div>
 </div>

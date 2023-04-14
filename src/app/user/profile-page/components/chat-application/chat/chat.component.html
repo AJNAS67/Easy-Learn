@@ -3,7 +3,11 @@
     <div class="userimg">
       <img src="/assets/images/img1.jpg" alt="" class="cover" />
     </div>
-    <h4>Qazi <br /><span>online</span></h4>
+    <h4>
+      {{ receiverDetails?.firstName }} <br /><span>{{
+        receiverDetails?._id
+      }}</span>
+    </h4>
   </div>
   <ul class="nav_icons">
     <li><ion-icon name="search-outline"></ion-icon></li>
@@ -13,7 +17,20 @@
 
 <!-- CHAT-BOX -->
 <div class="chatbox">
-  <div class="message my_msg">
+  <div *ngFor="let message of getMessages">
+    <ng-container *ngIf="message.sender == userId; else newDeb">
+      <div class="message my_msg">
+        <p>{{ message.message }} <br /><span>12:18</span></p>
+      </div>
+    </ng-container>
+    <ng-template #newDeb>
+      <div class="message friend_msg">
+        <p>{{ message.message }} <br /><span>12:18</span></p>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- <div class="message my_msg">
     <p>Hi <br /><span>12:18</span></p>
   </div>
   <div class="message friend_msg">
@@ -112,12 +129,14 @@
         >12:15</span
       >
     </p>
-  </div>
+  </div> -->
 </div>
 
 <!-- CHAT INPUT -->
 <div class="chat_input">
   <ion-icon name="happy-outline"></ion-icon>
-  <input type="text" placeholder="Type a message" />
-  <ion-icon name="send-outline"></ion-icon>
+  <input type="text" placeholder="Type a message" [(ngModel)]="newMessage" />
+  <div (click)="sendMessage()">
+    <ion-icon name="send-outline"></ion-icon>
+  </div>
 </div>

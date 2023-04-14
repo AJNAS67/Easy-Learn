@@ -1,8 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ChatService } from '../../../service/chat.service';
 import { Subscription } from 'rxjs';
-import { getUserDetailsResp } from 'src/app/interface/user.interface';
+import {
+  MessageInterface,
+  MessageResp,
+  getUserDetailsResp,
+} from 'src/app/interface/user.interface';
 import { UserService } from '../../../service/user.service';
+import { SocketService } from '../../../service/websockets/socket.service';
 
 @Component({
   selector: 'app-chat-nav',
@@ -16,9 +21,13 @@ export class ChatNavComponent implements OnInit, OnDestroy {
   getAllAdminSubscription$!: Subscription;
   user!: getUserDetailsResp;
   allAdmins!: Array<getUserDetailsResp>;
+  userId!: string;
+  receiver!: getUserDetailsResp;
+  getMessages!: Array<MessageResp>;
   constructor(
     private _chatService: ChatService,
-    private _userService: UserService
+    private _userService: UserService,
+    private _socketService: SocketService
   ) {}
 
   ngOnInit(): void {
@@ -26,6 +35,7 @@ export class ChatNavComponent implements OnInit, OnDestroy {
       .getUserDetails()
       .subscribe((res) => {
         this.user = res;
+        this.userId = res._id;
       });
 
     this.allUsersSubscription$ = this._chatService
@@ -38,6 +48,16 @@ export class ChatNavComponent implements OnInit, OnDestroy {
       .subscribe((res) => {
         this.allAdmins = res;
       });
+    this._socketService.getNewMessage().subscribe((res) => {
+      this.getMessages.push(res.content);
+    });
+  }
+
+  sendReceiver(receiver: getUserDetailsResp) {
+    this.receiver = receiver;
+    this._chatService.getChats(receiver._id).subscribe((res) => {
+      this.getMessages = res;
+    });
   }
   ngOnDestroy(): void {
     this.allUsersSubscription$?.unsubscribe();

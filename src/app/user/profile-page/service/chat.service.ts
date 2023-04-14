@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { getUserDetailsResp } from 'src/app/interface/user.interface';
+import { MessageResp, getUserDetailsResp } from 'src/app/interface/user.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -16,5 +16,9 @@ export class ChatService {
   }
   getAllAdmin(): Observable<getUserDetailsResp[]> {
     return this._http.get<getUserDetailsResp[]>(`${this.baseUrl}/api/isAdmin`);
+  }
+  getChats(receiverId:string){
+    return this._http.get<Array<MessageResp>>(`${this.baseUrl}/get_chats/${receiverId}`)
+    
   }
 }

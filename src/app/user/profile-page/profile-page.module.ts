@@ -32,7 +32,17 @@ import { ChatComponent } from './components/chat-application/chat/chat.component
 import { ChatNavComponent } from './components/chat-application/chat-nav/chat-nav.component';
 import { MentorChatComponent } from './components/chat-application/mentor-chat/mentor-chat.component';
 import { StudentChatComponent } from './components/chat-application/student-chat/student-chat.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from 'src/environments/environment';
+import { ChatService } from './service/chat.service';
+import { SocketService } from './service/websockets/socket.service';
 
+const config: SocketIoConfig = {
+  url: `${environment.socketUrl}/chat`, // socket server url;
+  options: {
+    transports: ['websocket'],
+  },
+};
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -71,7 +81,9 @@ import { StudentChatComponent } from './components/chat-application/student-chat
     NgxPayPalModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    SocketIoModule.forRoot(config),
   ],
+  providers: [ChatService, SocketService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ProfilePageModule {}

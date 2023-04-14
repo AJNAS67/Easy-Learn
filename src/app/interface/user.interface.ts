@@ -54,6 +54,7 @@ export interface DeleteResponse {
   deletedCount: number;
 }
 export interface getUserDetailsResp {
+  _id: string;
   email: string;
   firstName: string;
   lastName: string;
@@ -146,4 +147,24 @@ export interface profileUpdate {
   city: string;
   address: string;
   userId: string;
+}
+
+export interface MessageResp {
+  _id: string;
+  message: string;
+  sender: string;
+  receiver: string;
+  createdAt: string;
+}
+
+export type MessageInterface = {
+  _id: string;
+  message: string;
+  sender: string;
+  receiver: string;
+  createdAt: string;
+};
+export interface chatResponse {
+  msg: string;
+  content: MessageInterface;
 }
