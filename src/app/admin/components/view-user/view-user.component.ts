@@ -4,6 +4,7 @@ import { Sort } from '@angular/material/sort';
 import { UsersDataSource } from '../../services/users.dataSource';
 import { AdminService } from '../../services/admin.service';
 import { Subscription } from 'rxjs';
+import { getUserDetailsResp } from 'src/app/interface/user.interface';
 
 @Component({
   selector: 'app-view-user',
@@ -29,17 +30,17 @@ export class ViewUserComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dataSource.loadUsers({ active: '_id', direction: 'asc' });
   }
-  changed(admin: boolean, user: any) {
+  changed(admin: boolean, user: getUserDetailsResp) {
     this.changeAdminStatusSubscription$ = this._adminService
       .changeAdminStatus(admin, user._id)
-      .subscribe((res) => {
-      });
+      .subscribe((res) => {});
   }
-  blockUser(block: boolean, user: any) {
+  blockUser(block: boolean, user: getUserDetailsResp) {
+    console.log(user,'getUserDetailsResp');
+    
     this.changeBlockStatusSubscription$ = this._adminService
       .changeBlockStatus(block, user._id)
-      .subscribe((res) => {
-      });
+      .subscribe((res) => {});
   }
   sortUsers(sort: Sort): void {
     this.dataSource.loadUsers(sort);

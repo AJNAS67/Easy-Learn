@@ -79,6 +79,12 @@ export interface EnrolledCourse {
   totalPrice: number;
   paymentStatus: boolean;
 }
+export interface EnrolledCourseResponse {
+  courseId: CourseResponse;
+  courseName: string;
+  image: string;
+  price: number;
+}
 export interface OrderResponse {
   message: string;
   paymentStatus: boolean;

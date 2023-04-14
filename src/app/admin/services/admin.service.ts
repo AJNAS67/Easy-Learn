@@ -41,7 +41,7 @@ export class AdminService {
   changeBlockStatus(isBlock: boolean, userId: string) {
     return this.http.patch(
       `${this.baseUrl}/admin/changeBlockStatus/${userId}`,
-      isBlock
+      { isBlock: isBlock }
     );
   }
 }

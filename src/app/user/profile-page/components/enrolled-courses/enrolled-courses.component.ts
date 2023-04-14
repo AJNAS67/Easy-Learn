@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { EnrolledCourseResponse } from 'src/app/interface/user.interface';
 
 @Component({
   selector: 'app-enrolled-courses',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./enrolled-courses.component.scss'],
 })
 export class EnrolledCoursesComponent implements OnInit, OnDestroy {
-  enrolledCourse!: any;
+  enrolledCourse!: Array<EnrolledCourseResponse>;
   enrolledCourseSubscription$!: Subscription;
   constructor(private _userService: UserService, private _router: Router) {}
 
@@ -25,6 +26,7 @@ export class EnrolledCoursesComponent implements OnInit, OnDestroy {
           }
         }
         this.enrolledCourse = ar;
+        
       });
   }
   courseDetails(_id: string) {

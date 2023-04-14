@@ -15,7 +15,6 @@ export class ChatComponent {
   @Input() userId!: string;
   @Input() receiverDetails!: getUserDetailsResp;
   @Input() getMessages!: Array<MessageResp>;
-  messages: any;
   constructor(
     private _socketService: SocketService,
   ) {}
