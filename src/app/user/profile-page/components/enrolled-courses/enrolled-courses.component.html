@@ -1,29 +1,48 @@
-<div
-  class="flex justify-center md: m-5 sm:m-1"
-  *ngFor="let item of enrolledCourse"
->
+<div *ngIf="enrolledCourse.length; else noCourse">
   <div
-    class="flex flex-col rounded-lg bg-white shadow-lg dark:bg-neutral-700 md:max-w-xl md:flex-row md:w-1/2 sm:w-full"
-    (click)="courseDetails(item.courseId._id)"
+    class="flex justify-center md: m-5 sm:m-1"
+    *ngFor="let item of enrolledCourse"
   >
-    <img
-      style="height: 150px"
-      class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-      [src]="item.courseId.ThumbnailImage"
-      alt=""
-    />
-    <div class="flex flex-col justify-start p-6">
-      <h3
-        class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50"
-      >
-        {{ item.courseId.CourseName }}
-      </h3>
-      <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-        Duration: {{ item.courseId.TotalHr }} hour
-      </p>
-      <p class="text-xs text-neutral-500 dark:text-neutral-300">
-        MentorName: {{ item.courseId.MentorName }}
-      </p>
+    <div
+      class="flex flex-col rounded-lg bg-white shadow-lg dark:bg-neutral-700 md:max-w-xl md:flex-row md:w-1/2 sm:w-full"
+      (click)="courseDetails(item.courseId._id)"
+    >
+      <img
+        style="height: 150px"
+        class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+        [src]="item.courseId?.ThumbnailImage"
+        alt=""
+      />
+      <div class="flex flex-col justify-start p-6">
+        <h3
+          class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50"
+        >
+          {{ item.courseId.CourseName }}
+        </h3>
+        <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+          Duration: {{ item.courseId.TotalHr }} hour
+        </p>
+        <p class="text-xs text-neutral-500 dark:text-neutral-300">
+          MentorName: {{ item.courseId.MentorName }}
+        </p>
+      </div>
     </div>
   </div>
 </div>
+<!-- <div *ngIf="isLoading; else loadingCompleted">
+  <mat-spinner></mat-spinner>
+</div> -->
+
+<ng-template #noCourse  >
+  <div class="grid justify-items-center ">
+    <h3 class="text-center">sorry ! no course Subscribed !</h3>
+    <div style="width: 450px;">
+      <img
+      style="width: 450px; height: 250px; object-fit: cover"
+      src="/assets/images/empty_course_1.jpg"
+      alt="No course found"
+    />
+    </div>
+  </div>
+
+</ng-template>

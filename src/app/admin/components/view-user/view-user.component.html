@@ -63,7 +63,7 @@
     <td mat-cell *matCellDef="let element" class="users-table-cell">
       <mat-slide-toggle
         [(ngModel)]="element.isBlock"
-        (change)="blockUser(element.isAdmin, element)"
+        (change)="blockUser(element.isBlock, element)"
       ></mat-slide-toggle>
     </td>
   </ng-container>

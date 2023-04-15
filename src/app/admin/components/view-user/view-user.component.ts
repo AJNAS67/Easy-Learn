@@ -33,14 +33,15 @@ export class ViewUserComponent implements OnInit, OnDestroy {
   changed(admin: boolean, user: getUserDetailsResp) {
     this.changeAdminStatusSubscription$ = this._adminService
       .changeAdminStatus(admin, user._id)
-      .subscribe((res) => {});
+      .subscribe((res) => {
+        
+      });
   }
   blockUser(block: boolean, user: getUserDetailsResp) {
-    console.log(user,'getUserDetailsResp');
-    
     this.changeBlockStatusSubscription$ = this._adminService
       .changeBlockStatus(block, user._id)
-      .subscribe((res) => {});
+      .subscribe((res) => {
+      });
   }
   sortUsers(sort: Sort): void {
     this.dataSource.loadUsers(sort);

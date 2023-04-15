@@ -5,7 +5,7 @@
     </div>
     <h4>
       {{ receiverDetails?.firstName }} <br /><span>{{
-        receiverDetails?._id
+        receiverDetails?.email
       }}</span>
     </h4>
   </div>
@@ -20,116 +20,15 @@
   <div *ngFor="let message of getMessages">
     <ng-container *ngIf="message.sender == userId; else newDeb">
       <div class="message my_msg">
-        <p>{{ message.message }} <br /><span>12:18</span></p>
+        <p>{{ message.message }} <br /><span>{{message.createdAt| date:'shortTime'}}</span></p>
       </div>
     </ng-container>
     <ng-template #newDeb>
       <div class="message friend_msg">
-        <p>{{ message.message }} <br /><span>12:18</span></p>
+        <p>{{ message.message }} <br /><span>{{message.createdAt| date:'shortTime'}}</span></p>
       </div>
     </ng-template>
   </div>
-
-  <!-- <div class="message my_msg">
-    <p>Hi <br /><span>12:18</span></p>
-  </div>
-  <div class="message friend_msg">
-    <p>Hey <br /><span>12:18</span></p>
-  </div>
-  <div class="message my_msg">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /><span
-        >12:15</span
-      >
-    </p>
-  </div>
-  <div class="message friend_msg">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /><span
-        >12:15</span
-      >
-    </p>
-  </div>
-  <div class="message my_msg">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor
-      sit amet consectetur adipisicing elit. Eaque aliquid fugiat accusamus
-      dolore qui vitae ratione optio sunt <br /><span>12:15</span>
-    </p>
-  </div>
-  <div class="message friend_msg">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /><span
-        >12:15</span
-      >
-    </p>
-  </div>
-  <div class="message my_msg">
-    <p>Lorem ipsum dolor sit amet consectetur <br /><span>12:15</span></p>
-  </div>
-  <div class="message friend_msg">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.<br /><span
-        >12:15</span
-      >
-    </p>
-  </div>
-  <div class="message my_msg">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.<br /><span
-        >12:15</span
-      >
-    </p>
-  </div>
-  <div class="message friend_msg">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.<br /><span
-        >12:15</span
-      >
-    </p>
-  </div>
-  <div class="message my_msg">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.<br /><span
-        >12:15</span
-      >
-    </p>
-  </div>
-  <div class="message friend_msg">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.<br /><span
-        >12:15</span
-      >
-    </p>
-  </div>
-  <div class="message my_msg">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.<br /><span
-        >12:15</span
-      >
-    </p>
-  </div>
-  <div class="message friend_msg">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.<br /><span
-        >12:15</span
-      >
-    </p>
-  </div>
-  <div class="message my_msg">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.<br /><span
-        >12:15</span
-      >
-    </p>
-  </div>
-  <div class="message friend_msg">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.<br /><span
-        >12:15</span
-      >
-    </p>
-  </div> -->
 </div>
 
 <!-- CHAT INPUT -->

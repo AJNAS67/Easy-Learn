@@ -34,6 +34,6 @@ export class EnrolledCoursesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.enrolledCourseSubscription$.unsubscribe();
+    this.enrolledCourseSubscription$?.unsubscribe();
   }
 }

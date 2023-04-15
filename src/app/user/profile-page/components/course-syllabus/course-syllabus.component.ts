@@ -44,5 +44,6 @@ export class CourseSyllabusComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.courseDetailsFetchSubscription$.unsubscribe();
+    this.courseIdSubscription$?.unsubscribe();
   }
 }

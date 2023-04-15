@@ -5,7 +5,6 @@ import {
   Category,
   Common,
   CourseResponse,
-  imageUploadResponse,
 } from 'src/app/interface/user.interface';
 import { Subscription } from 'rxjs';
 import { HomePageService } from 'src/app/user/home-page/service/home-page.service';
@@ -27,6 +26,7 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   categorySubscription!: Subscription;
   uploadCourseSubscription!: Subscription;
   uploadThumbnailSubscription$!: Subscription;
+  uploadSubscription!: Subscription;
   constructor(
     private fb: FormBuilder,
     private _userService: UserService,
@@ -42,7 +42,7 @@ export class AddCourseComponent implements OnInit, OnDestroy {
       TotalHr: ['', [Validators.required, Validators.min(0)]],
       CourseDescription: ['', Validators.required],
       ThumbnailImage: ['', Validators.required],
-      VideoModule: this.fb.array([]),
+      VideoModule: this.fb.array([],Validators.required),
       Level: ['', Validators.required],
       Language: ['', Validators.required],
       Price: ['', [Validators.required, Validators.min(0)]],
@@ -106,17 +106,18 @@ export class AddCourseComponent implements OnInit, OnDestroy {
     const file = event.target?.files[0];
     const form_data = new FormData();
     form_data.append('file', file);
-    this._userService.uploadThumbnail(form_data).subscribe(
-      (res) => {
-
-        this.myForm.patchValue({
-          ThumbnailImage: res.url,
-        });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.uploadSubscription = this._userService
+      .uploadThumbnail(form_data)
+      .subscribe(
+        (res) => {
+          this.myForm.patchValue({
+            ThumbnailImage: res.url,
+          });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   categories: Common[] = [
@@ -144,5 +145,6 @@ export class AddCourseComponent implements OnInit, OnDestroy {
     this.categorySubscription?.unsubscribe();
     this.uploadCourseSubscription?.unsubscribe();
     this.uploadThumbnailSubscription$?.unsubscribe();
+    this.uploadSubscription.unsubscribe();
   }
 }

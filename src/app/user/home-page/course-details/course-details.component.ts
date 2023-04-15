@@ -20,6 +20,8 @@ import {
 export class CourseDetailsComponent implements OnInit, OnDestroy {
   courseIdSubscription!: Subscription;
   courseDetailsFetchSubscription!: Subscription;
+  addToCartSubscription!: Subscription;
+  addToWishlistSubscription!: Subscription;
   courseId = '';
   course!: CourseResponse;
   video!: string;
@@ -54,21 +56,23 @@ export class CourseDetailsComponent implements OnInit, OnDestroy {
   }
 
   addToWishlist() {
-    this._homeService
+    this.addToWishlistSubscription = this._homeService
       .addToWishlist(this.course._id)
       .subscribe((res: AddToCartResponse) => {
         this.popUpMessage(res.message);
       });
   }
   addToCart() {
-    this._homeService
+    this.addToCartSubscription = this._homeService
       .addToCart(this.course._id)
       .subscribe((res: AddToCartResponse) => {
         this.popUpMessage(res.message);
       });
   }
   ngOnDestroy(): void {
-    this.courseIdSubscription.unsubscribe();
-    this.courseDetailsFetchSubscription.unsubscribe();
+    this.courseIdSubscription?.unsubscribe();
+    this.courseDetailsFetchSubscription?.unsubscribe();
+    this.addToCartSubscription?.unsubscribe();
+    this.addToWishlistSubscription?.unsubscribe();
   }
 }

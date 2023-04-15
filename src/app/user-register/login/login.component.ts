@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
@@ -10,9 +10,9 @@ import { Subscription } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   myForm!: FormGroup;
-  loginDataSubscription!: Subscription;
+  loginDataSubscription$!: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit() {
-    this.loginDataSubscription = this.authService
+    this.loginDataSubscription$ = this.authService
       .loginUser(this.myForm.value)
       .subscribe(
         (res: LoginResponse) => {
@@ -46,5 +46,8 @@ export class LoginComponent implements OnInit {
   }
   directToRegisterPage() {
     this.router.navigate(['user/register']);
+  }
+  ngOnDestroy(): void {
+    this.loginDataSubscription$?.unsubscribe();
   }
 }

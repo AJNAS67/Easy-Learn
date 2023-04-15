@@ -21,7 +21,7 @@ export class WatchCourseComponent implements OnInit, OnChanges {
     setTimeout(() => {
       this.videoUrl = changes['videoUrl'].currentValue;
       this.isLoading = false;
-    }, 3000);
+    }, 2000);
   }
 
   ngOnInit(): void {}

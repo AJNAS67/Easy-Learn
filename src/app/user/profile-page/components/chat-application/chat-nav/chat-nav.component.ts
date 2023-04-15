@@ -50,7 +50,10 @@ export class ChatNavComponent implements OnInit, OnDestroy {
       });
     this._socketService.getNewMessage().subscribe((res) => {
       this.getMessages.push(res.content);
+      console.log(this.getMessages,'getMessages');
+      
     });
+
   }
 
   sendReceiver(receiver: getUserDetailsResp) {
