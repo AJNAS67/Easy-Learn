@@ -47,7 +47,6 @@ export class AddProfileDetailsComponent implements OnInit, OnDestroy {
     this.profileDetailSubscription$ = this.userService
       .getProfileData()
       .subscribe((res: Array<profileUpdate>) => {
-        console.log(res[0], 'responce profile detail');
         this.profileDetail = res[0];
       });
   }
@@ -79,6 +78,7 @@ export class AddProfileDetailsComponent implements OnInit, OnDestroy {
         }
       );
   }
+  
   ngOnDestroy(): void {
     this.UploadProfileDetailSubscription$?.unsubscribe();
     this.profileDetailSubscription$?.unsubscribe();

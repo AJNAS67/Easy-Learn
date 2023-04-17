@@ -45,5 +45,6 @@ export class AdminComponent implements AfterViewInit{
   }
   logout() {
     localStorage.removeItem('admin_token');
+    this.router.navigate(['/user/admin-login'])
   }
 }

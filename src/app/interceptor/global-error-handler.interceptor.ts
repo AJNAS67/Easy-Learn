@@ -40,7 +40,7 @@ export class GlobalErrorHandlerInterceptor implements HttpInterceptor {
       // server side error
       if (error.status !== 0) {
         errorMessage = error.error.message;
-        if (error.error.statusCode == 403) {
+        if (error.error.statusCode == 403 || error.error.statusCode==401) {
           this._router.navigate(['/']);
         }
       }

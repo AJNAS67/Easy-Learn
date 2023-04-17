@@ -1,4 +1,4 @@
-<mat-toolbar class="mat-elevation-z8">
+<mat-toolbar class="mat-elevation-z8 flex justify-between" >
   <button
     mat-icon-button
     *ngIf="sidenav.mode === 'over'"
@@ -7,7 +7,7 @@
     <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
     <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
   </button>
-  <button (click)="logout()">logout</button>
+  <button mat-stroked-button color="accent" (click)="logout()">logout</button>
 </mat-toolbar>
 
 <mat-sidenav-container>

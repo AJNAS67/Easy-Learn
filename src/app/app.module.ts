@@ -26,7 +26,7 @@ import { LoaderInterceptor } from './interceptor/loader.interceptor';
     AuthGuard,
 
     { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
-    { provide: ErrorHandler, useClass: CustomErrorHandle },
+    // { provide: ErrorHandler, useClass: CustomErrorHandle },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GlobalErrorHandlerInterceptor,

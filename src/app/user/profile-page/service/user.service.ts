@@ -84,7 +84,7 @@ export class UserService {
   getCartItems() {
     return this.http.get<cartResponse>(`${this.baseUrl}/cart/userCart`);
   }
-  getWishlistItems() {
+  getWishlistItems():Observable<wishlistResponse> {
     return this.http.get<wishlistResponse>(
       `${this.baseUrl}/wishlist/userWishlist`
     );

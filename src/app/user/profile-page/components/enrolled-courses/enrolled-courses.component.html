@@ -1,4 +1,4 @@
-<div *ngIf="enrolledCourse.length; else noCourse">
+<div *ngIf="enrolledCourse?.length; else noCourse">
   <div
     class="flex justify-center md: m-5 sm:m-1"
     *ngFor="let item of enrolledCourse; trackBy:enrolled"

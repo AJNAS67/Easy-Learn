@@ -48,6 +48,6 @@ export class ViewUserComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.changeAdminStatusSubscription$?.unsubscribe();
-    this.changeAdminStatusSubscription$.unsubscribe();
+    this.changeAdminStatusSubscription$?.unsubscribe();
   }
 }

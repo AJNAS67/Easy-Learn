@@ -12,7 +12,7 @@ export class ChatService {
 
   constructor(private _http: HttpClient) {}
   fetchUsers(): Observable<getUserDetailsResp[]> {
-    return this._http.get<getUserDetailsResp[]>(`${this.baseUrl}/admin/users`);
+    return this._http.get<getUserDetailsResp[]>(`${this.baseUrl}/admin/students`);
   }
   getAllAdmin(): Observable<getUserDetailsResp[]> {
     return this._http.get<getUserDetailsResp[]>(`${this.baseUrl}/api/isAdmin`);

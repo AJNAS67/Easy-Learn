@@ -39,7 +39,6 @@ export class CartComponent implements OnInit {
   initializeCart() {
     this._userService.getCartItems().subscribe((res: cartResponse) => {
       this.cartItems = res;
-      console.log(this.cartItems, 'items');
     });
   }
   private initConfig(): void {
@@ -118,13 +117,13 @@ export class CartComponent implements OnInit {
         this.showSuccess = true;
       },
       onCancel: (data, actions) => {
-        console.log('OnCancel', data, actions);
+        // console.log('OnCancel', data, actions);
         this.popUpMessage('Sorry ! something is wrong!!');
 
         this.showCancel = true;
       },
       onError: (err) => {
-        console.log('OnError', err);
+        // console.log('OnError', err);
         this.showError = true;
       },
     };

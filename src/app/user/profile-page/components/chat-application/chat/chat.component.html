@@ -1,7 +1,15 @@
 <div class="header">
   <div class="imgText">
     <div class="userimg">
+      <ng-container *ngIf="receiverDetails?.profile_pic; else noProfile">
+      <img [src]="receiverDetails.profile_pic" alt="" class="cover" />
+
+        
+      </ng-container>
+      <ng-template #noProfile>
       <img src="/assets/images/img1.jpg" alt="" class="cover" />
+        
+      </ng-template>
     </div>
     <h4>
       {{ receiverDetails?.firstName }} <br /><span>{{
