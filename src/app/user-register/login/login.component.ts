@@ -39,8 +39,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           }
         },
         (error) => {
-          this._snackBarService.popUpMessage('email or password incorrect');
-          console.log(error.message);
+          this._snackBarService.popUpMessage(error.error.message);
         }
       );
   }

@@ -10,9 +10,11 @@ import { AuthGuard } from './guard/auth.guard';
 import { CustomErrorHandle } from './interceptor/error-service/custom-error-handle.service';
 import { GlobalErrorHandlerInterceptor } from './interceptor/global-error-handler.interceptor';
 import { SnackBarModule } from './snack-bar/snack-bar/snack-bar.module';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { LoaderInterceptor } from './interceptor/loader.interceptor';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SpinnerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,6 +32,9 @@ import { SnackBarModule } from './snack-bar/snack-bar/snack-bar.module';
       useClass: GlobalErrorHandlerInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })

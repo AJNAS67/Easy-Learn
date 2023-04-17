@@ -32,6 +32,9 @@ export class EnrolledCoursesComponent implements OnInit, OnDestroy {
   courseDetails(_id: string) {
     this._router.navigate(['profile/course', _id]);
   }
+  enrolled(index: number, course: EnrolledCourseResponse): string {
+    return course.courseId.CourseName;
+  }
 
   ngOnDestroy(): void {
     this.enrolledCourseSubscription$?.unsubscribe();

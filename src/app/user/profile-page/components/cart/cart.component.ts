@@ -154,4 +154,7 @@ export class CartComponent implements OnInit {
       verticalPosition: this.verticalPosition,
     });
   }
+  // addCart(index: any, cart: cartResponse): any {
+  //   return cart.course[index].courseName;
+  // }
 }
