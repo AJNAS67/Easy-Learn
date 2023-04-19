@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 export class LoginComponent implements OnInit, OnDestroy {
   myForm!: FormGroup;
   loginDataSubscription$!: Subscription;
+  isShow: boolean = false;
 
   constructor(
     private fb: FormBuilder,

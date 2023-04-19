@@ -81,8 +81,23 @@
         <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Password</mat-label>
 
-          <input type="password" matInput formControlName="password" />
-          <mat-icon matSuffix>remove_red_eye</mat-icon>
+          <input
+            [type]="isShow ? 'text' : 'password'"
+            matInput
+            formControlName="password"
+          />
+          <ion-icon
+            (click)="isShow = !isShow"
+            matSuffix
+            name="eye-off-outline"
+            *ngIf="!isShow"
+          ></ion-icon>
+          <ion-icon
+            matSuffix
+            name="eye-outline"
+            *ngIf="isShow"
+            (click)="isShow = !isShow"
+          ></ion-icon>
           <mat-error *ngIf="myForm.get('password')?.hasError('required')"
             >Last Name is required</mat-error
           >
@@ -103,7 +118,6 @@
         >
           {{ "register" | uppercase }}
         </button>
-        
       </div>
       <div>
         <p class="text-center mt-2">

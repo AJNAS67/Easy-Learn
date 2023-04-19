@@ -12,6 +12,7 @@ import { GlobalErrorHandlerInterceptor } from './interceptor/global-error-handle
 import { SnackBarModule } from './snack-bar/snack-bar/snack-bar.module';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { LoaderInterceptor } from './interceptor/loader.interceptor';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [AppComponent, SpinnerComponent],
@@ -20,7 +21,8 @@ import { LoaderInterceptor } from './interceptor/loader.interceptor';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SnackBarModule
+    SnackBarModule,
+    IonicModule.forRoot()
   ],
   providers: [
     AuthGuard,
