@@ -56,7 +56,7 @@ export class UserService {
     );
   }
 
-  getUserDetails():Observable<getUserDetailsResp> {
+  getUserDetails(): Observable<getUserDetailsResp> {
     return this.http.get<getUserDetailsResp>(`${this.baseUrl}/api/userDetails`);
   }
 
@@ -78,13 +78,15 @@ export class UserService {
     );
   }
   getEnrolledCourses() {
-    return this.http.get<any>(`${this.baseUrl}/enrolled-course/get_enrolled_course`);
+    return this.http.get<any>(
+      `${this.baseUrl}/enrolled-course/get_enrolled_course`
+    );
   }
 
   getCartItems() {
     return this.http.get<cartResponse>(`${this.baseUrl}/cart/userCart`);
   }
-  getWishlistItems():Observable<wishlistResponse> {
+  getWishlistItems(): Observable<wishlistResponse> {
     return this.http.get<wishlistResponse>(
       `${this.baseUrl}/wishlist/userWishlist`
     );
@@ -102,5 +104,10 @@ export class UserService {
       `${this.baseUrl}/enrolled-course/subscribeCourse`,
       order
     );
+  }
+  updateProfileDetails(userDetails: profileUpdate) {
+    console.log(userDetails,'userPr');
+    
+    return this.http.put(`${this.baseUrl}/update_profile`, userDetails);
   }
 }

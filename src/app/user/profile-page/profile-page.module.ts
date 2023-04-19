@@ -34,6 +34,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from 'src/environments/environment';
 import { ChatService } from './service/chat.service';
 import { SocketService } from './service/websockets/socket.service';
+import { EditProfileDetailsComponent } from './components/edit-profile-details/edit-profile-details.component';
 
 const config: SocketIoConfig = {
   url: `${environment.socketUrl}/chat`, // socket server url;
@@ -54,6 +55,7 @@ const config: SocketIoConfig = {
     CourseSyllabusComponent,
     ChatComponent,
     ChatNavComponent,
+    EditProfileDetailsComponent,
   ],
   imports: [
     CommonModule,

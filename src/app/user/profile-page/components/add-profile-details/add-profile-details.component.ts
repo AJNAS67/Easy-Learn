@@ -17,18 +17,15 @@ export class AddProfileDetailsComponent implements OnInit, OnDestroy {
   profileDetail!: profileUpdate;
   profileDetailSubscription$!: Subscription;
   UploadProfileDetailSubscription$!: Subscription;
+  closeModalSubscription$!: Subscription;
   myForm!: FormGroup;
-  submitForm() {
-    throw new Error('Method not implemented.');
-  }
-  onLogin() {
-    throw new Error('Method not implemented.');
-  }
+  
+  
   loginForm!: FormGroup;
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private _route: Router
+    private _router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -43,14 +40,15 @@ export class AddProfileDetailsComponent implements OnInit, OnDestroy {
       city: ['', Validators.required],
       address: ['', Validators.required],
     });
-
+    this.getProfileData();
+  }
+  getProfileData() {
     this.profileDetailSubscription$ = this.userService
       .getProfileData()
       .subscribe((res: Array<profileUpdate>) => {
         this.profileDetail = res[0];
       });
   }
-
   states: State[] = [
     { value: '1', viewValue: 'Andhra Pradesh' },
     { value: '2', viewValue: 'Arunachal Pradesh' },
@@ -66,10 +64,10 @@ export class AddProfileDetailsComponent implements OnInit, OnDestroy {
       .uploadProfileDetails(this.myForm.value)
       .subscribe(
         (res) => {
-          this._route
+          this._router
             .navigateByUrl('/add-user-details', { skipLocationChange: true })
             .then(() => {
-              this._route.navigate(['profile']);
+              this._router.navigate(['profile']);
             });
         },
 
@@ -78,7 +76,11 @@ export class AddProfileDetailsComponent implements OnInit, OnDestroy {
         }
       );
   }
-  
+  editAddress() {
+    this._router.navigateByUrl('/profile/edit_profile')
+
+  }
+
   ngOnDestroy(): void {
     this.UploadProfileDetailSubscription$?.unsubscribe();
     this.profileDetailSubscription$?.unsubscribe();

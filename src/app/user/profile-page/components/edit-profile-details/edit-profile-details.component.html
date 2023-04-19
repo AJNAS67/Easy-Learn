@@ -1,0 +1,124 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="flex flex-wrap gap-3">
+    <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+      <mat-label>Full Name</mat-label>
+
+      <input matInput formControlName="fullName" />
+      <mat-error *ngIf="myForm.get('fullName')?.hasError('required')"
+        >Name is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        placeholder="Ex. pat@example.com"
+      />
+      <mat-error *ngIf="myForm.get('email')?.hasError('required')"
+        >Email is required</mat-error
+      >
+      <mat-error *ngIf="myForm.get('email')?.hasError('email')"
+        >Invalid email format</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div class="flex flex-wrap gap-3">
+    <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+      <mat-label>pinCode</mat-label>
+
+      <input
+        matInput
+        #postalCode
+        maxlength="5"
+        placeholder="Ex. 94105"
+        formControlName="pinCode"
+      />
+      <mat-error *ngIf="myForm.get('pinCode')?.hasError('required')"
+        >pinCode is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="sm:w-full md:w-5/6 lg:w-2/5" appearance="outline">
+      <mat-label>PhoneNumber</mat-label>
+      <span matPrefix> &nbsp;&nbsp;+91 &nbsp;</span>
+      <input
+        type="tel"
+        matInput
+        placeholder="555-555-1234"
+        formControlName="phoneNumber"
+      />
+      <mat-error *ngIf="myForm.get('phoneNumber')?.hasError('required')"
+        >Phone Number is required</mat-error
+      >
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+  </div>
+  <div class="flex flex-wrap gap-3">
+    <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateofBirth" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="myForm.get('dateofBirth')?.hasError('required')"
+        >date of Birth is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+      <mat-label>State</mat-label>
+      <mat-select
+        [(ngModel)]="selectedValue"
+        name="state"
+        formControlName="state"
+      >
+        <mat-option *ngFor="let state of states" [value]="state.viewValue">
+          {{ state.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="myForm.get('state')?.hasError('required')"
+        >State is required</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="flex gap-3">
+    <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+      <mat-label>District</mat-label>
+
+      <input matInput formControlName="district" />
+      <mat-error *ngIf="myForm.get('district')?.hasError('required')"
+        >District is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+      <mat-label>City</mat-label>
+
+      <input matInput formControlName="city" />
+      <mat-error *ngIf="myForm.get('city')?.hasError('required')"
+        >City is required</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div class="flex gap-3">
+    <mat-form-field appearance="outline" class="sm:w-full md:w-5/6 lg:w-2/5">
+      <mat-label> Address </mat-label>
+      <textarea matInput formControlName="address"></textarea>
+      <mat-error *ngIf="myForm.get('address')?.hasError('required')"
+        >Address is required</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="myForm.invalid"
+  >
+    Primary
+  </button>
+</form>

@@ -18,6 +18,7 @@ export class EnrolledCoursesComponent implements OnInit, OnDestroy {
     this.enrolledCourseSubscription$ = this._userService
       .getEnrolledCourses()
       .subscribe((res) => {
+        
         let ar = [];
         for (let i = 0; i < res.length; i++) {
           const order = res[i];
