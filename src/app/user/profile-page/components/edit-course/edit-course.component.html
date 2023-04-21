@@ -1,0 +1,214 @@
+
+<div class="p-5" style="height: calc(100vh - 64px); overflow: auto">
+    <div class="login-form">
+      <form [formGroup]="myForm" class="example-form" (ngSubmit)="onSubmit()">
+        <div>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Course Name</mat-label>
+            <input
+              matInput
+              formControlName="CourseName"
+              placeholder="Ex. Angular Basic"
+            />
+          </mat-form-field>
+  
+          <br />
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>mentorName</mat-label>
+            <input
+              matInput
+              formControlName="MentorName"
+              placeholder="Ex. Enter Mentor Name"
+            />
+          </mat-form-field>
+          <br />
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Category</mat-label>
+            <mat-select
+              name="Category"
+              formControlName="Category"
+            >
+              <mat-option
+                *ngFor="let category of Categories"
+                [value]="category._id"
+              >
+                {{ category.course_category }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br />
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Total Hr.</mat-label>
+            <input
+              matInput
+              type="number"
+              formControlName="TotalHr"
+              placeholder="total  Hr of your course"
+            />
+            <mat-error *ngIf="myForm.get('TotalHr')?.hasError('required')"
+              >TotalHr field is required</mat-error
+            >
+  
+            <mat-error
+              *ngIf="
+                myForm.get('TotalHr')?.errors &&
+                !myForm.get('TotalHr')?.hasError('required')
+              "
+              >should enter valid input
+            </mat-error>
+          </mat-form-field>
+  
+          <br />
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label> Course Description </mat-label>
+            <textarea matInput formControlName="CourseDescription"></textarea>
+            <mat-error
+              *ngIf="myForm.get('CourseDescription')?.hasError('required')"
+              >Course description is required</mat-error
+            >
+          </mat-form-field>
+  
+          <br />
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Level</mat-label>
+            <mat-select name="Category" formControlName="Level">
+              <mat-option *ngFor="let level of levels" [value]="level.value">
+                {{ level.value }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="myForm.get('Level')?.hasError('required')"
+              >Level is required</mat-error
+            >
+          </mat-form-field>
+          <br />
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Language</mat-label>
+            <mat-select name="Language" formControlName="Language">
+              <mat-option
+                *ngFor="let Language of Languages"
+                [value]="Language.value"
+              >
+                {{ Language.value }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="myForm.get('Language')?.hasError('required')"
+              >Language required</mat-error
+            >
+          </mat-form-field>
+  
+          <mat-checkbox formControlName="Popularity" class="px-3"
+            >Popularity</mat-checkbox
+          >
+          <mat-checkbox formControlName="Trending" class="px-3"
+            >Trending</mat-checkbox
+          ><mat-checkbox formControlName="Featured" class="px-3"
+            >Featured</mat-checkbox
+          ><mat-checkbox formControlName="AI_and_ML" class="px-3"
+            >ML or AI</mat-checkbox
+          >
+  
+          <br />
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label> Price </mat-label>
+            <input matInput formControlName="Price" />
+            <mat-error *ngIf="myForm.get('Price')?.hasError('required')"
+              >Price is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                myForm.get('Price')?.errors &&
+                !myForm.get('Price')?.hasError('required')
+              "
+              >should enter positive Value
+            </mat-error>
+          </mat-form-field>
+          <br />
+          <img [src]="editData.ThumbnailImage" alt="">
+  
+          <div class="custom-file">
+            <input
+              type="file"
+              class="custom-file__input"
+              id="field-upload"
+              required
+              formControlName="ThumbnailImage"
+              (change)="upload($event)"
+              accept="image/*"
+            />
+            <label class="custom-file__label" for="field-upload"
+              >Choose thumbnailImage</label
+            >
+          </div>
+  
+          <br />
+  
+          <ng-container formArrayName="VideoModule">
+            <ng-container
+              *ngFor="let lessonForm of lessons.controls; let i = index"
+            >
+              <div [formGroup]="lesForm">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Video title </mat-label>
+                  <input
+                    matInput
+                    formControlName="title"
+                    placeholder="Ex. Angular Basic"
+                  />
+                </mat-form-field>
+  
+                <br />
+                <div class="custom-file">
+                  <input
+                    type="file"
+                    required
+                    formControlName="video"
+                    accept="video/*"
+                    (change)="uploadVideo($event, i)"
+                  />
+                </div>
+                <br />
+  
+                <a
+                  mat-mini-fab
+                  (click)="deleteLesson(i)"
+                  style="background-color: brown"
+                  class="my-3"
+                >
+                  <mat-icon
+                    aria-hidden="false"
+                    aria-label="Example home icon"
+                    fontIcon="delete"
+                  ></mat-icon>
+                </a>
+              </div>
+            </ng-container>
+          </ng-container>
+  
+          <div class="mb-3">
+            <a mat-mini-fab (click)="addLesson()">
+              <mat-icon class="add-course-btn">add</mat-icon>
+            </a>
+          </div>
+  
+          <button mat-dialog-close mat-raised-button color="warn">Cancel</button>
+  
+          <button
+            class="mx-5"
+            type="submit"
+            mat-dialog-close
+            mat-raised-button
+            color="primary"
+            [disabled]="myForm.invalid"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  
+  

@@ -67,12 +67,19 @@ export class UserService {
       })
     );
   }
+  editCourse(course: CourseResponse): Observable<any> {
+    return this.http.put(`${this.baseUrl}/course/edit-course`, course).pipe(
+      tap(() => {
+        this.RequiredRefresh.next();
+      })
+    );
+  }
   deleteCourse(courseId: string) {
     return this.http.delete<DeleteResponse>(
       `${this.baseUrl}/course/deleteCourse/${courseId}`
     );
   }
-  getMentorCourse() {
+  getMentorCourse():Observable<Array<CourseResponse>> {
     return this.http.get<Array<CourseResponse>>(
       `${this.baseUrl}/course/mentor_course`
     );
@@ -106,8 +113,7 @@ export class UserService {
     );
   }
   updateProfileDetails(userDetails: profileUpdate) {
-    console.log(userDetails,'userPr');
-    
+
     return this.http.put(`${this.baseUrl}/update_profile`, userDetails);
   }
 }
