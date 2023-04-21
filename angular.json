@@ -20,9 +20,7 @@
             "outputPath": "dist/eeasy-learn",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -75,6 +73,28 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+
+              "development": {
+                "fileReplacements": [
+                  {
+                    "replace": "src/environments/environment.prod.ts",
+                    "with": "src/environments/environment.ts"
+                  }
+                ],
+                "buildOptimizer": false,
+                "optimization": false,
+                "vendorChunk": true,
+                "extractLicenses": false,
+                "sourceMap": true,
+                "namedChunks": true
+              },
+
               "budgets": [
                 {
                   "type": "initial",
@@ -87,6 +107,7 @@
                   "maximumError": "4kb"
                 }
               ],
+
               "outputHashing": "all"
             },
             "development": {
@@ -121,10 +142,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
