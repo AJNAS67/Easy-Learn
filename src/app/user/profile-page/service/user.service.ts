@@ -34,6 +34,22 @@ export class UserService {
       `${this.baseUrl}/get_user_details`
     );
   }
+
+  editCourse(course: CourseResponse,courseId:string): Observable<any> {
+    return this.http.put(`${this.baseUrl}/course/edit-course/${courseId}`, course).pipe(
+      tap(() => {
+        this.RequiredRefresh.next();
+      })
+    );
+  }
+
+  // editCourse(course: CourseResponse): Observable<any> {
+  //   return this.http.put(`${this.baseUrl}/course/edit-course`, course).pipe(
+  //     tap(() => {
+  //       this.RequiredRefresh.next();
+  //     })
+  //   );
+  // }
   // to upload profile pic
   uploadProfilePick(uploadImage: FormData): Observable<imageUploadResponse> {
     return this.http.post<imageUploadResponse>(

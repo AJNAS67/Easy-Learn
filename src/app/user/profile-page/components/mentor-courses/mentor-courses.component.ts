@@ -8,6 +8,7 @@ import {
 } from 'src/app/interface/user.interface';
 import { SnackBarService } from 'src/app/snack-bar/snack-bar.service';
 import { Subscription } from 'rxjs';
+import { EditCourseComponent } from '../edit-course/edit-course.component';
 @Component({
   selector: 'app-mentor-courses',
   templateUrl: './mentor-courses.component.html',
@@ -34,6 +35,17 @@ export class MentorCoursesComponent implements OnInit, OnDestroy {
     return course.CourseName;
   }
 
+  editCourse(course: any) {
+    const dialogRef = this._matDialog.open(EditCourseComponent, {
+      data: course,
+    });
+    this.closeModalSubscription$ = dialogRef
+    .afterClosed()
+    .subscribe((result) => {
+      this.getCourse();
+    });
+
+  }
   getCourse() {
     this.courseSubscription$ = this._userService
       .getMentorCourse()
