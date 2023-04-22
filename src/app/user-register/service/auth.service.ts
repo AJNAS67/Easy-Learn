@@ -21,7 +21,7 @@ export class AuthService {
   registerUser(
     data: userRegister
   ): Observable<{ message: string; isAdded: boolean }> {
-    this.serviceURL = 'http://localhost:3000/api';
+    this.serviceURL = `${this.baseUrl}`;
     return this.http.post<{ message: string; isAdded: boolean }>(
       `${this.baseUrl}/api/register`,
       data
