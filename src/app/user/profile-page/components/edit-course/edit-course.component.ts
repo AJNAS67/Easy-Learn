@@ -81,19 +81,22 @@ export class EditCourseComponent {
         this.Categories = res;
       });
   }
-  onSubmit() {
-    this.uploadCourseSubscription = this._userService
-      .editCourse(this.myForm.value)
-      .subscribe({
-        next: (res) => {
-          this._SnackBarService.popUpMessage('Update course successfully');
-          this.dialogRef.close('close');
-        },
-        error: () => {
-          this._SnackBarService.popUpMessage('Error while updating course');
-        },
-      });
-  }
+
+
+  
+onSubmit() {
+  this.uploadCourseSubscription = this._userService
+    .editCourse(this.myForm.value,this.editData._id)
+    .subscribe({
+      next: (res) => {
+        this._SnackBarService.popUpMessage('Update course successfully');
+        this.dialogRef.close('close');
+      },
+      error: () => {
+        this._SnackBarService.popUpMessage('Error while updating course');
+      },
+    });
+}
 
   get lessons() {
     return this.myForm.controls['VideoModule'] as FormArray;
@@ -120,11 +123,8 @@ export class EditCourseComponent {
       .uploadCourseVideo(form_data)
       .subscribe(
         (res) => {
-          console.log(res, 'uploade video res');
-
           const lessonForm = this.lessons.at(index) as FormGroup;
           lessonForm.patchValue({ video: res.url });
-          console.log(this.myForm, 'myForm');
         },
         (error) => {
           console.log(error, 'upload video error');

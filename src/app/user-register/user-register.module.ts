@@ -14,7 +14,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SnackBarService } from './service/snack-bar.service';
 import { RegisterRoutingModule } from './user-register-routing.module';
-import { IonicModule } from "@ionic/angular";
 
 @NgModule({
   declarations: [RegisterComponent, LoginComponent, AdminLoginComponent],
@@ -30,7 +29,6 @@ import { IonicModule } from "@ionic/angular";
     MatButtonModule,
     MatCardModule,
     MatSnackBarModule,
-    IonicModule.forRoot()
   ],
   providers: [
     SnackBarService,

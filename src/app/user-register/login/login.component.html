@@ -22,23 +22,8 @@
 
         <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Password</mat-label>
-          <input
-            [type]="isShow ? 'text' : 'password'"
-            matInput
-            formControlName="password"
-          />
-          <ion-icon
-            (click)="isShow = !isShow"
-            matSuffix
-            name="eye-off-outline"
-            *ngIf="!isShow"
-          ></ion-icon>
-          <ion-icon
-            matSuffix
-            name="eye-outline"
-            *ngIf="isShow"
-            (click)="isShow = !isShow"
-          ></ion-icon>
+          <input type="password" matInput formControlName="password" />
+          <mat-icon matSuffix>remove_red_eye</mat-icon>
         </mat-form-field>
         <button
           type="submit"

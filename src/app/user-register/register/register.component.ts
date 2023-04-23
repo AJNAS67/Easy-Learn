@@ -12,7 +12,6 @@ import { SnackBarService } from '../service/snack-bar.service';
 export class RegisterComponent implements OnInit {
   myForm!: FormGroup;
   isEmailExist: boolean = false;
-  isShow:boolean=false
 
   loginForm!: FormGroup;
   constructor(

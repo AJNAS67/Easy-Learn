@@ -67,8 +67,8 @@ export class UserService {
       })
     );
   }
-  editCourse(course: CourseResponse): Observable<any> {
-    return this.http.put(`${this.baseUrl}/course/edit-course`, course).pipe(
+  editCourse(course: CourseResponse,courseId:string): Observable<any> {
+    return this.http.put(`${this.baseUrl}/course/edit-course/${courseId}`, course).pipe(
       tap(() => {
         this.RequiredRefresh.next();
       })
