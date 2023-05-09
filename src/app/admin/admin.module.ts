@@ -16,9 +16,11 @@ import { UsersDataSource } from './services/users.dataSource';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TopWidgetsComponent } from './components/dashboard/top-widgets/top-widgets.component';
 
 @NgModule({
-  declarations: [AdminComponent, ViewUserComponent, ViewCourseComponent],
+  declarations: [AdminComponent, ViewUserComponent, ViewCourseComponent, DashboardComponent, TopWidgetsComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

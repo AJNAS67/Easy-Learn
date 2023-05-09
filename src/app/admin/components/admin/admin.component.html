@@ -1,4 +1,4 @@
-<mat-toolbar class="mat-elevation-z8 flex justify-between" >
+<mat-toolbar class="mat-elevation-z8 flex justify-between">
   <button
     mat-icon-button
     *ngIf="sidenav.mode === 'over'"
@@ -11,16 +11,22 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8" >
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
     <img
       class="avatar mat-elevation-z8"
-      style="object-fit: cover;"
+      style="object-fit: cover"
       src="https://res.cloudinary.com/dlcknrzgd/image/upload/v1679645454/de6sk47ogdsnkmgd74ul.jpg"
     />
 
     <h4 class="name">Muhammed Ajnas</h4>
     <p class="designation">ajnaskp67@gmail.com</p>
 
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" [routerLink]="['dashboard']">
+      <mat-icon>dashboard</mat-icon>
+      <span> Dashboard </span>
+    </button>
     <mat-divider></mat-divider>
 
     <button mat-button class="menu-button" [routerLink]="['view-user']">

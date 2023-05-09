@@ -1,0 +1,42 @@
+<div class="widget-container">
+  <div class="widget green">
+    <div class="icon">
+      <mat-icon>school</mat-icon>
+    </div>
+    <div class="value">
+      <div class="top">{{ numberOfUser$ | async }}</div>
+      <div class="bottom">Students</div>
+    </div>
+  </div>
+  <div class="widget yellow">
+    <div class="icon">
+      <mat-icon> person_pin </mat-icon>
+    </div>
+    <div class="value">
+      <div class="top">{{ numberOfMentor$ | async }}</div>
+      <div class="bottom">Mentors</div>
+    </div>
+  </div>
+  <div class="widget red">
+    <div class="icon">
+      <mat-icon> library_books </mat-icon>
+
+      <!-- <fa-icon [icon]="faBoxes"></fa-icon> -->
+    </div>
+    <div class="value">
+      <div class="top">{{ numberOfUser$ | async }}</div>
+      <div class="bottom">Number of Courses</div>
+    </div>
+  </div>
+  <div class="widget blue">
+    <div class="icon">
+      <mat-icon> format_indent_increase</mat-icon>
+
+      <!-- <fa-icon [icon]="faMoneyBill"></fa-icon> -->
+    </div>
+    <div class="value">
+      <div class="top">{{ totalPrice$ | async }}</div>
+      <div class="bottom">Total Revenue</div>
+    </div>
+  </div>
+</div>
