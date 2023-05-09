@@ -14,13 +14,24 @@ import { MatSortModule } from '@angular/material/sort';
 import { AdminService } from './services/admin.service';
 import { UsersDataSource } from './services/users.dataSource';
 import { HttpClientModule } from '@angular/common/http';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TopWidgetsComponent } from './components/dashboard/top-widgets/top-widgets.component';
+import { SalesReportComponent } from './components/sales-report/sales-report.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
-  declarations: [AdminComponent, ViewUserComponent, ViewCourseComponent, DashboardComponent, TopWidgetsComponent],
+  declarations: [
+    AdminComponent,
+    ViewUserComponent,
+    ViewCourseComponent,
+    DashboardComponent,
+    TopWidgetsComponent,
+    SalesReportComponent,
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -33,7 +44,9 @@ import { TopWidgetsComponent } from './components/dashboard/top-widgets/top-widg
     MatSortModule,
     HttpClientModule,
     MatSlideToggleModule,
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [AdminService, UsersDataSource],
 })

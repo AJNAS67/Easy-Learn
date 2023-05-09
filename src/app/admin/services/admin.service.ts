@@ -44,4 +44,7 @@ export class AdminService {
       { isBlock: isBlock }
     );
   }
+  getAllOrders(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/enrolled-course/all_order`);
+  }
 }
