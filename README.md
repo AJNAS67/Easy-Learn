@@ -12,6 +12,8 @@ USER Side
 ![Screenshot (278)](https://github.com/AJNAS67/Easy-Learn/assets/70216842/be237f93-b2d6-4be2-a563-0b16b44533d2)
 ![Screenshot (279)](https://github.com/AJNAS67/Easy-Learn/assets/70216842/47df2137-8918-46d5-93bd-e7e484c43486)
 
+## Hosted the website 
+https://easylearn.store/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 
