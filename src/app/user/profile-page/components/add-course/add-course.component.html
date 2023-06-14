@@ -149,7 +149,7 @@
           <ng-container
             *ngFor="let lessonForm of lessons.controls; let i = index"
           >
-            <div [formGroup]="lesForm">
+            <div [formGroupName]="i">
               <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Video title </mat-label>
                 <input

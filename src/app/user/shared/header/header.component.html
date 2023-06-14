@@ -127,22 +127,17 @@
       >
 
       <a
-        href=""
+        routerLink="about-us"
         class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-100"
         >About-us</a
       >
 
       <a
-        href="#"
+        *ngIf="!checkUser()"
+        routerLink="/user/login"
         class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-        >Contact-us</a
+        >Login</a
       >
-      <!-- 
-        <a
-          href="#"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-          >Calendar</a
-        > -->
     </div>
   </div>
 </nav>
